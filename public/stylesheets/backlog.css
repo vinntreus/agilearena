@@ -1,0 +1,50 @@
+﻿.statistic-item
+{
+    padding: 0 15px 0 0;
+}
+
+/* create backlog items */
+
+
+ol#backlogitems li
+{        
+    background: none repeat scroll 0 0 #F2F2F2;
+    color: #333333;
+    margin-bottom: 10px;
+    padding: 10px;
+    -moz-border-radius: 3px;
+}
+ol#backlogitems li .row div
+{        
+        float:left;
+        margin:0 20px 0 0;
+}
+ol#backlogitems li .description
+{        
+    font-weight:bold;
+}
+
+.box-content ol > li
+{
+	margin-bottom:1em;
+}
+
+.box-content ol > li input[type=text]
+{
+	width:20em;
+}
+.box-content ol > li textarea
+{
+	width:20.5em;
+}
+
+.box-content ol > li input.short
+{
+	width:8em;
+}
+
+.box-content ol > li label
+{	
+	display:block;	
+	margin-bottom:.5em;
+}

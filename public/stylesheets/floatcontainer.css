@@ -1,0 +1,24 @@
+﻿.fc:after
+{
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.fc
+{
+	display: block;
+}
+ 
+html[xmlns] .fc
+{
+	display: block;
+}
+ 
+* html .fc
+{
+	height: 1%;
+}

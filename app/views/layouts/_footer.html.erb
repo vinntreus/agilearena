@@ -1,12 +1,17 @@
 <footer>
-  <nav class="round">
-    <ul>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-      <li><a href="http://news.railstutorial.org/">News</a></li>
-      <li><a href="http://www.railstutorial.org/">Rails Tutorial</a></li>
-      <li><a href="http://www.agilearena.com/">Agile arena</a></li>
-    </ul>
-  </nav>
+  ﻿<section>
+		<span id="copyright">© 2011 Agilearena Inc. All rights reserved.</span>
+		<nav id="info-nav">
+			<%= link_to "About", about_path %>
+			<%= link_to "Contact", contact_path %>
+			<%=#	@Html.ActionLink("Terms of Service", "Termsofservice", "Info")
+			#@Html.ActionLink("Privacy", "Privacy", "Info")
+			#@Html.ActionLink("Security", "Security", "Info") 
+			%>
+		</nav>
+	</section>
+	<section class="info">
+		<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas venenatis rutrum tortor, eu dictum libero bibendum ac. Aenean sed magna eu sapien iaculis egestas vel consequat mi. Maecenas sodales consectetur leo, pharetra ornare eros convallis at. Quisque eget enim nulla, nec sollicitudin metus. </span>
+	</section>
 </footer>
 

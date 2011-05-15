@@ -7,17 +7,17 @@
     <%= javascript_include_tag :defaults %>
   </head>
   <body>
-    <div class="container">
-     <%= render 'layouts/header' %>
-      <section class="round">
-       <% flash.each do |key, value| %>
-          <div class="flash <%= key %>"><%= value %></div>
-        <% end %>
-        <%= yield %>
+			<%= render 'layouts/header' %>            
+      <section id="page">
+      	<section id="content">
+   	      <% flash.each do |key, value| %>
+  	        <div class="flash <%= key %>"><%= value %></div>
+		      <% end %>
+		      <%= yield %>
+          <%= debug(params) if Rails.env.development? %>
+  	    </section>
       </section>
       <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
-    </div>
   </body>
 </html>
 

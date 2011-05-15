@@ -1,0 +1,76 @@
+﻿h1,h2,h3,h4,h5
+{
+	font-size:3em;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	/*line-height:3em;*/
+	/* test adjustments */
+	line-height:1em;	
+	color:#efefef;
+	/*******************/
+}
+h1
+{
+	margin-bottom:1em;
+}
+h2
+{
+	font-size:1.8em;
+	line-height:1.8em;
+}
+h3
+{
+	font-size:1.3em;
+	line-height:1.3em;
+}
+h4
+{
+	font-size:1.2em;
+	line-height:1.2em;
+}
+h5
+{
+	font-size:1em;
+	line-height:1em;
+}
+
+fieldset
+{
+	margin:1em 0;
+}
+
+fieldset legend
+{
+	font-weight:bold;	
+	margin-bottom:0.5em;
+}
+
+fieldset > ol li,
+form > ol li
+{
+	margin-bottom:1em;
+}
+
+fieldset > ol li label,
+form > ol li label
+{
+	display: block;
+    float: left;
+    line-height: 2em;
+    width: 10em;
+}
+
+p
+{
+	margin-bottom:10px;
+}
+
+ul > li > p
+{
+	margin:5px 0;
+}
+
+/* temp until removal of backlog template */
+.hidden
+{
+	display:none;
+}

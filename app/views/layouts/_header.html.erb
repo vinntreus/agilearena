@@ -1,25 +1,37 @@
-<header>
+<header class="fc">
+	<section id="main-header" >
     <%= link_to logo, root_path %>
     <% user_signed_in = signed_in? %>
-  <nav class="round">
-    <ul>
-      <li><%= link_to "Home", root_path %></li>
-  
-       <% if user_signed_in %>
-        <li><%= link_to "Users", users_path %></li>
-	      <li><%= link_to "Profile", current_user %></li>
-	      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-      <% end %>
+    <div class="user-info">
+    	<% if user_signed_in %>
+				<%= link_to current_user.name, current_user %> | 
+				<%= link_to "Sign out", signout_path, :method => :delete %>
+			<% else %>
+				<%= link_to "Sign in", signin_path %>
+			<% end %>
+		</div>
+		<nav>						
+			<menu id="top-menu" class="fc">
+				<li><%= link_to "Home", root_path %></li>
 
-      <li><%= link_to "Help", help_path %></li>
-	
-			<% if user_signed_in %>
-		    <li><%= link_to "Sign out", signout_path, :method => :delete %></li>
-		  <% else %>
-		    <li><%= link_to "Sign in", signin_path %></li>
-      <% end %>
+				 <% if user_signed_in %>
+				  <li><%= link_to "Users", users_path %></li>
+					<li><%= link_to "Profile", current_user %></li>
+					<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+				<% end %>
 
-    </ul>
-  </nav>
-</header>
+				<li><%= link_to "Help", help_path %></li>	
+
+			</menu>					
+		</nav>				
+	</section>
+	<section id="sub-header" >
+		<section id="header-messages">
+		</section>
+		<nav>
+			<menu id="sub-menu">						
+			</menu>
+		</nav>
+	</section>
+</header>	
 
