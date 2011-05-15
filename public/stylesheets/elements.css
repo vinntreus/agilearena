@@ -33,6 +33,16 @@ h5
 	line-height:1em;
 }
 
+h1 > img
+{
+	vertical-align:bottom;
+}
+
+h1 > img.gravatar
+{
+		border: 1px solid #DDDDDD;
+}
+
 fieldset
 {
 	margin:1em 0;

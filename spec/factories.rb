@@ -11,3 +11,7 @@ Factory.sequence :email do |n|
   "person-#{n}@example.com"
 end
 
+Factory.define :backlog do |backlog|
+  backlog.title "Foo bar"
+  backlog.association :user
+end

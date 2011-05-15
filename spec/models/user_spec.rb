@@ -155,6 +155,30 @@ describe User do
     end
   end
 
+ describe "backlogs associations" do
+
+    before(:each) do
+      @user = User.create(@validUserAttr)
+      @b1 = Factory(:backlog, :user => @user, :created_at => 1.day.ago)
+      @b2 = Factory(:backlog, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should have a backlogs attribute" do
+      @user.should respond_to(:backlogs)
+    end
+    
+    it "should have the right backlogs in the right order" do
+      @user.backlogs.should == [@b2, @b1]
+    end
+    
+    it "should destroy associated backlogs" do
+      @user.destroy
+      [@b1, @b2].each do |backlog|
+        Backlog.find_by_id(backlog.id).should be_nil
+      end
+    end
+    
+  end	
 
 
 end

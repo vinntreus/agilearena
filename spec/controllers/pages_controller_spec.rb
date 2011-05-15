@@ -7,13 +7,23 @@ describe PagesController do
     it "should be successful" do
       get 'home'
       response.should be_success
+      response.should render_template "pages/home"
     end
 	
-	it "should have right title" do
-		get 'home'
-		response.should have_selector("title", :content => "| Home")
-	end
+		it "should have right title" do
+			get 'home'
+			response.should have_selector("title", :content => "| Home")
+		end
   end
+  
+  describe "GET 'home' when signed in" do		
+				it "should render view 'home_signedin'" do
+					test_sign_in(Factory(:user))
+					get 'home'
+  		    response.should be_success
+		      response.should render_template "pages/home_signedin"
+				end					
+		end
 
   describe "GET 'contact'" do
     it "should be successful" do

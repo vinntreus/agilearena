@@ -1,15 +1,29 @@
-<table class="profile" summary="Profile information">
-  <tr>
-    <td class="main">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </td>
-    <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
-    </td>
-  </tr>
-</table>
+<h1>
+	<%= gravatar_for @user %>
+	<%= @user.name %>
+</h1>
+<div class="box small-column fc">
+	<div class="small-column fc">
+		<dl>
+			<dt>Name:</dt>
+			<dd><%= @user.name %></dd>
+		</dl>
+		<dl>
+			<dt>Email:</dt>
+			<dd><%= @user.email %><dd>
+		</dl>
+	</div>
+	<div class="small-column fc">
+		<div class="statistic">
+			<strong><%= @user.backlogs.count %></strong>
+			<span>backlogs</span>
+		</div>
+	</div>
+</div>
+<% unless @user.backlogs.empty? %>
+  <ul class="backlogs fc">
+    <%= render @backlogs %>
+  </ul>
+  <%= will_paginate @backlogs %>
+<% end %>
 

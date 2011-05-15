@@ -1,18 +1,21 @@
 class PagesController < ApplicationController
   def home
-	@title = "Home"
+		@title = "Home"
+		if signed_in?
+			render "home_signedin"
+		end
   end
 
   def contact
-	@title = "Contact"
+		@title = "Contact"
   end
   
   def about
-	@title = "About"
+		@title = "About"
   end
   
   def help
-	@title = "Help"
+		@title = "Help"
   end
 
 end

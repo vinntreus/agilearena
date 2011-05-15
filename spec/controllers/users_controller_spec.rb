@@ -56,6 +56,14 @@ describe UsersController do
       get :show, :id => @user
       response.should have_selector("h1>img", :class => "gravatar")
     end
+    
+    it "should show the user's backlogs" do
+      b1 = Factory(:backlog, :user => @user, :title => "Foo bar")
+      b2 = Factory(:backlog, :user => @user, :title => "Baz quux")
+      get :show, :id => @user
+      response.should have_selector(".title", :content => b1.title)
+      response.should have_selector(".title", :content => b2.title)
+    end
 
   	
   end
