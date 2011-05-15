@@ -29,8 +29,9 @@ a:hover
 
 #page
 {
-	min-height:200px;
-	padding-bottom: 86px;
+		margin-bottom: 115px;
+    min-height: 200px;
+    padding-bottom: 0;
 }
 
 
@@ -236,6 +237,23 @@ div.box div.box-content
     -moz-box-shadow: 0 0 5px rgba(255, 255, 255, 0.65);
     -moz-border-radius: 0px;
 }
+
+div.box div.box-content *
+{
+	color:#000;
+}
+
+div.box div.box-content a:link,
+div.box div.box-content a:visited,
+div.box div.box-content a:active
+{
+	color: #000;
+}
+div.box div.box-content a:hover
+{
+	color:#888;
+}
+
 
 div.box dl
 {

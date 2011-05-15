@@ -1,0 +1,10 @@
+<%= form_for @backlog do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+  	<label>Title for new backlog</label>
+    <%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
