@@ -33,12 +33,14 @@ h5
 	line-height:1em;
 }
 
-h1 > img
+h1 > img,
+li > img
 {
 	vertical-align:bottom;
 }
 
-h1 > img.gravatar
+h1 > img.gravatar,
+li > img.gravatar
 {
 		border: 1px solid #DDDDDD;
 }

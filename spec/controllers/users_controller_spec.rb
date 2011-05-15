@@ -114,7 +114,7 @@ describe UsersController do
       
       it "should have a welcome message" do
         post :create, :user => @attr
-        flash[:success].should =~ /welcome to the sample app/i
+        flash[:success].should =~ /welcome to AgileArena/i
       end
       
       it "should sign the user in" do
@@ -146,7 +146,7 @@ describe UsersController do
 			get :edit, :id => @user
 			gravatar_url = "http://gravatar.com/emails"
 			response.should have_selector("a", :href => gravatar_url,
-				                                 :content => "change")
+				                                 :content => "Update gravatar image")
 		end
 	end
 	

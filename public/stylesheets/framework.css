@@ -20,11 +20,11 @@ a:link,
 a:visited,
 a:active
 {
-	color: #4d91ce;
+	color: #fff;
 }
 a:hover
 {
-	color:#216aab;
+	color:#ddd;
 }
 
 #page
@@ -223,7 +223,7 @@ div.box
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 9px;
     margin-bottom:1em;
-    color:#000;
+    color:#fff;
     -moz-border-radius: 3px;
     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
@@ -232,6 +232,7 @@ div.box div.box-content
     background: none repeat scroll 0 0 white;
     border: 1px solid #326378;
     padding: 20px;
+    color:#000;
     -moz-box-shadow: 0 0 5px rgba(255, 255, 255, 0.65);
     -moz-border-radius: 0px;
 }
@@ -243,7 +244,7 @@ div.box dl
 
 div.box dl > dt
 {
-		color: #DBD9D9;
+		color: #333;
     float: left;
     margin: 0;
     width: 115px;
@@ -263,5 +264,44 @@ div.statistic strong
 	text-align:center;
 }
 
+div.flash
+{
+	border:1px solid #dfdfdf;
+	padding:10px;
+	margin:0 0 1em 0;
+}
 
+.flash.success
+{
+	background-color:#66A02C;
+}
+
+.flash.error
+{
+	background-color:#9E2E2C;
+}
+
+#content form
+{
+	margin:0 0 1em 0;
+}
+
+div.field
+{
+	margin:0 0 1em 0;
+}
+
+div.field label
+{
+line-height:1.1em;
+	display:block;
+}
+
+.users a
+{
+	font-size: 1.2em;
+  line-height: 2em;
+  margin-left: 0.4em;
+  vertical-align: middle;
+}
 
