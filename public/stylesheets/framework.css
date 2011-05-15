@@ -223,6 +223,7 @@ div.box
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 9px;
     margin-bottom:1em;
+    color:#000;
     -moz-border-radius: 3px;
     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
