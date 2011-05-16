@@ -1,3 +1,28 @@
 <h1>
-	<%= @backlog.title %>
+	<%= @backlog.title %>	
 </h1>
+
+<div class="box small-column fc">
+	<div class="small-column fc">
+		<dl>
+			<dt>Created by:</dt>
+			<dd><%= link_to @backlog.user.name, @backlog.user %></dd>
+		</dl>
+		<dl>
+			<dt>Private:</dt>
+			<dd><%= @backlog.private? %><dd>
+		</dl>
+	</div>
+	<div class="small-column fc">
+		<div class="statistic">
+			<strong><%= @backlog.backlog_items.count %></strong>
+			<span>items</span>
+		</div>
+	</div>
+</div>
+<% unless @backlog.backlog_items.empty? %>
+  <ul class="backlog-items fc">
+    <%= render @backlog_items %>
+  </ul>
+  <%= will_paginate @backlog_items %>
+<% end %>

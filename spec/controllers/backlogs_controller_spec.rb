@@ -40,7 +40,15 @@ describe BacklogsController do
     it "should include the name" do
       get :show, :id => @backlog
       response.should have_selector("h1", :content => @backlog.title)
-    end      
+    end 
+    
+     it "should show the backlog items" do
+      b1 = Factory(:backlog_item, :backlog => @backlog, :title => "Foo bar")
+      b2 = Factory(:backlog_item, :backlog => @backlog, :title => "Baz quux")
+      get :show, :id => @backlog
+      response.should have_selector(".title", :content => b1.title)
+      response.should have_selector(".title", :content => b2.title)
+    end     
   	
   end
   

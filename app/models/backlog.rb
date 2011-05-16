@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110515152639
+# Schema version: 20110516195031
 #
 # Table name: backlogs
 #
@@ -7,12 +7,15 @@
 #  title      :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
+#  private    :boolean
 #
 
 class Backlog < ActiveRecord::Base
-	attr_accessible :title
+	attr_accessible :title, :private
 
 	belongs_to :user	
+	has_many :backlog_items, :dependent => :destroy
 	
 	validates :user_id, :presence => true
 	validates :title, :presence => true,

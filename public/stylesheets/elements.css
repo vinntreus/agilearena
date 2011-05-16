@@ -76,6 +76,11 @@ p
 	margin-bottom:10px;
 }
 
+ul > li
+{
+	margin:0 0 1em 0;
+}
+
 ul > li > p
 {
 	margin:5px 0;

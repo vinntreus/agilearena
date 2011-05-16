@@ -38,7 +38,50 @@ describe Backlog do
 		  it "should reject long content" do
 		    @user.backlogs.build(:title => "a" * 101).should_not be_valid
 		  end
-    end
-  
+    end  
   end  
+  
+  describe "backlog item associations" do
+  	before(:each) do
+  		@backlog = @user.backlogs.create!(@validParams)
+      @b1 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.day.ago)
+      @b2 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.hour.ago)
+  	end
+  	
+  	  it "should have a backlog items attribute" do
+      @backlog.should respond_to(:backlog_items)
+    end
+    
+    it "should have the right backlogs in the right order" do
+      @backlog.backlog_items.should == [@b2, @b1]
+    end
+    
+    it "should destroy associated backlogs" do
+      @backlog.destroy
+      [@b1, @b2].each do |item|
+        BacklogItem.find_by_id(item.id).should be_nil
+      end
+    end
+    
+  end
+  
+	describe "private attribute" do
+
+   before(:each) do
+			@backlog = @user.backlogs.create!(@validParams)
+		end
+
+    it "should respond to private" do
+      @backlog.should respond_to(:private)
+    end
+
+    it "should not be an private by default" do
+      @backlog.should_not be_private
+    end
+
+    it "should be convertible to a private" do
+      @backlog.toggle!(:private)
+      @backlog.should be_private
+    end
+  end
 end
