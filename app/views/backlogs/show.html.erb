@@ -20,6 +20,9 @@
 		</div>
 	</div>
 </div>
+<% unless @backlog.nil? %>
+	<%= render "shared/backlog_item_form" %>
+<% end %>
 <% unless @backlog.backlog_items.empty? %>
   <ul class="backlog-items fc">
     <%= render @backlog_items %>

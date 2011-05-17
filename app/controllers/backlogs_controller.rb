@@ -14,6 +14,7 @@ class BacklogsController < ApplicationController
 	
 	def show
   	@backlog = Backlog.find(params[:id])
+  	@backlog_item = BacklogItem.new
   	@backlog_items = @backlog.backlog_items.paginate(:page => params[:page])
   	@title = @backlog.title
   end
