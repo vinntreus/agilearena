@@ -54,3 +54,9 @@ ol#backlogitems li .description
 	display:block;	
 	margin-bottom:.5em;
 }
+
+.backlog .title > img
+{
+	vertical-align: bottom;
+	margin-right: 5px;
+}

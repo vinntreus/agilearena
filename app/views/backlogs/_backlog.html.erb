@@ -1,5 +1,11 @@
 <li class="backlog">
-    <p class="title"><%= link_to backlog.title, backlog %></p>  
+    <p class="title">
+		  <% if backlog.private %>
+			  <%= image_tag "lock.jpg", :alt => "private", :title => "private" %>
+		  <% end %>
+		  
+     	<%= link_to backlog.title, backlog %> 
+    </p> 
 	  <p class="timestamp">
       Created <%= time_ago_in_words(backlog.created_at) %> ago.
     </p>

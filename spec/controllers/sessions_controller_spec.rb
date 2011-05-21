@@ -55,9 +55,9 @@ describe SessionsController do
 					User.stub!(:authenticate).and_return(@user)
 				end
 		
-				it "should redirect to user" do
+				it "should redirect to start" do
 					post :create, :session => @attr
-					response.should redirect_to user_path(@user)
+					response.should redirect_to root_path
 				end
 				
 				it "should sign in user" do
