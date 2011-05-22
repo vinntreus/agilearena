@@ -1,42 +1,55 @@
 <h1>
 	<%= @backlog.title %>	
 </h1>
-<section class="column">
+<div class="fc">
+	<section class="column">
 
-	<div class="box fc">
-		<div class="column fc">
-			<dl>
-				<dt>Created by:</dt>
-				<dd><%= link_to @backlog.user.name, @backlog.user %></dd>
-			</dl>
-			<dl>
-				<dt>Private:</dt>
-				<dd><%= @backlog.private? %><dd>
-			</dl>
-		</div>
-		<div class="column fc">
-			<div class="statistic">
-				<strong><%= @backlog.backlog_items.count %></strong>
-				<span>items</span>
+		<div class="box fc">
+			<div class="column fc">
+				<dl>
+					<dt>Created by:</dt>
+					<dd><%= link_to @backlog.user.name, @backlog.user %></dd>
+				</dl>
+				<dl>
+					<dt>Private:</dt>
+					<dd><%= @backlog.private? %><dd>
+				</dl>
+			</div>
+			<div class="column fc">
+				<div class="statistic">
+					<strong><%= @backlog.backlog_items.count %></strong>
+					<span>items</span>
+				</div>
 			</div>
 		</div>
-	</div>
+	</section>
+	<section class="column"></section>
+</div>
+<div class="fc">
+	<section class="column">	
+		<% unless @backlog.backlog_items.empty? %>
+			<div class="box">
+				<div class="box-content">
+					<% unless @backlog.nil? %>
+						<a href="#" class="button right toggle-block" data-toogle="#new_backlog_item_form">Create new item</a>
+					<% end %>
+					<h2>Backlog items</h2>
+					<%= will_paginate @backlog_items %>
+					<ul class="backlog-items fc">
+						<%= render @backlog_items %>
+					</ul>
+					<%= will_paginate @backlog_items %>
+				</div>
+			</div>
+		<% end %>
 	
-	<% unless @backlog.nil? %>
-		<%= render "shared/backlog_item_form" %>
-	<% end %>
-	
-	<% unless @backlog.backlog_items.empty? %>
+	</section>
 
+	<section id="new_backlog_item_form" class="column hidden">
 		<div class="box">
-			<div class="box-content">
-				<h2>Backlog items</h2>
-				<ul class="backlog-items fc">
-					<%= render @backlog_items %>
-				</ul>
-				<%= will_paginate @backlog_items %>
-			</div>
+		<% unless @backlog.nil? %>
+			<%= render "shared/backlog_item_form" %>
+		<% end %>
 		</div>
-	<% end %>
-	
-</section>
+	</section>
+</div>

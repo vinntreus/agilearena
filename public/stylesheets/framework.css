@@ -92,6 +92,21 @@ footer section.info
 	max-width: 50%;
 }
 
+#info-nav	
+{	
+  padding:5px 0;  	
+}
+
+#info-nav a
+{
+	color:#6F6F6F;
+}
+
+#info-nav a:hover
+{
+	color:#3F3F3F;
+}
+
 #copyright
 {
 	font-weight:bold;
