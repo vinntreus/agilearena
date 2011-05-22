@@ -35,7 +35,7 @@
 					<% end %>
 					<h2>Backlog items</h2>
 					<%= will_paginate @backlog_items %>
-					<ul class="backlog-items fc">
+					<ul id="backlog-items-list" class="backlog-items fc">
 						<%= render @backlog_items %>
 					</ul>
 					<%= will_paginate @backlog_items %>

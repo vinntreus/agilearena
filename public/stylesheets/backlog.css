@@ -9,3 +9,26 @@
 	vertical-align: bottom;
 	margin-right: 5px;
 }
+
+.backlog-item
+{
+	border-bottom: 1px solid #ccc;
+	padding: 1em;
+	margin:0;
+}
+
+.backlog-items li.backlog-item:hover
+{
+	background-color:#CFCFCF;
+	cursor:pointer;
+}
+
+.backlog-items li:first-child
+{
+	border-top:1px solid #ccc;
+}
+
+.backlog-items li:nth-child(odd)
+{
+	background-color:#efefef;
+}

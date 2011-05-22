@@ -1,4 +1,5 @@
-<li class="backlog-item">
+<li class="backlog-item" data-id="<%= backlog_item.id %>">
+		<a href="#" class="button right delete" >Delete</a>
     <p class="title"><%= backlog_item.title %></p>  
 	  <p class="timestamp">
       Created <%= time_ago_in_words(backlog_item.created_at) %> ago.
