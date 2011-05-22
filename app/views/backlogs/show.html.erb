@@ -27,7 +27,7 @@
 </div>
 <div class="fc">
 	<section class="column">	
-		<% unless @backlog.backlog_items.empty? %>
+
 			<div class="box">
 				<div class="box-content">
 					<% unless @backlog.nil? %>
@@ -41,7 +41,6 @@
 					<%= will_paginate @backlog_items %>
 				</div>
 			</div>
-		<% end %>
 	
 	</section>
 
