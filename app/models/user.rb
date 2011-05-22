@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
 												
 	before_save :encrypt_password
 	
+	def can_create_backlogs(proposed_user)
+		return self == proposed_user
+	end
+	
 	def public_backlogs_count
 		self.backlogs.where(:private => false).count
 	end

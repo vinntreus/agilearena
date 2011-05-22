@@ -2,37 +2,35 @@
 	<%= gravatar_for @user %>
 	<%= @user.name %>
 </h1>
-<div class="box small-column fc">
-	<div class="small-column fc">
-		<dl>
-			<dt>Name:</dt>
-			<dd><%= @user.name %></dd>
-		</dl>
-		<dl>
-			<dt>Email:</dt>
-			<dd><%= @user.email %><dd>
-		</dl>
-	</div>
-	<div class="small-column fc">
-		<div class="statistic">
-			<strong><%= @user.public_backlogs_count %></strong>
-			public backlogs
+<div class="fc">
+<section class="column fc">
+	<div class="box fc">
+		<div class="column fc">
+			<dl>
+				<dt>Name:</dt>
+				<dd><%= @user.name %></dd>
+			</dl>
+			<dl>
+				<dt>Email:</dt>
+				<dd><%= @user.email %><dd>
+			</dl>
 		</div>
-		
-		<% if @user == current_user %>
+		<div class="column fc">
 			<div class="statistic">
-				<strong><%= @user.private_backlogs_count %></strong>
-				private backlogs
+				<strong><%= @user.public_backlogs_count %></strong>
+				public backlogs
 			</div>
-		<% end %>
 		
+			<% if @user == current_user %>
+				<div class="statistic">
+					<strong><%= @user.private_backlogs_count %></strong>
+					private backlogs
+				</div>
+			<% end %>
+		
+		</div>
 	</div>
-
+</section>
 </div>
-<% unless @user.backlogs.empty? %>
-  <ul class="backlogs fc">
-    <%= render @backlogs %>
-  </ul>
-  <%= will_paginate @backlogs %>
-<% end %>
+<%= render "shared/backlogs_box_list" %>
 

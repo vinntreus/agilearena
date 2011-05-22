@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   	@backlogs = @user.backlogs.paginate(:page => params[:page])
+  	@backlog = Backlog.new if signed_in? && @user.can_create_backlogs(current_user)
   	@title = @user.name 			
   end
   

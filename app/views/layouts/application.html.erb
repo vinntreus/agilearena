@@ -8,14 +8,12 @@
   </head>
   <body>
 			<%= render 'layouts/header' %>            
-      <section id="page">
-      	<section id="content" class="fc">
+      <section id="page" class="fc">
    	      <% flash.each do |key, value| %>
   	        <div class="flash <%= key %>"><%= value %></div>
 		      <% end %>
 		      <%= yield %>
           <% #debug(params) if Rails.env.development? %>
-  	    </section>
       </section>
       <%= render 'layouts/footer' %>
   </body>
