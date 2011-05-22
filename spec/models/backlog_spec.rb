@@ -84,4 +84,35 @@ describe Backlog do
       @backlog.should be_private
     end
   end
+  
+  describe "private backlogs" do
+    before(:each) do
+			@backlog = @user.backlogs.create!({:title => "fo", :private => true})
+		end
+  	it "should display for creator" do
+				@backlog.can_show_to(@user).should be_true
+  	end  
+  	
+  	it "should not display for not associated user" do
+  			@some_user = Factory(:user, :email => "bla@bla.com")
+
+				@backlog.can_show_to(@some_user).should be_false
+  	end  
+  end
+  
+  describe "public backlogs" do
+    before(:each) do
+			@backlog = @user.backlogs.create!({:title => "fo", :private => false})
+		end
+  	it "should display for creator" do
+				@backlog.can_show_to(@user).should be_true
+  	end  
+  	
+  	it "should display for not associated user" do
+  			@some_user = Factory(:user, :email => "bla@bla.com")
+
+				@backlog.can_show_to(@some_user).should be_true
+  	end  
+  
+  end
 end

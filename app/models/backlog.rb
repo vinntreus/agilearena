@@ -22,4 +22,13 @@ class Backlog < ActiveRecord::Base
 										:length => { :maximum => 100 }
 	
 	default_scope :order => "backlogs.created_at DESC"
+	
+	def can_show_to(user)
+		if(self.private?)
+			self.user == user
+		else
+			true
+		end
+	end
+
 end

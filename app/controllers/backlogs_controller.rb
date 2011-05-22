@@ -14,6 +14,9 @@ class BacklogsController < ApplicationController
 	
 	def show
   	@backlog = Backlog.find(params[:id])
+  	if @backlog.can_show_to(current_user) == false
+  		redirect_to signin_path
+  	end
   	@backlog_item = BacklogItem.new
   	@backlog_items = @backlog.backlog_items.paginate(:page => params[:page])
   	@title = @backlog.title

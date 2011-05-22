@@ -15,10 +15,19 @@
 	</div>
 	<div class="small-column fc">
 		<div class="statistic">
-			<strong><%= @user.backlogs.count %></strong>
-			<span>backlogs</span>
+			<strong><%= @user.public_backlogs_count %></strong>
+			public backlogs
 		</div>
+		
+		<% if @user == current_user %>
+			<div class="statistic">
+				<strong><%= @user.private_backlogs_count %></strong>
+				private backlogs
+			</div>
+		<% end %>
+		
 	</div>
+
 </div>
 <% unless @user.backlogs.empty? %>
   <ul class="backlogs fc">

@@ -58,12 +58,49 @@ describe UsersController do
     end
     
     it "should show the user's backlogs" do
+     	test_sign_in @user
       b1 = Factory(:backlog, :user => @user, :title => "Foo bar")
-      b2 = Factory(:backlog, :user => @user, :title => "Baz quux")
+      b2 = Factory(:backlog, :user => @user, :title => "Baz quux", :private => true)
+
       get :show, :id => @user
       response.should have_selector(".title", :content => b1.title)
       response.should have_selector(".title", :content => b2.title)
     end
+    
+    it "should not show private backlogs to unallowed users" do
+    	@some_user = Factory(:user, :email => "testd@teswf.com")
+    	test_sign_in @some_user
+    	
+      b1 = Factory(:backlog, :user => @user, :title => "Foo bar")
+      b2 = Factory(:backlog, :user => @user, :title => "Baz quux", :private => true)
+
+      get :show, :id => @user
+      response.should have_selector(".title", :content => b1.title)
+      response.should_not have_selector(".title", :content => b2.title)
+      response.should_not have_selector(".statistic", :content => "private backlogs")
+    end
+    
+    it "should have public backlog count" do
+      b1 = Factory(:backlog, :user => @user, :title => "Foo bar")
+      b2 = Factory(:backlog, :user => @user, :title => "Baz quux", :private => true)
+      b3 = Factory(:backlog, :user => @user, :title => "Slo")
+
+      get :show, :id => @user
+      response.should have_selector(".statistic > strong", :content => "2")
+      response.should have_selector(".statistic", :content => "public backlogs")    	
+    end
+    
+    it "should have private backlog count for current_user" do
+    	test_sign_in @user
+      b1 = Factory(:backlog, :user => @user, :title => "Foo bar")
+      b2 = Factory(:backlog, :user => @user, :title => "Baz quux", :private => true)
+      b3 = Factory(:backlog, :user => @user, :title => "Slo")
+
+      get :show, :id => @user
+      response.should have_selector(".statistic > strong", :content => "1")
+      response.should have_selector(".statistic", :content => "private backlogs")
+    end
+
 
   	
   end

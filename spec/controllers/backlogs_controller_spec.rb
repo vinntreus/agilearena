@@ -16,6 +16,35 @@ describe BacklogsController do
     end
   end
   
+  describe "GET 'show' private backlog" do
+  
+  	describe "logged in user" do  	
+  	
+  		
+  	
+	  	it "should be successful for creator" do
+  			@user = test_sign_in(Factory(:user))
+	  		@backlog = Factory(:backlog, :user => @user, :private => true)  			
+
+	  		get :show, :id => @backlog
+	  		response.should be_success  			
+		  end
+		  
+		  it "should redirect for non creator" do
+  			@user = test_sign_in(Factory(:user))
+  			@backlog_owner = Factory(:user, :email => "test@tester.com")
+	  		@backlog = Factory(:backlog, :user => @backlog_owner, :private => true)		  	
+		  
+	  		get :show, :id => @backlog
+	  		response.should redirect_to(signin_path)	  	
+		  	
+		  end
+	  
+	  end
+	  
+  end
+
+  
   describe "GET 'show'" do
   
   	before(:each) do

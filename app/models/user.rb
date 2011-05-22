@@ -34,6 +34,15 @@ class User < ActiveRecord::Base
 												
 	before_save :encrypt_password
 	
+	def public_backlogs_count
+		self.backlogs.where(:private => false).count
+	end
+	
+	def private_backlogs_count
+		self.backlogs.where(:private => true).count
+	end
+
+	
 	def has_password?(submitted_password)
 		self.encrypted_password == encrypt(submitted_password)
 	end
