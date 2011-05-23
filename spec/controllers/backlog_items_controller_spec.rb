@@ -38,10 +38,19 @@ describe BacklogItemsController do
         end.should_not change(BacklogItem, :count)
       end
       
-      it "should redirect to the home page" do
+      it "should return error message" do
         post :create, :backlog_item => @attr, :backlog_id => @b_id
-				flash[:error].should =~ /Could not create backlogitem!/i
-        response.should redirect_to root_path
+				response.body.should =~ /Could not create backlogitem/i
+				response.status.should == 500
+      end
+      
+       it "should return 403 when not allowed" do
+       	@some_user = Factory(:user, :email => "fl@test.com")
+       	@some_backlog = Factory(:backlog, :user => @some_user)
+       	
+        post :create, :backlog_item => @attr, :backlog_id => @some_backlog.id
+				response.body.should =~ /Not allowed to create backlogitem/i
+				response.status.should == 403
       end
 
     end
@@ -58,15 +67,13 @@ describe BacklogItemsController do
         end.should change(BacklogItem, :count).by(1)
       end
 
-      it "should redirect to the backlog page" do
+      it "should return backlog item id" do
         post :create, :backlog_item => @attr, :backlog_id => @b_id
-        response.should redirect_to(backlog_path(assigns(:backlog)))
+        parsed_body = JSON.parse(response.body)
+        parsed_body["id"].should == 1
+        parsed_body["created"].should =~ /less than a minute/i
       end
-
-      it "should have a flash message" do
-        post :create, :backlog_item => @attr, :backlog_id => @b_id
-        flash[:success].should =~ /Created backlogitem/i
-      end
+      
     end
 
   end

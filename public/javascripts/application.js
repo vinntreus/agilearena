@@ -50,7 +50,7 @@ var AGILE = (function(){
 							currentItem.remove();
 						},
 						error : function(jqXHR, textStatus, errorThrown){
-							log("error");
+							alert(jqXHR.responseText);
 						}
 					});
 					return false;
@@ -81,7 +81,7 @@ var AGILE = (function(){
 						that.clearForm();
 					},
 					error : function(jqXHR, textStatus, errorThrown){
-						log("error");
+						alert(jqXHR.responseText);
 					}
 				});
 				return false;

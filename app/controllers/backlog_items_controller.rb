@@ -5,35 +5,29 @@ class BacklogItemsController < ApplicationController
 	
 	def create
 		@backlog = Backlog.find(params[:backlog_id])
+
 		if @backlog.user != current_user
-      flash[:error] = "Not allowed to create backlogitem!"
-      redirect_to root_path			
+			render :text => "Not allowed to create backlogitem", :status => 403
       return
 		end
 		
 		@backlog_item = @backlog.backlog_items.build(params[:backlog_item])
 		
 		if @backlog_item.save
-			render :json => { :id => @backlog_item.id, :created => time_ago_in_words(@backlog_item.created_at) }
-			#flash[:success] = "Created backlogitem"
-			#respond_to do |format|
-			#	format.html redirect_to @backlog
-			#	format.json { render :json => @backlog_item }
-			#end
-
+			render :json => { :id => @backlog_item.id, :created => time_ago_in_words(@backlog_item.created_at) }	
 		else
-			render :json => { :error => "Could not create backlogitem" }
-      #flash[:error] = "Could not create backlogitem!"
-      #redirect_to root_path
-    end
-    
-
+			render :text => "Could not create backlogitem", :status => 500
+    end 
 
 	end
 	
 	def destroy
-		BacklogItem.delete(params[:id])
-
-		render :json => {}
+		@backlog_item = BacklogItem.find(params[:id])
+		if(@backlog_item.is_allowed_to_delete current_user)
+			BacklogItem.delete(params[:id])
+			render :json => {}
+		else
+			render :text => "Could not delete", :status => 403
+		end
 	end
 end

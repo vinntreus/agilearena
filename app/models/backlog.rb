@@ -30,5 +30,9 @@ class Backlog < ActiveRecord::Base
 			true
 		end
 	end
+	
+	def can_create_items(proposed_user)
+		self.user == proposed_user
+	end
 
 end
