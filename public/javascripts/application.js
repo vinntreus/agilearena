@@ -26,10 +26,12 @@ var AGILE = (function(){
 	var backlogItem = {
 		form : null,
 		list : null,
+		itemsCount : null,
 		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><p class='title'>#t#</p><p class='timestamp'>Created #c# ago.</p></li>",
 		init : function()	{
 			this.form = this.form || $("#new_backlog_item");
 			this.list = this.list || $("#backlog-items-list");
+			this.itemsCount = this.itemsCount || $("#backlog-items-count");
 			if(this.form.length > 0){
 				this.setupForm();
 			}
@@ -38,6 +40,7 @@ var AGILE = (function(){
 			}
 		},
 		setupList: function(){
+			var that = this;
 			this.list.click(function(e){
 				var clickedOn = $(e.target);
 				if(clickedOn.is("a") && clickedOn.hasClass("delete"))
@@ -48,6 +51,7 @@ var AGILE = (function(){
 						url : "/backlog_items/" + currentItem.data("id"),
 						success : function(data, textStatus, jqXHR){
 							currentItem.remove();
+							that.decrementItems();
 						},
 						error : function(jqXHR, textStatus, errorThrown){
 							alert(jqXHR.responseText);
@@ -77,7 +81,8 @@ var AGILE = (function(){
 						var item = that.item.replace(/#t#/, d["backlog_item[title]"]);
 						item = item.replace(/#i#/, data.id);
 						item = item.replace(/#c#/, data.created);
-						$("#backlog-items-list").append(item);
+						that.list.append(item);
+						that.incrementItems();
 						that.clearForm();
 					},
 					error : function(jqXHR, textStatus, errorThrown){
@@ -86,6 +91,18 @@ var AGILE = (function(){
 				});
 				return false;
 			});
+		},
+		incrementItems : function()
+		{
+			this.itemsCount.html(this.getItemsCount() + 1);
+		},
+		decrementItems : function()
+		{
+			this.itemsCount.html(this.getItemsCount() - 1);
+		},
+		getItemsCount : function()
+		{
+			return parseInt(this.itemsCount.text());
 		},
 		clearForm : function(){
 			var inputs = $("input[type='text']", this.form);
