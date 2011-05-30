@@ -45,18 +45,23 @@ var AGILE = (function(){
 				var clickedOn = $(e.target);
 				if(clickedOn.is("a") && clickedOn.hasClass("delete"))
 				{
-					var currentItem =	clickedOn.parent();
-					$.ajax({
-						type: "DELETE",
-						url : "/backlog_items/" + currentItem.data("id"),
-						success : function(data, textStatus, jqXHR){
-							currentItem.remove();
-							that.decrementItems();
-						},
-						error : function(jqXHR, textStatus, errorThrown){
-							alert(jqXHR.responseText);
-						}
-					});
+					if(confirm("Are you sure you want to delete?"))
+					{
+						(function(currentItem){
+							$.ajax({
+								type: "DELETE",
+								url : "/backlog_items/" + currentItem.data("id"),
+								success : function(data, textStatus, jqXHR){
+									currentItem.remove();
+									that.decrementItems();
+								},
+								error : function(jqXHR, textStatus, errorThrown){
+									alert(jqXHR.responseText);
+								}
+							});
+						}(clickedOn.parent()));
+					}				
+					
 					return false;
 				}
 			});
