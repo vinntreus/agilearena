@@ -21,6 +21,18 @@ class BacklogItemsController < ApplicationController
 
 	end
 	
+	#missing tests
+	def update
+  	 @backlogitem = BacklogItem.find(params[:id])
+  	 
+    if @backlogitem.update_attributes(params[:backlog_item])
+			render :json => { }
+    else
+			render :text => "Could not update backlogitem", :status => 500
+		end
+
+  end
+	
 	def destroy
 		@backlog_item = BacklogItem.find(params[:id])
 		if(@backlog_item.is_allowed_to_delete current_user)

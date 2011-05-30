@@ -27,4 +27,8 @@ class BacklogItem < ActiveRecord::Base
 	def	is_allowed_to_delete(proposed_user)
 		self.backlog.user == proposed_user
 	end
+	
+	def is_allowed_to_edit(proposed_user)
+		self.backlog.user == proposed_user
+	end
 end

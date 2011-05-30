@@ -3,7 +3,7 @@ Agilearena::Application.routes.draw do
 	resources :users
 	resources :sessions, :only => [:new, :destroy, :create]
 	resources :backlogs, :only => [:create, :destroy, :show]
-	resources :backlog_items, :only => [:create, :destroy, :show]
+	resources :backlog_items, :only => [:create, :destroy, :show, :update]
 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'

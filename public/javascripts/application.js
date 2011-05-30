@@ -16,9 +16,10 @@ var AGILE = (function(){
 	}
 	
 	var setupToggle = function()	{
-		$(".toggle-block").click(function(){		
-				var selectorToToggle = $(this).attr("data-toogle");		
-				$(selectorToToggle).toggle();					
+		$(".toggle-block").click(function(){
+				var selectorToToggle = $(this).attr("data-toogle");
+				$(selectorToToggle).toggle();
+				backlogItem.setupForm();
 				return false;
 		});
 	}
@@ -27,14 +28,13 @@ var AGILE = (function(){
 		form : null,
 		list : null,
 		itemsCount : null,
-		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><p class='title'>#t#</p><p class='timestamp'>Created #c# ago.</p></li>",
+		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><a href='#' class='button right edit'>Edit</a><p class='title'>#t#</p><p class='timestamp'>Created #c# ago.</p></li>",
 		init : function()	{
+			this.formContainer = this.formContainer || $("#new_backlog_item_form");
 			this.form = this.form || $("#new_backlog_item");
 			this.list = this.list || $("#backlog-items-list");
 			this.itemsCount = this.itemsCount || $("#backlog-items-count");
-			if(this.form.length > 0){
-				this.setupForm();
-			}
+			
 			if(this.list.length > 0){
 				this.setupList();
 			}
@@ -43,7 +43,13 @@ var AGILE = (function(){
 			var that = this;
 			this.list.click(function(e){
 				var clickedOn = $(e.target);
-				if(clickedOn.is("a") && clickedOn.hasClass("delete"))
+				
+				if(clickedOn.is("a") && clickedOn.hasClass("edit"))
+				{
+					that.edit(clickedOn.parent());
+					return false;
+				}
+				else if(clickedOn.is("a") && clickedOn.hasClass("delete"))
 				{
 					if(confirm("Are you sure you want to delete?"))
 					{
@@ -66,6 +72,29 @@ var AGILE = (function(){
 				}
 			});
 		},
+		edit : function(backlogItem)
+		{
+			var that = this;
+			$("#backlog_item_id").val(backlogItem.data("id"));
+			$("#backlog_item_title").val( $(".title", backlogItem).text() );
+			this.formContainer.show();
+			this.form.unbind("submit");
+			this.form.submit(function(e)	{
+				var d = that.getFormData();
+				$.ajax({
+					type: "PUT",
+					data : d,
+					url : that.form.attr("action") + "/" + backlogItem.data("id"),
+					success : function(data, textStatus, jqXHR){
+						that.form.hide();
+					},
+					error : function(jqXHR, textStatus, errorThrown){
+						alert(jqXHR.responseText);
+					}
+				});
+				return false;
+			});
+		},
 		getFormData : function(){
 			var data = {};
 			$("input", this.form).each(function(){
@@ -76,6 +105,7 @@ var AGILE = (function(){
 		},
 		setupForm : function(){
 			var that = this;
+			this.form.unbind("submit");
 			this.form.submit(function(e)	{
 				var d = that.getFormData();
 				$.ajax({
