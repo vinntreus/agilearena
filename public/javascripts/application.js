@@ -132,7 +132,7 @@ var AGILE = (function(){
 						var newItem = that.list.find("li:last");
 						newItem.addClass("selected");
 						var newItemForm = $("#new_backlog_item_form");
-						newItemForm.css("top", "0");
+						newItemForm.css("top", "50%");
             newItemForm.css("position", "fixed");
             newItemForm.css("left", "50%");
 
