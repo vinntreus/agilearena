@@ -18,7 +18,7 @@ var AGILE = (function(){
 	var setupToggle = function()	{
 		$(".toggle-block").click(function(){
 				var selectorToToggle = $(this).attr("data-toogle");
-				$(selectorToToggle).toggle();
+				$(selectorToToggle).show();
 				backlogItem.setupForm();
 				return false;
 		});
@@ -113,6 +113,8 @@ var AGILE = (function(){
 		},
 		setupForm : function(){
 			var that = this;
+			this.clearForm();
+			$("li", that.list).removeClass("selected");
 			this.form.unbind("submit");
 			this.form.submit(function(e)	{
 				var d = that.getFormData();
@@ -126,6 +128,15 @@ var AGILE = (function(){
 						item = item.replace(/#c#/, data.created);
 						that.list.append(item);
 						that.incrementItems();
+						$("li", that.list).removeClass("selected");
+						var newItem = that.list.find("li:last");
+						newItem.addClass("selected");
+						var newItemForm = $("#new_backlog_item_form");
+						newItemForm.css("top", "0");
+            newItemForm.css("position", "fixed");
+            newItemForm.css("left", "50%");
+
+						window.scrollTo(0, document.body.scrollHeight);
 						that.clearForm();
 					},
 					error : function(jqXHR, textStatus, errorThrown){

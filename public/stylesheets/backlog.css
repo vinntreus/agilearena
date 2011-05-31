@@ -33,3 +33,9 @@ ul.backlog-items li.selected
 {
 	background-color:#efefef;
 }
+
+#new_backlog_item_form
+{
+/*	position:fixed;
+	left:50%;*/
+}
