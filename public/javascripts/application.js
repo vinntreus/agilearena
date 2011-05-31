@@ -75,9 +75,15 @@ var AGILE = (function(){
 		edit : function(backlogItem)
 		{
 			var that = this;
+
 			$("#backlog_item_id").val(backlogItem.data("id"));
 			$("#backlog_item_title").val( $(".title", backlogItem).text() );
+
+			$("li", that.list).removeClass("selected");
+			backlogItem.addClass("selected");
+			
 			this.formContainer.show();
+			$("#backlog_item_title").focus();
 			this.form.unbind("submit");
 			this.form.submit(function(e)	{
 				var d = that.getFormData();
@@ -86,7 +92,9 @@ var AGILE = (function(){
 					data : d,
 					url : that.form.attr("action") + "/" + backlogItem.data("id"),
 					success : function(data, textStatus, jqXHR){
-						that.form.hide();
+						that.formContainer.hide();
+	 					$(".title", backlogItem).text(d["backlog_item[title]"]);
+						that.clearForm();
 					},
 					error : function(jqXHR, textStatus, errorThrown){
 						alert(jqXHR.responseText);

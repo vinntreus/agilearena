@@ -17,7 +17,8 @@
 	margin:0;
 }
 
-.backlog-items li.backlog-item:hover
+.backlog-items li.backlog-item:hover,
+ul.backlog-items li.selected
 {
 	background-color:#CFCFCF;
 	cursor:pointer;
