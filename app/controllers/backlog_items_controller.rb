@@ -1,17 +1,13 @@
 class BacklogItemsController < ApplicationController
 	include ActionView::Helpers::DateHelper
 
-	before_filter :authenticate, :only => [:create, :destroy]
-	
-	def create
-		@backlog = Backlog.find(params[:backlog_id])
-
-		if @backlog.user != current_user
-			render :text => "Not allowed to create backlogitem", :status => 403
-      return
-		end
+	before_filter :authenticate, :only => [:create, :destroy, :update]
 		
+	def create
+		@backlog = Backlog.find(params[:backlog_id])		
 		@backlog_item = @backlog.backlog_items.build(params[:backlog_item])
+		
+		authorize! :create, @backlog_item, :message => "Not allowed to create backlogitem"
 		
 		if @backlog_item.save
 			render :json => { :id => @backlog_item.id, :created => time_ago_in_words(@backlog_item.created_at) }	
@@ -19,27 +15,24 @@ class BacklogItemsController < ApplicationController
 			render :text => "Could not create backlogitem", :status => 500
     end 
 
-	end
-	
-	#missing tests
+	end	
+
 	def update
-  	 @backlogitem = BacklogItem.find(params[:id])
-  	 
-    if @backlogitem.update_attributes(params[:backlog_item])
+  	@backlog_item = BacklogItem.find(params[:id])
+		authorize! :update, @backlog_item, :message => "Not allowed to update backlogitem"
+
+    if @backlog_item.update_attributes(params[:backlog_item])
 			render :json => { }
     else
 			render :text => "Could not update backlogitem", :status => 500
 		end
-
   end
 	
 	def destroy
-		@backlog_item = BacklogItem.find(params[:id])
-		if(@backlog_item.is_allowed_to_delete current_user)
-			BacklogItem.delete(params[:id])
-			render :json => {}
-		else
-			render :text => "Could not delete", :status => 403
-		end
+		@backlog_item = BacklogItem.find(params[:id])		
+		authorize! :destroy, @backlog_item, :message => "Not allowed to delete backlogitem"		
+		BacklogItem.delete(params[:id])
+		
+		render :json => {}
 	end
 end
