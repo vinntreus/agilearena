@@ -17,3 +17,18 @@ namespace :db do
   end
 end
 
+
+namespace :db do
+  desc "Add sortorder to backlogitems"
+  task :sortorder => :environment do
+    
+    Backlog.all().each do |backlog|
+    	@count = 1
+    	backlog.backlog_items.all().each do |backlog_item|
+    		backlog_item.position = @count
+ 				backlog_item.save
+    		@count += 1
+    	end
+    end
+  end
+end

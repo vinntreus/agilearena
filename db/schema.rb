@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110516204257) do
+ActiveRecord::Schema.define(:version => 20110602155816) do
 
   create_table "backlog_items", :force => true do |t|
     t.integer  "backlog_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110516204257) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   add_index "backlog_items", ["backlog_id"], :name => "index_backlog_items_on_backlog_id"

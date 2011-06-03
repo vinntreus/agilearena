@@ -19,4 +19,6 @@ end
 Factory.define :backlog_item do |backlog_item|
   backlog_item.title "Foo bar"
   backlog_item.association :backlog
+  backlog_item.description "test"
+  backlog_item.position 1
 end

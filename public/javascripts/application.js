@@ -41,6 +41,24 @@ var AGILE = (function(){
 		},
 		setupList: function(){
 			var that = this;
+			this.list.sortable({
+				update : function(event, ui){
+					var newParentId = ui.item.prev().data("id") || 0,
+							currentItemId = ui.item.data("id");
+					$.ajax({
+						type: "PUT",
+						url : "/backlog_items/" + currentItemId + "/sort",
+						data : { "new_parent" : newParentId },
+						success : function(data, textStatus, jqXHR){
+							log("success");
+						},
+						error : function(jqXHR, textStatus, errorThrown){
+							alert(jqXHR.responseText);
+						}
+					});
+				}
+			});
+
 			this.list.click(function(e){
 				var clickedOn = $(e.target);
 				

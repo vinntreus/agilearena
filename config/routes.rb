@@ -1,9 +1,27 @@
 Agilearena::Application.routes.draw do
 
-	resources :users
 	resources :sessions, :only => [:new, :destroy, :create]
+
+	#resources :users do
+	#	resources :backlogs do
+	#		resources :backlog_items
+	#	end
+	#end		
+
+#	match '/backlog_items/:id/sort', :to => 'backlog_items#sort'		
+
+	#resources :backlogs do
+	#	resources :backlog_items, :only => [:create, :destroy, :show, :update], :as => "backlog_items"
+	#end
+	
+	resources :users
 	resources :backlogs, :only => [:create, :destroy, :show]
-	resources :backlog_items, :only => [:create, :destroy, :show, :update]
+	resources :backlog_items do
+		member do
+			put 'sort'
+		end
+	end
+
 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'

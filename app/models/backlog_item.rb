@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110516204257
+# Schema version: 20110602155816
 #
 # Table name: backlog_items
 #
@@ -10,10 +10,11 @@
 #  description :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
+#  position    :integer
 #
 
 class BacklogItem < ActiveRecord::Base
-	attr_accessible :title, :points, :description
+	attr_accessible :title, :points, :description, :position
 
 	belongs_to :backlog
 	

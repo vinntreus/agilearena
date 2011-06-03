@@ -19,6 +19,78 @@ describe BacklogItemsController do
       put :update, :id => 1
       response.should redirect_to(signin_path)
     end
+    
+    it "should deny access to 'sort'" do
+      put :sort, :id => 1
+      response.should redirect_to(signin_path)
+    end
+  end
+  
+  describe "PUT 'sort'" do
+
+  	before(:each) do
+			@backlog = Factory(:backlog)
+			@backlog_item = Factory(:backlog_item, :position => 1, :id => 1, :title => "hej", :backlog => @backlog)
+			@backlog_item2 = Factory(:backlog_item, :position => 2, :id => 2, :title => "da", :backlog => @backlog)
+	  	@backlog_item3 = Factory(:backlog_item, :position => 3, :id => 3, :title => "c", :backlog => @backlog)
+			@backlog_item4 = Factory(:backlog_item, :position => 4, :id => 4, :title => "d", :backlog => @backlog)
+	
+			@user = @backlog.user
+			test_sign_in(@user)  		
+		end
+  	
+  	it "should increment position when downprioritized" do
+			put :sort, :id => 1, :new_parent => 2
+			@backlog_item.reload
+			@backlog_item.position.should == 2
+  	end  	
+  	
+  	it "should decrement position when downprioritized" do
+			put :sort, :id => 1, :new_parent => 2
+			@backlog_item2.reload
+			@backlog_item2.position.should == 1
+  	end  	
+  	
+  	it "should update position for all affected items when sorting upwards" do
+			put :sort, :id => 4, :new_parent => 1
+			@backlog_item.reload
+			@backlog_item2.reload
+			@backlog_item3.reload
+			@backlog_item4.reload
+			
+			@backlog_item.position.should == 1
+			@backlog_item4.position.should == 2
+			@backlog_item2.position.should == 3
+			@backlog_item3.position.should == 4
+  	end  	
+  	
+  	it "should update position for all affected items when sorting downwards" do
+			put :sort, :id => 1, :new_parent => 4
+			@backlog_item.reload
+			@backlog_item2.reload
+			@backlog_item3.reload
+			@backlog_item4.reload
+
+			@backlog_item2.position.should == 1
+			@backlog_item3.position.should == 2
+			@backlog_item4.position.should == 3
+			@backlog_item.position.should == 4
+  	end  	
+
+  	it "should update position for all affected items when putting item on top" do
+			put :sort, :id => 3, :new_parent => 0
+			@backlog_item.reload
+			@backlog_item2.reload
+			@backlog_item3.reload
+			@backlog_item4.reload
+
+			@backlog_item3.position.should == 1
+			@backlog_item.position.should == 2
+			@backlog_item2.position.should == 3
+			@backlog_item4.position.should == 4
+  	end  	
+
+  	
   end
   
   describe "DELETE 'destroy'" do
