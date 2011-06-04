@@ -6,6 +6,7 @@ class BacklogItemsController < ApplicationController
 	def create
 		@backlog = Backlog.find(params[:backlog_id])		
 		@backlog_item = @backlog.backlog_items.build(params[:backlog_item])
+		@backlog_item.position = (@backlog.backlog_items.maximum("position") || 0) + 1
 		
 		authorize! :create, @backlog_item, :message => "Not allowed to create backlogitem"
 		
@@ -37,6 +38,7 @@ class BacklogItemsController < ApplicationController
 	end
 	
 	def sort
+
 		@current_item = BacklogItem.find(params[:id])		
 		@current_position = @current_item.position
 		if params[:new_parent].to_i < 1
@@ -72,6 +74,7 @@ class BacklogItemsController < ApplicationController
 			end
 		end
 		
-		render :json => {}
+	render :json => {}
+
 	end
 end

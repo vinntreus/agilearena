@@ -23,7 +23,7 @@ class BacklogItem < ActiveRecord::Base
 	validates :title, :presence => true,
 										:length => { :maximum => 200 }
 										
-	default_scope :order => "backlog_items.created_at DESC"
+	default_scope :order => "backlog_items.position ASC"
 	
 	def	is_allowed_to_delete(proposed_user)
 		self.backlog.user == proposed_user

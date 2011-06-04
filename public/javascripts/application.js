@@ -19,7 +19,9 @@ var AGILE = (function(){
 		$(".toggle-block").click(function(){
 				var selectorToToggle = $(this).attr("data-toogle");
 				$(selectorToToggle).show();
-				backlogItem.setupForm();
+				//hack to test out - refactor
+				if(selectorToToggle === '#new_backlog_item_form')
+					backlogItem.setupForm();
 				return false;
 		});
 	}

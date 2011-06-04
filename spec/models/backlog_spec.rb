@@ -44,8 +44,8 @@ describe Backlog do
   describe "backlog item associations" do
   	before(:each) do
   		@backlog = @user.backlogs.create!(@validParams)
-      @b1 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.day.ago)
-      @b2 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.hour.ago)
+      @b1 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.day.ago, :position => 2)
+      @b2 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.hour.ago, :position => 1)
   	end
   	
   	  it "should have a backlog items attribute" do
