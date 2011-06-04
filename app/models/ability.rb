@@ -11,6 +11,9 @@ class Ability
   	end
   	can :update, BacklogItem do |item|
   		item.backlog.user.id == user.id
+  	end  	
+  	can :sort, BacklogItem do |item|
+  		item.backlog.user.id == user.id
   	end
   	#can :update, BacklogItem, :backlog => { :user => user }
   	#can :destroy, BacklogItem, :backlog => { :user => user }
