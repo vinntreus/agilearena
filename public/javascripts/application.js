@@ -30,7 +30,7 @@ var AGILE = (function(){
 		form : null,
 		list : null,
 		itemsCount : null,
-		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><a href='#' class='button right edit'>Edit</a><p class='title'>#t#</p><p class='timestamp'>Created #c# ago.</p></li>",
+		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><a href='#' class='button right edit'>Edit</a><p>##id# <span class='title'>#t#</span></p><p class='timestamp'>Created #c# ago.</p></li>",
 		init : function()	{
 			this.formContainer = this.formContainer || $("#new_backlog_item_form");
 			this.form = this.form || $("#new_backlog_item");
@@ -144,6 +144,7 @@ var AGILE = (function(){
 					url : that.form.attr("action"),
 					success : function(data, textStatus, jqXHR){
 						var item = that.item.replace(/#t#/, d["backlog_item[title]"]);
+						item = item.replace(/#id#/, data.id);
 						item = item.replace(/#i#/, data.id);
 						item = item.replace(/#c#/, data.created);
 						that.list.append(item);
