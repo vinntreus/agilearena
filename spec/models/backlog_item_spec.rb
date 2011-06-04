@@ -12,6 +12,22 @@ describe BacklogItem do
 		@backlog.backlog_items.create!(@validParams)
 	end
 	
+	describe "position" do
+		before(:each) do
+			@item = @backlog.backlog_items.create!(@validParams)
+		end
+
+		it "should set to 1 when no existing items" do
+      @item.position.should == 1
+    end
+    
+    it "should set to 2 when one item" do
+ 			@item2 = @backlog.backlog_items.create!(@validParams)
+      @item2.position.should == 2
+    end
+		
+	end
+	
 	describe "backlog associations	" do
 	
 		before(:each) do

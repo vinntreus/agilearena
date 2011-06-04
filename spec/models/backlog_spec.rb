@@ -44,8 +44,8 @@ describe Backlog do
   describe "backlog item associations" do
   	before(:each) do
   		@backlog = @user.backlogs.create!(@validParams)
-      @b1 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.day.ago, :position => 2)
-      @b2 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.hour.ago, :position => 1)
+      @b1 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.day.ago, :position => 1)
+      @b2 = Factory(:backlog_item, :backlog => @backlog, :created_at => 1.hour.ago, :position => 2)
   	end
   	
   	  it "should have a backlog items attribute" do
@@ -53,7 +53,7 @@ describe Backlog do
     end
     
     it "should have the right backlogs in the right order" do
-      @backlog.backlog_items.should == [@b2, @b1]
+      @backlog.backlog_items.should == [@b1, @b2]
     end
     
     it "should destroy associated backlogs" do

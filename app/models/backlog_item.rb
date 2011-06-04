@@ -15,6 +15,7 @@
 
 class BacklogItem < ActiveRecord::Base
 	attr_accessible :title, :points, :description, :position
+	before_create :set_position
 
 	belongs_to :backlog
 	
@@ -24,6 +25,10 @@ class BacklogItem < ActiveRecord::Base
 										:length => { :maximum => 200 }
 										
 	default_scope :order => "backlog_items.position ASC"
+	
+	def set_position()
+		self.position = (self.backlog.backlog_items.maximum("position") || 0) + 1
+	end
 	
 	def	is_allowed_to_delete(proposed_user)
 		self.backlog.user == proposed_user

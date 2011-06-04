@@ -6,7 +6,6 @@ class BacklogItemsController < ApplicationController
 	def create
 		@backlog = Backlog.find(params[:backlog_id])		
 		@backlog_item = @backlog.backlog_items.build(params[:backlog_item])
-		@backlog_item.position = (@backlog.backlog_items.maximum("position") || 0) + 1
 		
 		authorize! :create, @backlog_item, :message => "Not allowed to create backlogitem"
 		

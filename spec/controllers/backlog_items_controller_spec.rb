@@ -193,7 +193,7 @@ describe BacklogItemsController do
 
       end
 
-      it "should not create a backlog" do
+      it "should not create a backlog item" do
         lambda do
           post :create, :backlog_item => @attr, :backlog_id => @b_id
         end.should_not change(BacklogItem, :count)
@@ -210,9 +210,9 @@ describe BacklogItemsController do
        	@some_backlog = Factory(:backlog, :user => @some_user)
        	
         post :create, :backlog_item => @attr, :backlog_id => @some_backlog.id
-        #response.throws == CanCan::AccessDenied
+
 				response.body.should =~ /Not allowed to create backlogitem/i
-				#response.status.should == 403
+				response.status.should == 403
       end
 
     end
@@ -228,13 +228,19 @@ describe BacklogItemsController do
           post :create, :backlog_item => @attr, :backlog_id => @b_id
         end.should change(BacklogItem, :count).by(1)
       end
-
+      
       it "should return backlog item id" do
         post :create, :backlog_item => @attr, :backlog_id => @b_id
         parsed_body = JSON.parse(response.body)
         parsed_body["id"].should == 1
+      end
+      
+      it "should return backlog item created" do
+        post :create, :backlog_item => @attr, :backlog_id => @b_id
+        parsed_body = JSON.parse(response.body)
         parsed_body["created"].should =~ /less than a minute/i
       end
+
       
     end
 
