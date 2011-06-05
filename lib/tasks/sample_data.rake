@@ -44,7 +44,8 @@ namespace :db do
  				backlog_item.save
     		@count += 1
     	end
-    	backlog.backlog_item_next_display_id = @count    	
+    	backlog.backlog_item_next_display_id = @count    
+    	backlog.save	
     end
   end
 end
