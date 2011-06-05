@@ -53,7 +53,7 @@ describe Backlog do
     end
     
     it "should have a backlog_item_display_id" do
-    	@backlog.should respond_to(:backlog_item_display_id)
+    	@backlog.should respond_to(:backlog_item_next_display_id)
     end
     
     it "should have the right backlogs in the right order" do

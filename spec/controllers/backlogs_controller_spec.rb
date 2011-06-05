@@ -36,8 +36,7 @@ describe BacklogsController do
 	  		@backlog = Factory(:backlog, :user => @backlog_owner, :private => true)		  	
 		  
 	  		get :show, :id => @backlog
-	  		response.should redirect_to(signin_path)	  	
-		  	
+	  		response.should redirect_to(signin_path)	  			  	
 		  end
 	  
 	  end

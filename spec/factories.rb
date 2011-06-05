@@ -14,6 +14,7 @@ end
 Factory.define :backlog do |backlog|
   backlog.title "Foo bar"
   backlog.association :user
+  backlog.backlog_item_next_display_id 1
 end
 
 Factory.define :backlog_item do |backlog_item|

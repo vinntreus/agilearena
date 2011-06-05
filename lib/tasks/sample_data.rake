@@ -32,3 +32,19 @@ namespace :db do
     end
   end
 end
+
+namespace :db do
+  desc "Add display_id to backlogitems"
+  task :display_id => :environment do
+    
+    Backlog.all().each do |backlog|
+    	@count = 1
+    	backlog.backlog_items.all().each do |backlog_item|
+    		backlog_item.display_id = @count
+ 				backlog_item.save
+    		@count += 1
+    	end
+    	backlog.backlog_item_next_display_id = @count    	
+    end
+  end
+end
