@@ -13,6 +13,7 @@
 
 class Backlog < ActiveRecord::Base
 	attr_accessible :title, :private
+	before_create :init_display_id
 
 	belongs_to :user	
 	has_many :backlog_items, :dependent => :destroy
@@ -22,6 +23,10 @@ class Backlog < ActiveRecord::Base
 										:length => { :maximum => 100 }
 	
 	default_scope :order => "backlogs.created_at DESC"
+	
+	def init_display_id
+		self.backlog_item_next_display_id = 1
+	end
 	
 	def can_show_to(user)
 		if(self.private?)
