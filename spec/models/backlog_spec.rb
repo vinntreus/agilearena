@@ -53,8 +53,14 @@ describe Backlog do
     end
     
     it "should have a backlog_item_display_id" do
-    	@backlog.should respond_to(:backlog_item_display_id)
+    	@backlog.should respond_to(:backlog_item_next_display_id)
     end
+   
+    it "should have a backlog_item_display_id set to 1" do
+    	@some_backlog = @user.backlogs.create!(@validParams)
+    	@some_backlog.backlog_item_next_display_id.should == 1
+    end
+
     
     it "should have the right backlogs in the right order" do
       @backlog.backlog_items.should == [@b1, @b2]

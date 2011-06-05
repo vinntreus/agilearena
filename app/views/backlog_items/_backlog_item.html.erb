@@ -5,7 +5,7 @@
 		<% if backlog_item.is_allowed_to_edit(current_user)  %>
 			<a href="#" class="button right edit" >Edit</a>
 		<% end %>
-		<p>#<%= backlog_item.id %>
+		<p>#<%= backlog_item.display_id %>
 	    <span class="title"><%= backlog_item.title %></span>  
     </p>
 	  <p class="timestamp">

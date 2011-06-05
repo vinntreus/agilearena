@@ -15,7 +15,7 @@
 
 class BacklogItem < ActiveRecord::Base
 	attr_accessible :title, :points, :description, :position
-	before_create :set_position
+	before_create :set_position, :set_display_id
 
 	belongs_to :backlog
 	
@@ -28,6 +28,11 @@ class BacklogItem < ActiveRecord::Base
 	
 	def set_position()
 		self.position = (self.backlog.backlog_items.maximum("position") || 0) + 1
+	end
+	
+	def set_display_id
+		self.display_id = self.backlog.backlog_item_next_display_id
+		self.backlog.increment!(:backlog_item_next_display_id)
 	end
 	
 	def	is_allowed_to_delete(proposed_user)

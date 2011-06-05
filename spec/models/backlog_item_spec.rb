@@ -28,6 +28,27 @@ describe BacklogItem do
 		
 	end
 	
+		
+	describe "display_id" do
+		before(:each) do			
+			@item = @backlog.backlog_items.create!(@validParams)
+		end
+
+		it "should set to 1 when no existing items" do
+      @item.display_id.should == 1
+      @backlog.reload
+      @backlog.backlog_item_next_display_id.should == 2
+    end
+    
+    it "should set to 2 when one item" do
+ 			@item2 = @backlog.backlog_items.create!(@validParams)
+      @item2.display_id.should == 2
+      @backlog.reload
+      @backlog.backlog_item_next_display_id.should == 3
+    end
+		
+	end
+	
 	describe "backlog associations	" do
 	
 		before(:each) do
@@ -36,6 +57,10 @@ describe BacklogItem do
 
 		it "should have a backlog attribute" do
       @item.should respond_to(:backlog)
+    end
+    
+    it "should have display_id" do
+    	@item.should respond_to(:display_id)
     end
 
     it "should have the right associated user" do

@@ -10,7 +10,9 @@ class BacklogItemsController < ApplicationController
 		authorize! :create, @backlog_item, :message => "Not allowed to create backlogitem"
 		
 		if @backlog_item.save
-			render :json => { :id => @backlog_item.id, :created => time_ago_in_words(@backlog_item.created_at) }	
+			render :json => { :id => @backlog_item.id, 
+												:created => time_ago_in_words(@backlog_item.created_at), 
+												:display_id => @backlog_item.display_id }	
 		else
 			render :text => "Could not create backlogitem", :status => 500
     end 
