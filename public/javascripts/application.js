@@ -144,7 +144,7 @@ var AGILE = (function(){
 					url : that.form.attr("action"),
 					success : function(data, textStatus, jqXHR){
 						var item = that.item.replace(/#t#/, d["backlog_item[title]"]);
-						item = item.replace(/#id#/, data.id);
+						item = item.replace(/#id#/, data.display_id);
 						item = item.replace(/#i#/, data.id);
 						item = item.replace(/#c#/, data.created);
 						that.list.append(item);
