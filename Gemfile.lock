@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.7)
       activesupport (= 3.0.7)
     activesupport (3.0.7)
+    acts-as-taggable-on (2.0.6)
     annotate-models (1.0.4)
     arel (2.0.9)
     builder (2.1.2)
@@ -100,6 +101,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   annotate-models (= 1.0.4)
   cancan
   factory_girl_rails (= 1.0)

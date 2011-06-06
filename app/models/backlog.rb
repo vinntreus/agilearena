@@ -12,9 +12,12 @@
 #  backlog_item_next_display_id :integer
 #
 
-class Backlog < ActiveRecord::Base
+class Backlog < ActiveRecord::Base	
 	attr_accessible :title, :private
 	before_create :init_display_id
+	
+  acts_as_tagger
+
 	
 	POINTS = [1, 2, 3, 5, 8, 13, 20, 40, 100]
 

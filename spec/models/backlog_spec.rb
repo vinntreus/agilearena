@@ -94,5 +94,44 @@ describe Backlog do
       @backlog.should be_private
     end
   end 
+  
+  describe "tagging items" do
+  	it "should be able to tag single category last in title" do
+			@backlog = @user.backlogs.create!(@validParams)
+			@item = @backlog.backlog_items.create!({:title => "My title #theTag"})
+
+			@item.categories.should include(ActsAsTaggableOn::Tag.new(:name => "theTag"))
+  	end
+  	
+  	it "should be able to tag single category last in title without adding space" do
+			@backlog = @user.backlogs.create!(@validParams)
+			@item = @backlog.backlog_items.create!({:title => "My title #theTag  "})
+
+			@item.categories.should include(ActsAsTaggableOn::Tag.new(:name => "theTag"))
+  	end
+
+  	it "should be able to tag multiple categories without space last in title" do
+			@backlog = @user.backlogs.create!(@validParams)
+			@item = @backlog.backlog_items.create!({:title => "My title #theTag#onemore"})
+
+			@item.title.should == "My title"
+			@item.categories.should include(ActsAsTaggableOn::Tag.new(:name => "theTag"))
+			@item.categories.should include(ActsAsTaggableOn::Tag.new(:name => "onemore"))
+  	end
+  	
+  	
+  	it "should be able to tag multiple categories with space in title" do
+			@backlog = @user.backlogs.create!(@validParams)
+			@item = @backlog.backlog_items.create!({:title => "#sometag My #tag title #theTag is cool"})
+
+			@item.title.should == "My title is cool"
+			@item.categories.should include(ActsAsTaggableOn::Tag.new(:name => "sometag"))
+			@item.categories.should include(ActsAsTaggableOn::Tag.new(:name => "tag"))
+			@item.categories.should include(ActsAsTaggableOn::Tag.new(:name => "theTag"))
+
+
+  	end
+
+  end
  
 end

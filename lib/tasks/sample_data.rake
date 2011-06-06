@@ -49,3 +49,15 @@ namespace :db do
     end
   end
 end
+
+namespace :db do
+  desc "Update category_list from backlog item title"
+  task :update_categories_from_title => :environment do
+    
+    BacklogItem.all().each do |item|
+		  item.capture_tags
+ 			item.save
+    end    
+    
+  end
+end

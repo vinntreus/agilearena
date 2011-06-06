@@ -7,6 +7,7 @@ gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'cancan'
 gem "rake", "0.8.7"
+gem 'acts-as-taggable-on'
 
 
 group :development do

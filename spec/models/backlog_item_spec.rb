@@ -49,6 +49,16 @@ describe BacklogItem do
 		
 	end
 	
+	describe "tags" do
+		before(:each) do
+			@item = @backlog.backlog_items.create!(@validParams)
+		end
+
+		it "should have all tag types" do
+      @item.tag_types.should == [:categories]
+    end
+	end
+	
 	describe "backlog associations	" do
 	
 		before(:each) do

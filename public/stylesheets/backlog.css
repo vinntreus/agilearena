@@ -46,6 +46,19 @@ ul.backlog-items li.selected
 		line-height:21px;
 }
 
+div.box-content .backlog-items li .tag
+{
+		margin:0 5px;
+		-moz-border-radius: 2px;
+		border-radius:2px;
+    background-color: #6299AF;
+    border: 1px solid #326378;
+    float: right;
+		padding: 2px 5px 0;
+		line-height:21px;
+		color:#fff;
+}
+
 #new_backlog_item_form
 {
 /*	position:fixed;

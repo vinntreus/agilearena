@@ -6,6 +6,9 @@
 			<a href="#" class="button right edit" >Edit</a>
 		<% end %>
     <p class="points" title="Points: <%= backlog_item.points || "?" %>"><%= backlog_item.points || "?" %></p>
+		<% backlog_item.categories.each do |c| %>
+			<p class="tag"><%= c.name %></p>
+		<% end %>
 		<p>#<%= backlog_item.display_id %>
 	    <span class="title"><%= backlog_item.title %></span>  
     </p>
