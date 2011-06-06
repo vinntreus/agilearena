@@ -52,12 +52,13 @@ end
 
 namespace :db do
   desc "Update category_list from backlog item title"
-  task :update_categories_from_title => :environment do
-    
-    BacklogItem.all().each do |item|
-		  item.capture_tags
- 			item.save
-    end    
+  task :update_categories_from_title => :environment do    
+
+		BacklogItem.all().each do |backlog_item|
+   		backlog_item.capture_tags
+   		puts backlog_item.title + "\n"
+			BacklogItem.update(backlog_item.id, :title => backlog_item.title)
+    end
     
   end
 end
