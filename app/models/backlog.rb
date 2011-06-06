@@ -30,10 +30,9 @@ class Backlog < ActiveRecord::Base
 	
 	def can_show_to(user)
 		if(self.private?)
-			self.user == user
-		else
-			true
+			return self.user == user		
 		end
+		!user.nil?
 	end
 	
 	def can_create_items(proposed_user)
