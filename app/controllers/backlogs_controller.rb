@@ -14,11 +14,11 @@ class BacklogsController < ApplicationController
 	
 	def show
   	@backlog = Backlog.find(params[:id])
-  	if @backlog.can_show_to(current_user) == false
-  		redirect_to signin_path
+  	if cannot? :read, @backlog
+  		deny_access
   	end
   	@backlog_item = BacklogItem.new
-  	@backlog_items = @backlog.backlog_items.paginate(:page => params[:page])
+  	@backlog_items = @backlog.backlog_items.paginate :page => params[:page]	, :per_page => 50
   	@title = @backlog.title
   end
 	
