@@ -23,6 +23,12 @@ class BacklogsController < ApplicationController
   end
 	
 	def destroy
+	  @backlog = Backlog.find(params[:id])
+    authorize! :destroy, @backlog, :message => "Not allowed to delete backlog"		
+		Backlog.delete(params[:id])
+		
+		#Redirection to proper url TODO!
+	  render :json => {}
 	end
 	
 end

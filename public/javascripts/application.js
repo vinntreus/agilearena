@@ -14,7 +14,7 @@ var AGILE = (function(){
 			window.console.dir(item);
 		}
 	}
-	
+		
 	var setupToggle = function()	{
 		$(".toggle-block").click(function(){
 				var selectorToToggle = $(this).attr("data-toogle");
@@ -25,6 +25,48 @@ var AGILE = (function(){
 				return false;
 		});
 	}
+	
+	var backlog = {
+		admin: null,
+		init: function()
+		{
+			this.admin = this.admin || $("section.backlog-header div.admin");
+			this.attachEvents();
+		},
+		attachEvents: function(){
+			var current = this;
+			if($(this.admin))
+			{
+				this.admin.click(function(e){
+					var clickedOn = $(e.target);
+
+					if(clickedOn.is("a") && clickedOn.hasClass("delete"))
+					{
+						if(confirm("Are you sure you want to delete this entire backlog? All items will be removed when doing so"))
+						{
+							(function(currentItem){
+								$.ajax({
+									type: "DELETE",
+									url : "/backlogs/" + current.admin.data("id"),
+									success : function(data, textStatus, jqXHR){
+											var pathArray = window.location.pathname.split( '/' );
+											var host = pathArray[0];
+											
+											window.location = host + '/';
+									},
+									error : function(jqXHR, textStatus, errorThrown){
+										alert(jqXHR.responseText);
+									}
+								});
+								}(clickedOn.parent()));
+							}				
+
+							return false;
+						}
+					});
+				}
+			}
+		}
 	
 	var backlogItem = {
 		form : null,
@@ -195,6 +237,7 @@ var AGILE = (function(){
 		
 			setupToggle();			
 			backlogItem.init();
+			backlog.init();
 		});
 	}
 	

@@ -40,7 +40,9 @@ class Backlog < ActiveRecord::Base
 		self.user == proposed_user
 	end
 	
-	
+	def	is_allowed_to_delete(proposed_user)
+		self.user == proposed_user
+	end
 	
 	def self.sort_items(current_item, new_parent_id)
 		@current_item = current_item #BacklogItem.find(id)		

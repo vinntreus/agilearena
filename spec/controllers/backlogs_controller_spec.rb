@@ -131,6 +131,22 @@ describe BacklogsController do
 
   describe "DELETE 'destroy'" do
     
+    describe "success" do
+      before(:each) do 
+          @backlog = Factory(:backlog)
+           @user = @backlog.user
+           test_sign_in(@user)
+      end
+      
+      it "should succeed when user is allowed to delete backlog" do
+
+           
+           lambda do
+            delete :destroy, :id => 1
+           end.should change(Backlog, :count).by(-1)
+      end
+    end
+    
     describe "failure" do
       
       before(:each) do 
@@ -139,9 +155,9 @@ describe BacklogsController do
            test_sign_in(@user)
       end
       
-      it "should fail" do
+      it "should fail when trying to delete backlog with another user" do
           @some_user = Factory(:user, :email => "fkkhgyhl@test.com")
-           @some_backlog = Factory(:backlog, :user => @some_user)
+           @some_backlog = Factory(:backlog, :user => @some_user, :id => 5)
 
            delete :destroy, :id => 5
            response.body.should =~ /not allowed to delete backlog/i

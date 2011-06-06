@@ -15,6 +15,9 @@ class Ability
   	can :sort, BacklogItem do |item|
   		item.backlog.user.id == user.id
   	end
+  	can :destroy, Backlog do |item|
+  	  item.user.id == user.id
+  	end
   	#can :update, BacklogItem, :backlog => { :user => user }
   	#can :destroy, BacklogItem, :backlog => { :user => user }
     # Define abilities for the passed in user here. For example:
