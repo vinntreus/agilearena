@@ -15,6 +15,8 @@
 class Backlog < ActiveRecord::Base
 	attr_accessible :title, :private
 	before_create :init_display_id
+	
+	POINTS = [1, 2, 3, 5, 8, 13, 20, 40, 100]
 
 	belongs_to :user	
 	has_many :backlog_items, :dependent => :destroy
