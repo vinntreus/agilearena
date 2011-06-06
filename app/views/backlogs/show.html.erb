@@ -20,7 +20,7 @@
 						<strong id="backlog-items-count"><%= @backlog.backlog_items.count %></strong>
 						<span>items</span>
 					</div>
-						<% if @backlog.is_allowed_to_delete(current_user)  %>
+						<% if can? :destroy, @backlog %>
 						<div class="admin" data-id="<%= @backlog.id %>">
 									<a href="#" class="button right delete" >Delete</a>
 						</div>
@@ -33,21 +33,19 @@
 	</div>
 	<div class="fc">
 		<section class="column">	
-
-				<div class="box">
-					<div class="box-content">
-						<% if @backlog.can_create_items current_user %>
-							<a href="#" class="button right toggle-block" data-toogle="#new_backlog_item_form">Create new item</a>
-						<% end %>
-						<h2>Backlog items</h2>
-						<%= will_paginate @backlog_items %>
-						<ul id="backlog-items-list" class="backlog-items fc">
-							<%= render @backlog_items %>
-						</ul>
-						<%= will_paginate @backlog_items %>
-					</div>
+			<div class="box">
+				<div class="box-content">
+					<% if can? :create_items_in, @backlog %>
+						<a href="#" class="button right toggle-block" data-toogle="#new_backlog_item_form">Create new item</a>
+					<% end %>
+					<h2>Backlog items</h2>
+					<%= will_paginate @backlog_items %>
+					<ul id="backlog-items-list" class="backlog-items fc">
+						<%= render @backlog_items %>
+					</ul>
+					<%= will_paginate @backlog_items %>
 				</div>
-	
+			</div>
 		</section>
 
 		<section id="new_backlog_item_form" class="column hidden">

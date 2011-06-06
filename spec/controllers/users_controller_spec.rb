@@ -81,6 +81,7 @@ describe UsersController do
     end
     
     it "should have public backlog count" do
+    	test_sign_in @user
       b1 = Factory(:backlog, :user => @user, :title => "Foo bar")
       b2 = Factory(:backlog, :user => @user, :title => "Baz quux", :private => true)
       b3 = Factory(:backlog, :user => @user, :title => "Slo")

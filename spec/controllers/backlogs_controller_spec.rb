@@ -18,9 +18,7 @@ describe BacklogsController do
   
   describe "GET 'show' private backlog" do
   
-  	describe "logged in user" do  	
-  	
-  		
+  	describe "logged in user" do  	  		
   	
 	  	it "should be successful for creator" do
   			@user = test_sign_in(Factory(:user))
@@ -48,6 +46,7 @@ describe BacklogsController do
   
   	before(:each) do
   		@backlog = Factory(:backlog)
+ 			@user = test_sign_in(Factory(:user, :email => "someuser@test.com"))
   	end
   
   	it "should be successful" do

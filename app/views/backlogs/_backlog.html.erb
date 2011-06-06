@@ -1,4 +1,4 @@
-<% if backlog.can_show_to current_user %>
+<% if can? :read, backlog %>
 <li class="backlog">
     <p class="title">
 		  <% if backlog.private %>

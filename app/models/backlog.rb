@@ -1,19 +1,22 @@
 # == Schema Information
-# Schema version: 20110516195031
+# Schema version: 20110605181027
 #
 # Table name: backlogs
 #
-#  id         :integer         not null, primary key
-#  title      :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#  user_id    :integer
-#  private    :boolean
+#  id                           :integer         not null, primary key
+#  title                        :string(255)
+#  created_at                   :datetime
+#  updated_at                   :datetime
+#  user_id                      :integer
+#  private                      :boolean
+#  backlog_item_next_display_id :integer
 #
 
 class Backlog < ActiveRecord::Base
 	attr_accessible :title, :private
 	before_create :init_display_id
+	
+	POINTS = [1, 2, 3, 5, 8, 13, 20, 40, 100]
 
 	belongs_to :user	
 	has_many :backlog_items, :dependent => :destroy
@@ -26,22 +29,6 @@ class Backlog < ActiveRecord::Base
 	
 	def init_display_id
 		self.backlog_item_next_display_id = 1
-	end
-	
-	def can_show_to(user)
-		if(self.private?)
-			self.user == user
-		else
-			true
-		end
-	end
-	
-	def can_create_items(proposed_user)
-		self.user == proposed_user
-	end
-	
-	def	is_allowed_to_delete(proposed_user)
-		self.user == proposed_user
 	end
 	
 	def self.sort_items(current_item, new_parent_id)

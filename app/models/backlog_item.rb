@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110602155816
+# Schema version: 20110605181027
 #
 # Table name: backlog_items
 #
@@ -11,6 +11,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  position    :integer
+#  display_id  :integer
 #
 
 class BacklogItem < ActiveRecord::Base
@@ -33,13 +34,5 @@ class BacklogItem < ActiveRecord::Base
 	def set_display_id
 		self.display_id = self.backlog.backlog_item_next_display_id
 		self.backlog.increment!(:backlog_item_next_display_id)
-	end
-	
-	def	is_allowed_to_delete(proposed_user)
-		self.backlog.user == proposed_user
-	end
-	
-	def is_allowed_to_edit(proposed_user)
-		self.backlog.user == proposed_user
-	end
+	end	
 end

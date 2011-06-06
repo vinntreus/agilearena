@@ -72,7 +72,7 @@ var AGILE = (function(){
 		form : null,
 		list : null,
 		itemsCount : null,
-		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><a href='#' class='button right edit'>Edit</a><p>##id# <span class='title'>#t#</span></p><p class='timestamp'>Created #c# ago.</p></li>",
+		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><a href='#' class='button right edit'>Edit</a><p class='points' title='Points: #points#'>#points#</p><p>##id# <span class='title'>#t#</span></p><p class='timestamp'>Created #c# ago.</p></li>",
 		init : function()	{
 			this.formContainer = this.formContainer || $("#new_backlog_item_form");
 			this.form = this.form || $("#new_backlog_item");
@@ -140,6 +140,7 @@ var AGILE = (function(){
 
 			$("#backlog_item_id").val(backlogItem.data("id"));
 			$("#backlog_item_title").val( $(".title", backlogItem).text() );
+			$("#backlog_item_points").val( $(".points", backlogItem).text() );
 
 			$("li", that.list).removeClass("selected");
 			backlogItem.addClass("selected");
@@ -156,6 +157,7 @@ var AGILE = (function(){
 					success : function(data, textStatus, jqXHR){
 						that.formContainer.hide();
 	 					$(".title", backlogItem).text(d["backlog_item[title]"]);
+	 					$(".points", backlogItem).text(d["backlog_item[points]"] || "?"	);
 						that.clearForm();
 					},
 					error : function(jqXHR, textStatus, errorThrown){
@@ -167,7 +169,7 @@ var AGILE = (function(){
 		},
 		getFormData : function(){
 			var data = {};
-			$("input", this.form).each(function(){
+			$("input, select", this.form).each(function(){
 				var field = $(this);
 				data[field.attr("name")] = field.val();
 			});
@@ -189,6 +191,7 @@ var AGILE = (function(){
 						item = item.replace(/#id#/, data.display_id);
 						item = item.replace(/#i#/, data.id);
 						item = item.replace(/#c#/, data.created);
+						item = item.replace(/#points#/g, d["backlog_item[points]"] || "?"	);
 						that.list.append(item);
 						that.incrementItems();
 						$("li", that.list).removeClass("selected");
@@ -223,6 +226,7 @@ var AGILE = (function(){
 		},
 		clearForm : function(){
 			var inputs = $("input[type='text']", this.form);
+			$("select", this.form).val(0);
 			inputs.each(function(){
 				var field = $(this);
 				field.val("");

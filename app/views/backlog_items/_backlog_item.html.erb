@@ -1,10 +1,11 @@
 <li class="backlog-item" data-id="<%= backlog_item.id %>">
-		<% if backlog_item.is_allowed_to_delete(current_user)  %>
+		<% if can? :destroy, backlog_item  %>
 			<a href="#" class="button right delete" >Delete</a>
 		<% end %>
-		<% if backlog_item.is_allowed_to_edit(current_user)  %>
+		<% if can? :update, backlog_item  %>
 			<a href="#" class="button right edit" >Edit</a>
 		<% end %>
+    <p class="points" title="Points: <%= backlog_item.points || "?" %>"><%= backlog_item.points || "?" %></p>
 		<p>#<%= backlog_item.display_id %>
 	    <span class="title"><%= backlog_item.title %></span>  
     </p>
