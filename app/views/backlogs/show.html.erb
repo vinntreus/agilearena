@@ -1,33 +1,38 @@
-<h1>
-	<%= @backlog.title %>	
-</h1>
-<div class="fc">
-	<section class="column">
+	<h1>
+		<%= @backlog.title %>	
+	</h1>
+	<div class="fc">
+		<section class="column backlog-header">
 
-		<div class="box fc">
-			<div class="column fc">
-				<dl>
-					<dt>Created by:</dt>
-					<dd><%= link_to @backlog.user.name, @backlog.user %></dd>
-				</dl>
-				<dl>
-					<dt>Private:</dt>
-					<dd><%= @backlog.private? %><dd>
-				</dl>
-			</div>
-			<div class="column fc">
-				<div class="statistic">
-					<strong id="backlog-items-count"><%= @backlog.backlog_items.count %></strong>
-					<span>items</span>
+			<div class="box fc">
+				<div class="column fc">
+					<dl>
+						<dt>Created by:</dt>
+						<dd><%= link_to @backlog.user.name, @backlog.user %></dd>
+					</dl>
+					<dl>
+						<dt>Private:</dt>
+						<dd><%= @backlog.private? %><dd>
+					</dl>
 				</div>
+				<div class="column fc">
+					<div class="statistic">
+						<strong id="backlog-items-count"><%= @backlog.backlog_items.count %></strong>
+						<span>items</span>
+					</div>
+						<% if can? :destroy, @backlog %>
+						<div class="admin" data-id="<%= @backlog.id %>">
+									<a href="#" class="button right delete" >Delete</a>
+						</div>
+						<% end %>
+				</div>
+			
 			</div>
-		</div>
-	</section>
-	<section class="column"></section>
-</div>
-<div class="fc">
-	<section class="column">	
-
+		</section>
+		<section class="column"></section>
+	</div>
+	<div class="fc">
+		<section class="column">	
 			<div class="box">
 				<div class="box-content">
 					<% if can? :create_items_in, @backlog %>
@@ -41,14 +46,13 @@
 					<%= will_paginate @backlog_items %>
 				</div>
 			</div>
-	
-	</section>
+		</section>
 
-	<section id="new_backlog_item_form" class="column hidden">
-		<div class="box">
-		<% unless @backlog.nil? %>
-			<%= render "shared/backlog_item_form" %>
-		<% end %>
-		</div>
-	</section>
-</div>
+		<section id="new_backlog_item_form" class="column hidden">
+			<div class="box">
+			<% unless @backlog.nil? %>
+				<%= render "shared/backlog_item_form" %>
+			<% end %>
+			</div>
+		</section>
+	</div>
