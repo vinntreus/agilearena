@@ -12,7 +12,9 @@ class BacklogItemsController < ApplicationController
 		if @backlog_item.save
 			render :json => { :id => @backlog_item.id, 
 												:created => time_ago_in_words(@backlog_item.created_at), 
-												:display_id => @backlog_item.display_id }	
+												:display_id => @backlog_item.display_id,
+												:title => @backlog_item.title,
+												:categories => @backlog_item.categories }	
 		else
 			render :text => "Could not create backlogitem", :status => 500
     end 

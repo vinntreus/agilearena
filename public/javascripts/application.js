@@ -72,7 +72,7 @@ var AGILE = (function(){
 		form : null,
 		list : null,
 		itemsCount : null,
-		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><a href='#' class='button right edit'>Edit</a><p class='points' title='Points: #points#'>#points#</p><p>##id# <span class='title'>#t#</span></p><p class='timestamp'>Created #c# ago.</p></li>",
+		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><a href='#' class='button right edit'>Edit</a><p class='points' title='Points: #points#'>#points#</p>#tags#<p>##id# <span class='title'>#t#</span></p><p class='timestamp'>Created #c# ago.</p></li>",
 		init : function()	{
 			this.formContainer = this.formContainer || $("#new_backlog_item_form");
 			this.form = this.form || $("#new_backlog_item");
@@ -187,7 +187,12 @@ var AGILE = (function(){
 					data : d,
 					url : that.form.attr("action"),
 					success : function(data, textStatus, jqXHR){
-						var item = that.item.replace(/#t#/, d["backlog_item[title]"]);
+						var categories = "";
+						var item = that.item.replace(/#t#/, data.title);
+						for(var i = 0; i < data.categories.length; i++){
+							categories += "<p class='tag'>" + data.categories[i].tag.name + "</p>";
+						}
+						item = item.replace(/#tags#/, categories);
 						item = item.replace(/#id#/, data.display_id);
 						item = item.replace(/#i#/, data.id);
 						item = item.replace(/#c#/, data.created);
