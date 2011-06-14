@@ -1,6 +1,6 @@
 ﻿html
 {
-	background:#326378;
+		background: none repeat scroll 0 0 #EFEFEF;
 }
 
 body 
@@ -13,8 +13,14 @@ header,
 footer
 {
 	color:#86c2fc;
-	height:128px;
 }
+
+header
+{
+	height:128px;
+	background:#326378;
+}
+
 
 /******************************/
 /*        Heading style       */
@@ -56,7 +62,8 @@ footer
 
 #page
 {
-		margin-bottom: 115px;
+  	background:#326378;
+	
     min-height: 200px;
     padding: 1% 2%;
   	color:#efefef;
@@ -68,15 +75,10 @@ footer
 
 footer
 {
-	background: none repeat scroll 0 0 #EFEFEF;
-    /*border-bottom: 5px solid #CFCFCF;*/
+		background: none repeat scroll 0 0 #EFEFEF;
     border-top: 5px solid #CFCFCF;
     color: #69A5E0;
-    height: auto;
-    /*margin-top: 80px;*/
-    position:fixed;
-    bottom:0;
-    padding: 20px 50px;    
+    padding: 40px;
 }
 
 footer section
