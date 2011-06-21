@@ -20,6 +20,10 @@
 						<strong id="backlog-items-count"><%= @backlog.backlog_items.count %></strong>
 						<span>items</span>
 					</div>
+					<div class="statistic">
+						<strong id="backlog-point-count">0</strong>
+						<span>points</span>
+					</div>
 						<% if can? :destroy, @backlog %>
 						<div class="admin" data-id="<%= @backlog.id %>">
 									<a href="#" class="button right delete" >Delete</a>

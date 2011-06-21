@@ -14,6 +14,28 @@ var AGILE = (function(){
 			window.console.dir(item);
 		}
 	}
+	
+	var countPoints = function(slowCount){
+		var pointsContainer = $("#backlog-point-count"),
+			pointElements = null,
+			points = 0,
+			numberOfPointElements = 0;
+		if(pointsContainer.length == 0) return false;
+		
+		pointElements = $(".points");
+		numberOfPointElements = pointElements.length;
+		
+		pointElements.each(function(index){
+			var point = parseInt( $(this).text() );
+			if (point) {
+				points += point;
+				if(slowCount)
+					pointsContainer.text(points);
+			}			
+		});
+		if(!slowCount)
+			pointsContainer.text(points);
+	}
 		
 	var setupToggle = function()	{
 		$(".toggle-block").click(function(){
@@ -122,6 +144,7 @@ var AGILE = (function(){
 								success : function(data, textStatus, jqXHR){
 									currentItem.remove();
 									that.decrementItems();
+									countPoints(false);
 								},
 								error : function(jqXHR, textStatus, errorThrown){
 									alert(jqXHR.responseText);
@@ -159,6 +182,7 @@ var AGILE = (function(){
 	 					$(".title", backlogItem).text(d["backlog_item[title]"]);
 	 					$(".points", backlogItem).text(d["backlog_item[points]"] || "?"	);
 						that.clearForm();
+						countPoints(false);
 					},
 					error : function(jqXHR, textStatus, errorThrown){
 						alert(jqXHR.responseText);
@@ -209,6 +233,7 @@ var AGILE = (function(){
 
 						window.scrollTo(0, document.body.scrollHeight);
 						that.clearForm();
+						countPoints(false);
 					},
 					error : function(jqXHR, textStatus, errorThrown){
 						alert(jqXHR.responseText);
@@ -244,6 +269,7 @@ var AGILE = (function(){
 		//init in jquery context
 		$(function(){
 		
+			countPoints(true);
 			setupToggle();			
 			backlogItem.init();
 			backlog.init();
