@@ -6,36 +6,34 @@ var AGILE = (function(){
 		if(window.console && window.console.log){
 			window.console.log(item);
 		}
-	}
-	
+	};	
 		
 	var dir = function(item){
 		if(window.console && window.console.dir){
 			window.console.dir(item);
 		}
-	}
+	};
 	
 	var countPoints = function(slowCount){
 		var pointsContainer = $("#backlog-point-count"),
-			pointElements = null,
-			points = 0,
-			numberOfPointElements = 0;
+				pointElements = null,
+				points = 0;
 		if(pointsContainer.length == 0) return false;
 		
 		pointElements = $(".points");
-		numberOfPointElements = pointElements.length;
 		
 		pointElements.each(function(index){
 			var point = parseInt( $(this).text() );
 			if (point) {
 				points += point;
-				if(slowCount)
+				if(slowCount) {
 					pointsContainer.text(points);
+				}
 			}			
 		});
 		if(!slowCount)
 			pointsContainer.text(points);
-	}
+	};
 		
 	var setupToggle = function()	{
 		$(".toggle-block").click(function(){
@@ -109,19 +107,7 @@ var AGILE = (function(){
 			var that = this;
 			this.list.sortable({
 				update : function(event, ui){
-					var newParentId = ui.item.prev().data("id") || 0,
-							currentItemId = ui.item.data("id");
-					$.ajax({
-						type: "PUT",
-						url : "/backlog_items/" + currentItemId + "/sort",
-						data : { "new_parent" : newParentId },
-						success : function(data, textStatus, jqXHR){
-							log("success");
-						},
-						error : function(jqXHR, textStatus, errorThrown){
-							alert(jqXHR.responseText);
-						}
-					});
+					that.sortItems(event, ui);
 				}
 			});
 
@@ -137,23 +123,24 @@ var AGILE = (function(){
 				{
 					if(confirm("Are you sure you want to delete?"))
 					{
-						(function(currentItem){
-							$.ajax({
-								type: "DELETE",
-								url : "/backlog_items/" + currentItem.data("id"),
-								success : function(data, textStatus, jqXHR){
-									currentItem.remove();
-									that.decrementItems();
-									countPoints(false);
-								},
-								error : function(jqXHR, textStatus, errorThrown){
-									alert(jqXHR.responseText);
-								}
-							});
-						}(clickedOn.parent()));
-					}				
-					
+						that.deleteItem(clickedOn.parent());
+					}					
 					return false;
+				}
+			});
+		},
+		sortItems: function(event, ui){
+			var newParentId = ui.item.prev().data("id") || 0,
+					currentItemId = ui.item.data("id");
+			$.ajax({
+				type: "PUT",
+				url : "/backlog_items/" + currentItemId + "/sort",
+				data : { "new_parent" : newParentId },
+				success : function(data, textStatus, jqXHR){
+					log("success");
+				},
+				error : function(jqXHR, textStatus, errorThrown){
+					alert(jqXHR.responseText);
 				}
 			});
 		},
@@ -191,6 +178,21 @@ var AGILE = (function(){
 				return false;
 			});
 		},
+		deleteItem: function(item){	
+			var that = this;
+			$.ajax({
+				type: "DELETE",
+				url : "/backlog_items/" + item.data("id"),
+				success : function(data, textStatus, jqXHR){
+					item.remove();
+					that.decrementItems();
+					countPoints(false);
+				},
+				error : function(jqXHR, textStatus, errorThrown){
+					alert(jqXHR.responseText);
+				}
+			});
+		},
 		getFormData : function(){
 			var data = {};
 			$("input, select", this.form).each(function(){
@@ -201,46 +203,47 @@ var AGILE = (function(){
 		},
 		setupForm : function(){
 			var that = this;
-			this.clearForm();
-			$("li", that.list).removeClass("selected");
+			
+			this.clearForm();			
 			this.form.unbind("submit");
-			this.form.submit(function(e)	{
-				var d = that.getFormData();
+			this.form.submit(function(e){ that.onSubmitNewItem(); return false; });		
+		},
+		onSubmitNewItem : function(){
+				var that = this,
+						formData = this.getFormData();
+				
 				$.ajax({
 					type: "POST",
-					data : d,
+					data : formData,
 					url : that.form.attr("action"),
 					success : function(data, textStatus, jqXHR){
-						var categories = "";
-						var item = that.item.replace(/#t#/, data.title);
-						for(var i = 0; i < data.categories.length; i++){
-							categories += "<p class='tag'>" + data.categories[i].tag.name + "</p>";
-						}
-						item = item.replace(/#tags#/, categories);
-						item = item.replace(/#id#/, data.display_id);
-						item = item.replace(/#i#/, data.id);
-						item = item.replace(/#c#/, data.created);
-						item = item.replace(/#points#/g, d["backlog_item[points]"] || "?"	);
-						that.list.append(item);
-						that.incrementItems();
-						$("li", that.list).removeClass("selected");
-						var newItem = that.list.find("li:last");
-						newItem.addClass("selected");
-						var newItemForm = $("#new_backlog_item_form");
-						newItemForm.css("top", "50%");
-            newItemForm.css("position", "fixed");
-            newItemForm.css("left", "50%");
-
-						window.scrollTo(0, document.body.scrollHeight);
-						that.clearForm();
-						countPoints(false);
+						that.onAddedNewItem(data, formData);
 					},
 					error : function(jqXHR, textStatus, errorThrown){
 						alert(jqXHR.responseText);
 					}
 				});
+				
 				return false;
-			});
+		},
+		positionNewItemForm: function(){
+			var newItemForm = $("#new_backlog_item_form");
+			newItemForm.css("top", "50%");
+      newItemForm.css("position", "fixed");
+      newItemForm.css("left", "50%");
+			window.scrollTo(0, document.body.scrollHeight);
+		},
+		onAddedNewItem: function(data, formData){
+			data.points = data.points || formData["backlog_item[points]"] || "?";
+			this.deSelectAllItemsInList();
+			this.addToUI(data);
+			this.incrementItems();
+			this.positionNewItemForm();
+			this.clearForm();
+			countPoints(false);
+		},
+		addToUI: function(item){			
+			this.list.jqoteapp('#backlog_item_template', item);
 		},
 		incrementItems : function()
 		{
@@ -253,6 +256,9 @@ var AGILE = (function(){
 		getItemsCount : function()
 		{
 			return parseInt(this.itemsCount.text());
+		},
+		deSelectAllItemsInList : function(){
+			$("li.selected", this.list).removeClass("selected");
 		},
 		clearForm : function(){
 			var inputs = $("input[type='text']", this.form);
