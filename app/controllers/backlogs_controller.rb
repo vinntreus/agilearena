@@ -27,8 +27,7 @@ class BacklogsController < ApplicationController
     authorize! :destroy, @backlog, :message => "Not allowed to delete backlog"		
 		Backlog.delete(params[:id])
 		
-		#Redirection to proper url TODO!
-	  render :json => {}
+		redirect_to root_path
 	end
 	
 end

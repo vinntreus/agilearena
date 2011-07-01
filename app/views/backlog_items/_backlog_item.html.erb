@@ -1,9 +1,9 @@
 <li class="backlog-item" data-id="<%= backlog_item.id %>">
 		<% if can? :destroy, backlog_item  %>
-			<a href="#" class="button right delete" >Delete</a>
+			<a href="#" class="button right delete" data-event="onDeleteBacklogItem" >Delete</a>
 		<% end %>
 		<% if can? :update, backlog_item  %>
-			<a href="#" class="button right edit" >Edit</a>
+			<a href="#" class="button right edit" data-event="onEditBacklogItem" >Edit</a>
 		<% end %>
     <p class="points" title="Points: <%= backlog_item.points || "?" %>"><%= backlog_item.points || "?" %></p>
 		<% backlog_item.categories.each do |c| %>

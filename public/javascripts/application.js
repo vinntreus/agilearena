@@ -44,49 +44,7 @@ var AGILE = (function(){
 					backlogItem.setupForm();
 				return false;
 		});
-	}
-	
-	var backlog = {
-		admin: null,
-		init: function()
-		{
-			this.admin = this.admin || $("section.backlog-header div.admin");
-			this.attachEvents();
-		},
-		attachEvents: function(){
-			var current = this;
-			if($(this.admin))
-			{
-				this.admin.click(function(e){
-					var clickedOn = $(e.target);
-
-					if(clickedOn.is("a") && clickedOn.hasClass("delete"))
-					{
-						if(confirm("Are you sure you want to delete this entire backlog? All items will be removed when doing so"))
-						{
-							(function(currentItem){
-								$.ajax({
-									type: "DELETE",
-									url : "/backlogs/" + current.admin.data("id"),
-									success : function(data, textStatus, jqXHR){
-											var pathArray = window.location.pathname.split( '/' );
-											var host = pathArray[0];
-											
-											window.location = host + '/';
-									},
-									error : function(jqXHR, textStatus, errorThrown){
-										alert(jqXHR.responseText);
-									}
-								});
-								}(clickedOn.parent()));
-							}				
-
-							return false;
-						}
-					});
-				}
-			}
-		}
+	}	
 	
 	var backlogItem = {
 		form : null,
@@ -114,20 +72,21 @@ var AGILE = (function(){
 			this.list.click(function(e){
 				var clickedOn = $(e.target);
 				
-				if(clickedOn.is("a") && clickedOn.hasClass("edit"))
-				{
-					that.edit(clickedOn.parent());
-					return false;
-				}
-				else if(clickedOn.is("a") && clickedOn.hasClass("delete"))
-				{
-					if(confirm("Are you sure you want to delete?"))
-					{
-						that.deleteItem(clickedOn.parent());
-					}					
-					return false;
+				if( $.isFunction( that[clickedOn.data("event")] ) )	{
+					return that[clickedOn.data("event")]( clickedOn.parent() );
 				}
 			});
+		},
+		onDeleteBacklogItem : function(item){
+			if(confirm("Are you sure you want to delete?"))
+			{
+				this.deleteItem(item);
+			}					
+			return false;			
+		},
+		onEditBacklogItem : function(item){
+			this.edit(item);
+			return false;		
 		},
 		sortItems: function(event, ui){
 			var newParentId = ui.item.prev().data("id") || 0,
@@ -278,7 +237,6 @@ var AGILE = (function(){
 			countPoints(true);
 			setupToggle();			
 			backlogItem.init();
-			backlog.init();
 		});
 	}
 	
