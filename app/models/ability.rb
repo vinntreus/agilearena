@@ -22,6 +22,9 @@ class Ability
 			can :create_items_in, Backlog do |item|
 					item.user.id == user.id
 			end
+			can :edit_items_in, Backlog do |item|
+					item.user.id == user.id
+			end
 
 			####################
 			# Users

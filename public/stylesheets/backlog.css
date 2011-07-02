@@ -17,10 +17,11 @@
 	margin:0;
 }
 
-.backlog-items li.backlog-item:hover,
+/*.backlog-items li.backlog-item:hover,*/
 ul.backlog-items li.selected
 {
-	background-color:#CFCFCF;
+	/*background-color:#CFCFCF;*/
+	background: none repeat scroll 0 0 rgba(174, 207, 221, 0.5);
 	cursor:pointer;
 }
 

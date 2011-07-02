@@ -41,7 +41,7 @@ var AGILE = (function(){
 				$(selectorToToggle).show();
 				//hack to test out - refactor
 				if(selectorToToggle === '#new_backlog_item_form')
-					backlogItem.setupForm();
+					backlogItem.setupSubmitNewItemForm();
 				return false;
 		});
 	}	
@@ -49,15 +49,17 @@ var AGILE = (function(){
 	var backlogItem = {
 		form : null,
 		list : null,
-		itemsCount : null,
-		item : "<li class='backlog-item' data-id='#i#'><a href='#' class='button right delete'>Delete</a><a href='#' class='button right edit'>Edit</a><p class='points' title='Points: #points#'>#points#</p>#tags#<p>##id# <span class='title'>#t#</span></p><p class='timestamp'>Created #c# ago.</p></li>",
+		itemsCount : null,	
+		editForm : null,
+		itemWhichIsBeingEdited : false,
 		init : function()	{
 			this.formContainer = this.formContainer || $("#new_backlog_item_form");
 			this.form = this.form || $("#new_backlog_item");
 			this.list = this.list || $("#backlog-items-list");
 			this.itemsCount = this.itemsCount || $("#backlog-items-count");
+			this.editForm = this.editForm || $("#edit_backlog_item_form");
 			
-			if(this.list.length > 0){
+			if(this.list.length && this.editForm.length){
 				this.setupList();
 			}
 		},
@@ -73,7 +75,7 @@ var AGILE = (function(){
 				var clickedOn = $(e.target);
 				
 				if( $.isFunction( that[clickedOn.data("event")] ) )	{
-					return that[clickedOn.data("event")]( clickedOn.parent() );
+					return that[clickedOn.data("event")]( clickedOn.parents("li") );
 				}
 			});
 		},
@@ -85,7 +87,7 @@ var AGILE = (function(){
 			return false;			
 		},
 		onEditBacklogItem : function(item){
-			this.edit(item);
+			this.toEditMode(item);
 			return false;		
 		},
 		sortItems: function(event, ui){
@@ -103,37 +105,59 @@ var AGILE = (function(){
 				}
 			});
 		},
-		edit : function(backlogItem)
+		onCancelEdit: function(item){
+			this.toDisplayMode(item);
+			return false;
+		},
+		toDisplayMode : function(item){
+			var displayMode = item.data("clone");
+			item.replaceWith(displayMode);
+			this.itemWhichIsBeingEdited = false;
+		},
+		updateItem: function(form, backlogItem)
+		{
+			var that = this,
+					d = that.getFormData(form);
+			$.ajax({
+				type: "PUT",
+				data : d,
+				url : form.attr("action"),
+				success : function(data, textStatus, jqXHR){
+					that.updatedItem(data, backlogItem);
+				},
+				error : function(jqXHR, textStatus, errorThrown){
+					alert(jqXHR.responseText);
+				}
+			});
+		},
+		updatedItem: function(formData, backlogItem){
+			var item = $("#backlog_item_template").jqote(formData);
+			backlogItem.data("clone",  item );
+			this.deSelectAllItemsInList();
+			this.toDisplayMode(backlogItem);
+			countPoints(false);
+		},
+		toEditMode : function(backlogItem)
 		{
 			var that = this;
-
-			$("#backlog_item_id").val(backlogItem.data("id"));
-			$("#backlog_item_title").val( $(".title", backlogItem).text() );
-			$("#backlog_item_points").val( $(".points", backlogItem).text() );
-
-			$("li", that.list).removeClass("selected");
-			backlogItem.addClass("selected");
-			
-			this.formContainer.show();
-			$("#backlog_item_title").focus();
-			this.form.unbind("submit");
-			this.form.submit(function(e)	{
-				var d = that.getFormData();
-				$.ajax({
-					type: "PUT",
-					data : d,
-					url : that.form.attr("action") + "/" + backlogItem.data("id"),
-					success : function(data, textStatus, jqXHR){
-						that.formContainer.hide();
-	 					$(".title", backlogItem).text(d["backlog_item[title]"]);
-	 					$(".points", backlogItem).text(d["backlog_item[points]"] || "?"	);
-						that.clearForm();
-						countPoints(false);
-					},
-					error : function(jqXHR, textStatus, errorThrown){
-						alert(jqXHR.responseText);
-					}
-				});
+			if(this.itemWhichIsBeingEdited){
+				this.toDisplayMode(this.itemWhichIsBeingEdited);
+			}
+			this.itemWhichIsBeingEdited = backlogItem;
+			var displayMode = backlogItem.clone();
+			backlogItem.data("clone", displayMode);
+			backlogItem.load("/backlog_items/" + backlogItem.data("id"), function(){
+				$("#backlog_item_title", backlogItem).focus();				
+				
+				that.setupEditItemForm( backlogItem.children("form"), backlogItem );
+			});
+		},
+		setupEditItemForm : function(form, backlogItem)
+		{
+			var that = this;
+			form.submit(function(e)	{
+				var form = $(this);
+				that.updateItem(form, backlogItem	);
 				return false;
 			});
 		},
@@ -152,15 +176,16 @@ var AGILE = (function(){
 				}
 			});
 		},
-		getFormData : function(){
+		getFormData : function(form){
+			form = form || this.form;
 			var data = {};
-			$("input, select", this.form).each(function(){
+			$("input, select", form).each(function(){
 				var field = $(this);
 				data[field.attr("name")] = field.val();
 			});
 			return data;
 		},
-		setupForm : function(){
+		setupSubmitNewItemForm : function(){
 			var that = this;
 			
 			this.clearForm();			
@@ -185,13 +210,6 @@ var AGILE = (function(){
 				
 				return false;
 		},
-		positionNewItemForm: function(){
-			var newItemForm = $("#new_backlog_item_form");
-			newItemForm.css("top", "50%");
-      newItemForm.css("position", "fixed");
-      newItemForm.css("left", "50%");
-			window.scrollTo(0, document.body.scrollHeight);
-		},
 		onAddedNewItem: function(data, formData){
 			data.points = data.points || formData["backlog_item[points]"] || "?";
 			this.deSelectAllItemsInList();
@@ -200,6 +218,13 @@ var AGILE = (function(){
 			this.positionNewItemForm();
 			this.clearForm();
 			countPoints(false);
+		},
+		positionNewItemForm: function(){
+			var newItemForm = $("#new_backlog_item_form");
+			newItemForm.css("top", "50%");
+      newItemForm.css("position", "fixed");
+      newItemForm.css("left", "50%");
+			window.scrollTo(0, document.body.scrollHeight);
 		},
 		addToUI: function(item){			
 			this.list.jqoteapp('#backlog_item_template', item);
@@ -221,11 +246,8 @@ var AGILE = (function(){
 		},
 		clearForm : function(){
 			var inputs = $("input[type='text']", this.form);
+			inputs.val("");
 			$("select", this.form).val(0);
-			inputs.each(function(){
-				var field = $(this);
-				field.val("");
-			});
 			inputs[0].focus();
 		}		
 	}

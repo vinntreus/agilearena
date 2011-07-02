@@ -2,6 +2,11 @@ class BacklogItemsController < ApplicationController
 	include ActionView::Helpers::DateHelper
 
 	before_filter :authenticate, :only => [:create, :destroy, :update, :sort]
+	
+	def show
+		@backlog_item = BacklogItem.find(params[:id])
+		render "shared/_edit_backlog_item_form", :layout => false
+	end
 		
 	def create
 		@backlog = Backlog.find(params[:backlog_id])		
@@ -26,7 +31,12 @@ class BacklogItemsController < ApplicationController
 		authorize! :update, @backlog_item, :message => "Not allowed to update backlogitem"
 
     if @backlog_item.update_attributes(params[:backlog_item])
-			render :json => { }
+			render :json => { :id => @backlog_item.id, 
+												:created => time_ago_in_words(@backlog_item.created_at), 
+												:display_id => @backlog_item.display_id,
+												:title => @backlog_item.title,
+												:categories => @backlog_item.categories,
+												:points => @backlog_item.points }
     else
 			render :text => "Could not update backlogitem", :status => 500
 		end

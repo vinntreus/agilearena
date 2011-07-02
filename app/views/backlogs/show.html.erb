@@ -58,6 +58,9 @@
 			<% unless @backlog.nil? %>
 				<%= render "shared/backlog_item_form" %>
 			<% end %>
+			<% if can? :edit_items_in, @backlog %>
+				<div id="edit_backlog_item_form" ></div>
+			<% end %>
 			</div>
 		</section>
 	</div>
@@ -77,4 +80,5 @@
 			</li>
     ]]>
 	</script>
+
 
