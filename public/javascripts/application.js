@@ -149,8 +149,31 @@ var AGILE = (function(){
 			backlogItem.load("/backlog_items/" + backlogItem.data("id"), function(){
 				$("#backlog_item_title", backlogItem).focus();				
 				
+				$(".removeTag", backlogItem).bind("click.removeTag", that.onRemoveTagClick );
+				
+				$("#add_new_tag_button").click(function(e){
+						var selectBox = $("#backlog_item_category_list"),
+								textFieldValue = $("#add_new_tag").val(),
+								tagLi = null;
+			
+						if( !textFieldValue ) return false;
+						if( selectBox.children("option[value='"+ textFieldValue +"']").length ) return false;						
+
+						selectBox.append(new Option(textFieldValue, textFieldValue, true, true));
+						
+						tagLi = $( $("#edit_backlog_tag_template").jqote({ name : textFieldValue }) );
+						$(".removeTag", tagLi).bind("click.removeTag", that.onRemoveTagClick);
+						$("#edit_backlog_item_tags").append(tagLi);						
+				});
+				
 				that.setupEditItemForm( backlogItem.children("form"), backlogItem );
 			});
+		},
+		onRemoveTagClick : function(e){
+			$("#backlog_item_category_list")
+						.find("option[value='" + $(this).data("tag") + "']")
+						.remove();
+			$(this).parent().remove();
 		},
 		setupEditItemForm : function(form, backlogItem)
 		{
@@ -178,10 +201,13 @@ var AGILE = (function(){
 		},
 		getFormData : function(form){
 			form = form || this.form;
+			return form.serialize();
 			var data = {};
 			$("input, select", form).each(function(){
 				var field = $(this);
-				data[field.attr("name")] = field.val();
+				if(field.attr("name")){
+					data[field.attr("name")] = field.val();
+				}
 			});
 			return data;
 		},

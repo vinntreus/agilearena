@@ -8,8 +8,31 @@
   	<label>Points</label>
   	<%= select(:backlog_item, :points, Backlog::POINTS, :include_blank => "?") %>
   </div>
+  <div class="field fc">
+  	<label>Tags</label>
+		<input type="text" id="add_new_tag" />
+		<button type="button" id="add_new_tag_button" >Add tag</button>
+		<ul id="edit_backlog_item_tags" class="fc">
+  	 <% @backlog_item.categories.each do |c| %>
+			<li class="tag">
+				<span><%= c.name %></span>
+				<a class="button removeTag" data-tag="<%= c.name %>"><span class="cross icon">&nbsp;</span></a>
+			</li>
+		<% end %>
+		</ul>
+  	<%= select(:backlog_item, :category_list, @backlog_item.categories,{ } , {:multiple => true, :hidden => true }) %>
+  </div>
   <div class="actions">
     <%= f.submit "Save" %>
     <a href="#" data-event="onCancelEdit">Cancel</a>
   </div>
 <% end %>
+<script type="text/x-jqote-template" id="edit_backlog_tag_template">
+    <![CDATA[
+	    <li class="tag">
+				<span><%%= this.name %></span>
+				<a class="button removeTag" data-tag="<%%= this.name %>"><span class="cross icon">&nbsp;</span></a>
+			</li>
+    ]]>
+</script>
+

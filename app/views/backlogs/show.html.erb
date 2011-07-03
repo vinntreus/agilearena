@@ -8,7 +8,7 @@
 				<div class="column fc">
 					<dl>
 						<dt>Created by:</dt>
-						<dd><%= link_to @backlog.user.name, @backlog.user %></dd>
+						<dd><%= link_to @backlog.user.name, @backlog.user, :class => "box-link" %></dd>
 					</dl>
 					<dl>
 						<dt>Private:</dt>
@@ -25,10 +25,8 @@
 						<span>points</span>
 					</div>
 						<% if can? :destroy, @backlog %>
-						<div class="admin" data-id="<%= @backlog.id %>">
-							<%= link_to "Delete", @backlog, :method => :delete, :confirm => "Are you sure you want to delete this entire backlog? All items will be removed when doing so",
-                                :title => "Delete backlog", :class => "button right delete" %>
-						</div>
+						<div class="admin" data-id="<%= @backlog.id %>">                               
+ 							<%= link_to(@backlog, :method => :delete, :confirm => "Are you sure you want to delete this entire backlog? All items will be removed when doing so", :title => "Delete backlog", :class => "button negative") do %><span class="icon cross"></span>Delete<% end %></div>
 						<% end %>
 				</div>
 			
@@ -41,7 +39,7 @@
 			<div class="box">
 				<div class="box-content">
 					<% if can? :create_items_in, @backlog %>
-						<a href="#" class="button right toggle-block" data-toogle="#new_backlog_item_form">Create new item</a>
+						<a href="#" class="button create-item-button toggle-block" data-toogle="#new_backlog_item_form">Create new item</a>
 					<% end %>
 					<h2>Backlog items</h2>
 					<%= will_paginate @backlog_items %>
@@ -67,8 +65,10 @@
 	<script type="text/x-jqote-template" id="backlog_item_template">
     <![CDATA[
 			<li class="backlog-item selected" data-id="<%%= this.id %>">
-				<a href="#" class="button right delete" data-event="onDeleteBacklogItem" >Delete</a>	
-				<a href="#" class="button right edit" data-event="onEditBacklogItem" >Edit</a>	
+				<div class="buttons">
+					<a href="#" class="button left pill negative delete" data-event="onDeleteBacklogItem" >Delete</a>	
+					<a href="#" class="button right pill edit" data-event="onEditBacklogItem" >Edit</a>	
+				</div>
 		    <p class="points" title="Points: <%%= this.points || "?" %>"><%%= this.points || "?" %></p>		
 		    <%% for(var i = 0; i < this.categories.length; i++) %>
 							<%%= "<p class='tag'>" + this.categories[i].tag.name + "</p>" %>

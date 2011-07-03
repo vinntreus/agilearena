@@ -15,7 +15,7 @@
 #
 
 class BacklogItem < ActiveRecord::Base
-	attr_accessible :title, :points, :description, :position
+	attr_accessible :title, :points, :description, :position, :category_list
 	before_create :set_position, :set_display_id, :capture_tags
 
 	acts_as_taggable_on :categories

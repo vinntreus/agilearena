@@ -239,20 +239,22 @@ div.box div.box-content
     -moz-border-radius: 0px;
 }
 
-div.box div.box-content *
+div.box div.box-content h2
 {
 	color:#000;
 }
 
-div.box div.box-content a:link,
-div.box div.box-content a:visited,
-div.box div.box-content a:active
+.user-info a:link,
+.user-info a:visited,
+.user-info a:active,
+a.box-link
 {
-	color: #000;
+	color: #fff;
 }
-div.box div.box-content a:hover
+.user-info a:hover,
+a.box-link:hover
 {
-	color:#888;
+	color:#ddd;
 }
 
 
@@ -293,13 +295,12 @@ div.statistic strong
 
 div.admin a
 {
-color:#000;
-margin:5px 0;
+	float:right;
 }
 
-div.admin a:hover
+div.admin a.button span.icon
 {
-color:#888;
+	top:1px;
 }
 
 /******************************/
