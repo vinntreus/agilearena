@@ -55,7 +55,8 @@ ul.backlog-items li.selected
 		line-height:21px;
 }
 
-div.box-content .backlog-items li .tag
+div.box-content .backlog-items li.tag,
+div.box-content .backlog-items li p.tag
 {
 		margin:0 5px;
 		-moz-border-radius: 2px;
