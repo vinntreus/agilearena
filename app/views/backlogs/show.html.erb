@@ -26,7 +26,7 @@
 					</div>
 						<% if can? :destroy, @backlog %>
 						<div class="admin" data-id="<%= @backlog.id %>">                               
- 							<%= link_to(@backlog, :method => :delete, :confirm => "Are you sure you want to delete this entire backlog? All items will be removed when doing so", :title => "Delete backlog", :class => "button negative") do %><span class="icon cross"></span>Delete<% end %></div>
+ 							<%= link_to(@backlog, :method => :delete, :confirm => "Are you sure you want to delete this entire backlog? All items will be removed when doing so", :title => "Delete backlog", :class => "button negative") do %><span class="icon trash"></span>Delete<% end %></div>
 						<% end %>
 				</div>
 			
