@@ -11,7 +11,7 @@ gem 'acts-as-taggable-on'
 
 
 group :development do
-	gem 'annotate-models', '1.0.4'
+	gem 'annotate'
   gem 'rspec-rails', "~> 2.4"
   gem 'faker', '0.3.1'
   gem 'jasmine'

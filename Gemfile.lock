@@ -29,7 +29,7 @@ GEM
       activesupport (= 3.0.7)
     activesupport (3.0.7)
     acts-as-taggable-on (2.0.6)
-    annotate-models (1.0.4)
+    annotate (2.4.0)
     arel (2.0.9)
     builder (2.1.2)
     cancan (1.6.5)
@@ -117,7 +117,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
-  annotate-models (= 1.0.4)
+  annotate
   cancan
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)
