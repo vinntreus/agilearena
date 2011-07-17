@@ -20,7 +20,8 @@ class BacklogItemsController < ApplicationController
 												:display_id => @backlog_item.display_id,
 												:title => @backlog_item.title,
 												:categories => @backlog_item.categories,
-												:points => @backlog_item.points }	
+												:points => @backlog_item.points,
+												:description => @backlog_item.description }	
 		else
 			render :text => "Could not create backlogitem", :status => 500
     end 
@@ -37,7 +38,8 @@ class BacklogItemsController < ApplicationController
 												:display_id => @backlog_item.display_id,
 												:title => @backlog_item.title,
 												:categories => @backlog_item.categories,
-												:points => @backlog_item.points }
+												:points => @backlog_item.points,
+												:description => @backlog_item.description }
     else
 			render :text => "Could not update backlogitem", :status => 500
 		end

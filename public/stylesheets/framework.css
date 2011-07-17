@@ -5,7 +5,7 @@
 
 body 
 {	
-	font: 75%/1em Trebuchet MS;	
+	font: 85%/1em Trebuchet MS;	
 	color:#13252C;	
 }
 
@@ -55,7 +55,7 @@ header
 #page
 {
   	background:#326378;	
-    min-height: 400px;
+    min-height: 520px;
     padding: 1% 2%;
   	color:#efefef;
 }

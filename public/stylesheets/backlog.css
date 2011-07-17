@@ -23,6 +23,14 @@
 	margin-right: 5px;
 }
 
+.backlog-item .description
+{
+	line-height: 1.7em;
+  padding: 0 0 0 5px;
+	color:#3b3b3b;
+	font-size:.9em;
+}
+
 .backlog-item
 {	
 	

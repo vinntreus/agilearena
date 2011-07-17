@@ -11,7 +11,8 @@
 		<p>
 			<span class="handle">...</span>
 			#<%= backlog_item.display_id %>
-	    <span class="title"><%= backlog_item.title %></span>  
+	    <span class="title"><%= backlog_item.title %></span>
+	    <span class="description"><%= backlog_item.description %></span>
     </p>
 	  <p class="timestamp">
       Created <%= time_ago_in_words(backlog_item.created_at) %> ago.
