@@ -74,7 +74,9 @@
 		    <%% for(var i = 0; i < this.categories.length; i++) %>
 							<%%= "<p class='tag'>" + this.categories[i].tag.name + "</p>" %>
 				<%% ; %>
-				<p>#<%%= this.display_id %>
+				<p>
+					<span class="handle">...</span>
+					#<%%= this.display_id %>
 		    	<span class="title"><%%= this.title %></span>  
 		    </p>
 			  <p class="timestamp">Created <%%= this.created %> ago.</p>

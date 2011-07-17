@@ -34,7 +34,7 @@ header
 
 #sub-header
 {
-	background: -moz-linear-gradient(center top , #ccc 40%, #fff) repeat scroll 0 0 transparent;
+	background: -moz-linear-gradient(center top , #ccc 15%, #fff) repeat scroll 0 0 transparent;
   border-bottom: 1px solid #969696;
   color: #7B7B7B;
   height: 34px;
