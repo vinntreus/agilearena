@@ -36,7 +36,7 @@
 	float:left;	
 	line-height: 25px;
 	color:#fff;
-	background: url(images/framework-sprite.png) no-repeat scroll right -3px transparent;    
+	background: url(/images/framework-sprite.png) no-repeat scroll right -3px transparent;    
     height: 25px;
     padding: 0 18px 0 0;
 }

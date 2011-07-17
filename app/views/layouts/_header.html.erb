@@ -24,9 +24,13 @@
 			</menu>					
 		</nav>				
 	</section>
-	<section id="sub-header" >
+	<section id="sub-header" class="fc" >
 		<section id="header-messages">
+			<% flash.each do |key, value| %>
+  	        <span class="flash <%= key %>"><%= value %></span>
+      <% end %>
 		</section>
+		<%= raw breadcrumb %>
 		<nav>
 			<menu id="sub-menu">						
 			</menu>

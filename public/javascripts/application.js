@@ -38,10 +38,7 @@ var AGILE = (function(){
 	var setupToggle = function()	{
 		$(".toggle-block").click(function(){
 				var selectorToToggle = $(this).attr("data-toogle");
-				$(selectorToToggle).show();
-				//hack to test out - refactor
-				if(selectorToToggle === '#new_backlog_item_form')
-					backlogItem.setupSubmitNewItemForm();
+				$(selectorToToggle).show();				
 				return false;
 		});
 	}	
@@ -59,6 +56,10 @@ var AGILE = (function(){
 			this.itemsCount = this.itemsCount || $("#backlog-items-count");
 			this.editForm = this.editForm || $("#edit_backlog_item_form");
 			
+			if(this.form.length){
+				this.setupSubmitNewItemForm();
+			}
+			
 			if(this.list.length && this.editForm.length){
 				this.setupList();
 			}
@@ -68,8 +69,11 @@ var AGILE = (function(){
 			this.list.sortable({
 				update : function(event, ui){
 					that.sortItems(event, ui);
-				}
+				},
+				handle : ".handle"
 			});
+
+			
 
 			this.list.click(function(e){
 				var clickedOn = $(e.target);
@@ -237,7 +241,6 @@ var AGILE = (function(){
 				return false;
 		},
 		onAddedNewItem: function(data, formData){
-			data.points = data.points || formData["backlog_item[points]"] || "?";
 			this.deSelectAllItemsInList();
 			this.addToUI(data);
 			this.incrementItems();
@@ -246,10 +249,6 @@ var AGILE = (function(){
 			countPoints(false);
 		},
 		positionNewItemForm: function(){
-			var newItemForm = $("#new_backlog_item_form");
-			newItemForm.css("top", "50%");
-      newItemForm.css("position", "fixed");
-      newItemForm.css("left", "50%");
 			window.scrollTo(0, document.body.scrollHeight);
 		},
 		addToUI: function(item){			
@@ -283,7 +282,7 @@ var AGILE = (function(){
 		$(function(){
 		
 			countPoints(true);
-			setupToggle();			
+			setupToggle();
 			backlogItem.init();
 		});
 	}

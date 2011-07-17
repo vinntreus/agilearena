@@ -1,3 +1,15 @@
+.backlog-page h1
+{
+	float:left;
+	line-height: 1.9em;
+}
+
+.backlog-page .backlog-header
+{
+	float:right;
+	padding:0;
+}
+
 .timestamp
 {
 	font-size:.8em;	
@@ -11,10 +23,22 @@
 }
 
 .backlog-item
+{	
+	border: 1px solid #CCCCCC;
+  border-radius: 5px 5px 5px 5px;
+  margin: 10px 0;
+  padding: 1em;
+}
+
+.backlog-item .handle
 {
-	border-bottom: 1px solid #ccc;
-	padding: 1em;
-	margin:0;
+	background: url(/images/grippy.png) no-repeat 4px 50%;
+	cursor:move;
+	width:16px;
+	height:15px;
+	display:block;
+	float:left;
+	text-indent:-10000px;
 }
 
 .backlog-item .buttons,

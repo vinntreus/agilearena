@@ -19,7 +19,8 @@ class BacklogItemsController < ApplicationController
 												:created => time_ago_in_words(@backlog_item.created_at), 
 												:display_id => @backlog_item.display_id,
 												:title => @backlog_item.title,
-												:categories => @backlog_item.categories }	
+												:categories => @backlog_item.categories,
+												:points => @backlog_item.points }	
 		else
 			render :text => "Could not create backlogitem", :status => 500
     end 

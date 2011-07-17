@@ -1,6 +1,6 @@
 ﻿html
 {
-		background: none repeat scroll 0 0 #EFEFEF;
+		background: none repeat scroll 0 0 #12242E;
 }
 
 body 
@@ -39,10 +39,15 @@ header
   color: #7B7B7B;
   height: 34px;
   line-height: 34px;
-  text-align: right;	
+
   -moz-box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.1);
-  position:relative;
+
+	/*  position:relative;
   z-index:10;
+    text-align: right;	
+  
+  */
+  
   
   
   box-shadow:0px -3px 3px rgba(0, 0, 0, 0.1);
@@ -62,9 +67,8 @@ header
 
 #page
 {
-  	background:#326378;
-	
-    min-height: 200px;
+  	background:#326378;	
+    min-height: 400px;
     padding: 1% 2%;
   	color:#efefef;
 }
@@ -75,17 +79,17 @@ header
 
 footer
 {
-		background: none repeat scroll 0 0 #EFEFEF;
-    border-top: 5px solid #CFCFCF;
+		background: none repeat scroll 0 0 #12242E;
+    border-top: 1px solid #85A8BB;
     color: #69A5E0;
-    padding: 40px;
+    padding: 20px;
 }
 
 footer section
 {
-	float:left;
-	color:#6F6F6F;
-	text-shadow: 0 1px 1px #EFEFEF;
+	text-align:center;
+	color:#C1CED4;
+	/*text-shadow: 0 1px 1px #EFEFEF;*/
 }
 
 footer section.info
@@ -202,12 +206,24 @@ footer section.info
 /*        Column style        */
 /******************************/
 
-.column
+.column,
+.small-column,
+.large-column
 {
 	width:49%;
 	float:left;
 	padding:1% 0;
 	margin:0 1% 0 0;	
+}
+
+.large-column
+{
+	width:65%;
+}
+
+.small-column
+{
+	width:30%
 }
 
 #page > section.column:last-child
@@ -307,23 +323,25 @@ div.admin a.button span.icon
 /*     Flash style            */
 /******************************/
 
-div.flash
+#header-messages
 {
-	border:1px solid #dfdfdf;
-	padding:10px;
-	margin:0 0 1em 0;
+	text-align:right;
+}
+
+.flash
+{
+	padding:0 15px;
 }
 
 .flash.success
 {
-	background-color:#66A02C;
+	color:#3E6F0D;
 }
 
 .flash.error
 {
-	background-color:#9E2E2C;
+	color:#6F0907;
 }
-
 
 /******************************/
 /*     form field style       */

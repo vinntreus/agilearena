@@ -3,19 +3,16 @@
   <head>
     <title><%= title %></title>
     <%= csrf_meta_tag %>
-    <%= render 'layouts/stylesheets' %>
-    <%= javascript_include_tag :defaults, "jquery.jqote2" %>
+		<%= render 'layouts/stylesheets' %>
   </head>
-  <body>
+  <body id="<%= params[:controller].parameterize %>_controller">
 			<%= render 'layouts/header' %>            
-      <section id="page" class="fc">
-   	      <% flash.each do |key, value| %>
-  	        <div class="flash <%= key %>"><%= value %></div>
-		      <% end %>
+      <section id="page" class="fc">   	      
 		      <%= yield %>
           <% #debug(params) if Rails.env.development? %>
       </section>
       <%= render 'layouts/footer' %>
+      <%= javascript_include_tag :defaults, "jquery.jqote2" %>
   </body>
 </html>
 

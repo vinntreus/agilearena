@@ -7,7 +7,10 @@
 		<% backlog_item.categories.each do |c| %>
 			<p class="tag"><%= c.name %></p>
 		<% end %>
-		<p>#<%= backlog_item.display_id %>
+		
+		<p>
+			<span class="handle">...</span>
+			#<%= backlog_item.display_id %>
 	    <span class="title"><%= backlog_item.title %></span>  
     </p>
 	  <p class="timestamp">
