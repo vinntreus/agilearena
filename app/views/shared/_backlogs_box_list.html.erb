@@ -19,7 +19,10 @@
 <section class="column hidden" id="new_backlog_form">
 	<% unless @backlog.nil? %>
 		<div class="box">
-				<%= render "shared/backlog_form" %>
+				<div class="box-content">
+					<h2 class="box-heading">Create new backlog</h2>
+					<%= render "shared/backlog_form" %>
+				</div>
 		</div>
 	<% end %>
 </section>

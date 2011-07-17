@@ -17,7 +17,17 @@ module ApplicationHelper
 		if params[:controller] == 'backlogs'
 			link = link_to @backlog.user.name, @backlog.user
 			backlog_link = link_to @backlog.title, @backlog
-			return "<ol id='breadcrumb'><li>#{link}</li><li>#{backlog_link}</li></ol>"			
+			return "<ol id='breadcrumb'><li>#{link}</li><li>#{backlog_link}</li></ol>"		
+		elsif params[:controller] == 'pages'
+			page = 	params[:action].parameterize
+			if page == 'home'
+				link = link_to current_user.name, current_user
+				return "<ol id='breadcrumb'><li>#{link}</li></ol>"		
+			end
+		elsif params[:controller] == 'users' && !@user.nil?
+				link = link_to @user.name, @user
+				return "<ol id='breadcrumb'><li>#{link}</li></ol>"		
 		end	
+		
 	end
 end
