@@ -20,11 +20,11 @@ module ApplicationHelper
 			return "<ol id='breadcrumb'><li>#{link}</li><li>#{backlog_link}</li></ol>"		
 		elsif params[:controller] == 'pages'
 			page = 	params[:action].parameterize
-			if page == 'home'
+			if page == 'home' && !current_user.nil?
 				link = link_to current_user.name, current_user
 				return "<ol id='breadcrumb'><li>#{link}</li></ol>"		
 			end
-		elsif params[:controller] == 'users' && !@user.nil?
+		elsif params[:controller] == 'users' && !@user.nil? && !current_user.nil?
 				link = link_to @user.name, @user
 				return "<ol id='breadcrumb'><li>#{link}</li></ol>"		
 		end	
