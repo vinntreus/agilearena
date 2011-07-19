@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110606153549) do
+ActiveRecord::Schema.define(:version => 20110719202206) do
 
   create_table "backlog_items", :force => true do |t|
     t.integer  "backlog_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(:version => 20110606153549) do
   end
 
   add_index "backlogs", ["user_id"], :name => "index_backlogs_on_user_id"
+
+  create_table "sprints", :force => true do |t|
+    t.integer  "backlog_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sprints", ["backlog_id"], :name => "index_sprints_on_backlog_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

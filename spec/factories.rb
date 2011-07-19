@@ -17,6 +17,11 @@ Factory.define :backlog do |backlog|
   backlog.backlog_item_next_display_id 1
 end
 
+Factory.define :sprint do |sprint|
+  sprint.title "Fooo"
+  sprint.association :backlog
+end
+
 Factory.define :backlog_item do |backlog_item|
   backlog_item.title "Foo bar"
   backlog_item.association :backlog

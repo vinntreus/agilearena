@@ -76,6 +76,11 @@ describe BacklogsController do
       response.should have_selector(".title", :content => b1.title)
       response.should have_selector(".title", :content => b2.title)
     end     
+    
+    it "should have link to add sprint" do
+    	get :show, :id => @backlog
+	   	response.should have_selector("form", :action => sprints_path)
+    end
   	
   end
   
