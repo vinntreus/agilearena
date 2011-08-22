@@ -1,6 +1,6 @@
 ﻿html
 {
-		background: none repeat scroll 0 0 #12242E;
+		background: url(/images/heading-without-flash.jpg) repeat-x scroll 0 0 #12252e;
 }
 
 body 
@@ -12,8 +12,7 @@ body
 
 header
 {
-	height:115px;
-	background:#fff url(/images/header-background.png) no-repeat 35px top;
+	height:128px;
 }
 
 
@@ -23,7 +22,7 @@ header
 
 #main-header
 {	
-	height:80px;
+	height:65px;
 	position:relative;
 }
 
@@ -48,6 +47,16 @@ header
 	background: -o-linear-gradient(#ccc, #fff);
 }
 
+.user-info a
+{
+	color:#fff;
+}
+
+.user-info a:hover
+{
+	color:#ccc;
+}
+
 /******************************/
 /*        Page style          */
 /******************************/
@@ -66,10 +75,10 @@ header
 
 footer
 {
-		background: none repeat scroll 0 0 #12242E;
-    border-top: 1px solid #85A8BB;
+		background: #12252e url(/images/footer-top.png) repeat-x;		
     color: #69A5E0;
     padding: 20px;
+    height:100%;
 }
 
 footer section
@@ -113,10 +122,10 @@ footer section.info
 #main-header a .logo
 {
 	position:relative;
-	top:20px;	
+	top:10px;	
 	display:block;
 	float:left;
-	left:20px;
+	left:40px;
 }
 
 /******************************/

@@ -1,6 +1,4 @@
-﻿
-
-#breadcrumb,
+﻿#breadcrumb,
 #breadcrumb li
 {
 	list-style-type:none;		
@@ -18,7 +16,7 @@
     -moz-border-radius: 3px;
     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
     float:left;
-    padding:0 0 0 10px;
+    padding:0 0 0 5px;
     
     border-radius:3px;
     box-shadow:0 0 4px rgba(0, 0, 0, 0.3);
@@ -37,22 +35,22 @@
 	line-height: 25px;
 	color:#fff;
 	background: url(/images/framework-sprite.png) no-repeat scroll right -3px transparent;    
-    height: 25px;
-    padding: 0 18px 0 0;
+  height: 25px;
+  padding: 0 18px 0 0;
 }
 
 #breadcrumb > li:last-child
 {
-	font-weight:bold;
 	background: none;
-	padding:0 10px 0 0;
+	padding:0 5px 0 0;
 }
 
 #breadcrumb > li a
 {
 	color:#fff;
 	text-decoration:none;
-	padding:0 .7em;
+	letter-spacing: 0.2px;
+  padding: 0 0.5em;
 }
 #breadcrumb > li a:hover
 {
