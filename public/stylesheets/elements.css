@@ -86,6 +86,13 @@ ul > li
 	margin:0 0 1em 0;
 }
 
+ul,
+ul > li,
+menu > li
+{
+	list-style-type:none;
+}
+
 ul > li > p
 {
 	margin:5px 0;

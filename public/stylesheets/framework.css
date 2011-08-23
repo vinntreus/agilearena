@@ -1,6 +1,6 @@
 ﻿html
 {
-		background: url(/images/heading-without-flash.jpg) repeat-x scroll 0 0 #12252e;
+		background: #12252e;
 }
 
 body 
@@ -13,6 +13,7 @@ body
 header
 {
 	height:128px;
+	background:#326378	url(/images/heading/heading-bg.jpg) no-repeat top left;
 }
 
 
@@ -22,29 +23,35 @@ header
 
 #main-header
 {	
-	height:65px;
+	height:55px;
 	position:relative;
 }
 
 #sub-header
 {
-	background: -moz-linear-gradient(center top , #ccc 15%, #fff) repeat scroll 0 0 transparent;
-  border-bottom: 1px solid #969696;
   color: #7B7B7B;
-  height: 34px;
-  line-height: 34px;
+}
 
-  -moz-box-shadow: 0px -3px 3px rgba(0, 0, 0, 0.1);    
-  
-  box-shadow:0px -3px 3px rgba(0, 0, 0, 0.1);
-    /* Safari 4-5, Chrome 1-9 */
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#fff));
-  
-	/* Safari 5.1+, Chrome 10+ */
-	background: -webkit-linear-gradient(#ccc, #fff);
-  
-	/* Opera 11.10+ */
-	background: -o-linear-gradient(#ccc, #fff);
+#bottom-header
+{
+	height:30px;
+	background:transparent url(/images/heading/heading-bottom-border-bg.png) repeat-x bottom left
+}
+
+#breadcrumb-container
+{
+	background:transparent url(/images/heading-gray-menu/left-block-bg.png) repeat-x top left;
+	float:left;
+	width:70%;
+}
+
+#sub-header,
+#breadcrumb-container,
+#top-menu-container
+{
+	line-height: 34px;
+	height: 34px;
+	padding: 4px 0;
 }
 
 .user-info a
@@ -55,6 +62,41 @@ header
 .user-info a:hover
 {
 	color:#ccc;
+}
+
+/******************************/
+/*        Topmenu style       */
+/******************************/
+
+#top-menu-container
+{
+	background:transparent url(/images/heading-gray-menu/right-block-left.png) repeat-x top left;
+	float:left;
+	width:30%;
+}
+
+#top-menu
+{
+	margin: 0 0 0 1em;
+	padding-top:2px;
+}
+
+#top-menu > li
+{
+	background:transparent url(/images/buttons/buttons-sprite.png) no-repeat right -38px;
+	float: left;
+	padding: 0 9px 0 0;
+}
+
+#top-menu > li > a
+{
+	background: url("/images/buttons/buttons-sprite.png") no-repeat scroll left top transparent;
+	color: #FFFFFF;
+	display: block;
+	height: 32px;
+	line-height: 30px;
+	margin-left: 10px;
+	padding:0 5px 0 11px;
 }
 
 /******************************/
@@ -138,82 +180,10 @@ footer section.info
 	padding: 10px;
 }
 
-/******************************/
-/*        Topmenu style       */
-/******************************/
-
-#main-header nav
-{	
-	bottom: 0;
-    position: absolute;
-    right: 0;
-}
-
-#top-menu li
-{
-	float:left;
-	list-style-type: none;
-	margin:0 10px 0 0;
-	padding:0;
-	height:26px;
-	position:relative;
-	z-index:20;
-}
-
-#top-menu a
-{
-  border-left: 1px solid #74CEE9;
-  border-top: 1px solid #74CEE9;
-  border-right: 1px solid #74CEE9;
-  	background:-moz-radial-gradient(center center , #4792B1, #0F678D 100%) repeat 0 0 transparent;
-
-	line-height:26px;
-	height:26px;
-	color:#fff;
-	text-decoration:none;
-	font-size: 11px;
-	display:block;
-	float:left;
-	cursor:pointer;
-	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.2);
-	text-transform:uppercase;
-	-moz-border-radius: 3px 3px 0 3px;
-  -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
-  
-  border-radius:3px 3px 0 3px;
-  box-shadow:0px 0px 2px rgba(0, 0, 0, 0.25);
-  
-
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#4792B1), to(#0F678D));  
-	background: -webkit-linear-gradient(#4792B1, #0F678D);  
-	background: -o-linear-gradient(#4792B1, #0F678D);
-	
-	padding:0 20px;
-}
 
 
-#top-menu .active,
-#top-menu a.home
-{
-	background:-moz-radial-gradient(center center , #f7f7f7, #ccc 100%) repeat 0 0 transparent;
-	border-color:#fff;
-	color:#000;
-	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
-	
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f7f7f7), to(#ccc));  
-	background: -webkit-linear-gradient(#f7f7f7, #ccc);  
-	background: -o-linear-gradient(#f7f7f7, #ccc);
-}
 
-#top-menu a.home:hover
-{
-	background:-moz-radial-gradient(center center , #fff, #ccc 100%) repeat 0 0 transparent;
-	
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ccc));  
-	background: -webkit-linear-gradient(#fff, #ccc);  
-	background: -o-linear-gradient(#fff, #ccc);
 
-}
 
 /******************************/
 /*        Column style        */

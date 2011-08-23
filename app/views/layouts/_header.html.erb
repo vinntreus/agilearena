@@ -5,36 +5,32 @@
     <div class="user-info">
     	<% if user_signed_in %>
 				<%= link_to current_user.name, current_user %> | 
-				<%= link_to "Settings", edit_user_path(current_user) %> |
 				<%= link_to "Sign out", signout_path, :method => :delete %>
 			<% else %>
 				<%= link_to "Sign in", signin_path %>
 			<% end %>
 		</div>
-		<nav>						
+	</section>
+	<section id="sub-header" class="fc" >		
+		<section id="breadcrumb-container">
+			<%= raw breadcrumb %>		
+		</section>
+		<section id="top-menu-container" >
 			<menu id="top-menu" class="fc">
 				<li><%= link_to "Home", root_path, :class => "home" %></li>
-
-				 <% if user_signed_in %>
-				  <li><%= link_to "Users", users_path %></li>
+				<% if user_signed_in %>
+					<li><%= link_to "Users", users_path %></li>
 				<% end %>
-
 				<li><%= link_to "Help", help_path %></li>	
-
 			</menu>					
-		</nav>				
+		</section>
 	</section>
-	<section id="sub-header" class="fc" >
+	<section id="bottom-header">
 		<section id="header-messages">
 			<% flash.each do |key, value| %>
-  	        <span class="flash <%= key %>"><%= value %></span>
-      <% end %>
+				<span class="flash <%= key %>"><%= value %></span>
+			<% end %>
 		</section>
-		<%= raw breadcrumb %>
-		<nav>
-			<menu id="sub-menu">						
-			</menu>
-		</nav>
 	</section>
 </header>	
 
