@@ -1,25 +1,22 @@
 ﻿html
 {
-		background: #12252e;
+	background: #12252e;
 }
 
 body 
 {	
-	font: 85%/1em Trebuchet MS;	
+	font: 13px/1em Trebuchet MS;
 	color:#13252C;	
 }
 
-
+/******************************/
+/*        Heading style       */
+/******************************/
 header
 {
 	height:128px;
 	background:#326378	url(/images/heading/heading-bg.jpg) no-repeat top left;
 }
-
-
-/******************************/
-/*        Heading style       */
-/******************************/
 
 #main-header
 {	
@@ -54,6 +51,25 @@ header
 	padding: 4px 0;
 }
 
+/* logotype style */
+
+#main-header a .logo
+{
+	position:relative;
+	top:10px;	
+	display:block;
+	float:left;
+	left:40px;
+}
+
+/* Top right links */
+
+#main-header .user-info
+{	
+	float:right;
+	padding: 10px;
+}
+
 .user-info a
 {
 	color:#fff;
@@ -64,9 +80,7 @@ header
 	color:#ccc;
 }
 
-/******************************/
-/*        Topmenu style       */
-/******************************/
+/* Topmenu style */
 
 #top-menu-container
 {
@@ -88,6 +102,15 @@ header
 	padding: 0 9px 0 0;
 }
 
+/*#top-menu > li:hover
+{
+background-position:right -114px;
+}
+#top-menu > li > a:hover
+{
+	background-position:left -76px;
+}*/
+
 #top-menu > li > a
 {
 	background: url("/images/buttons/buttons-sprite.png") no-repeat scroll left top transparent;
@@ -97,7 +120,10 @@ header
 	line-height: 30px;
 	margin-left: 10px;
 	padding:0 5px 0 11px;
+	text-decoration:none;
 }
+
+
 
 /******************************/
 /*        Page style          */
@@ -156,34 +182,6 @@ footer section.info
 {
 	font-weight:bold;
 }
-
-/******************************/
-/*        logotype style      */
-/******************************/
-
-#main-header a .logo
-{
-	position:relative;
-	top:10px;	
-	display:block;
-	float:left;
-	left:40px;
-}
-
-/******************************/
-/*        Top right links     */
-/******************************/
-
-#main-header .user-info
-{	
-	float:right;
-	padding: 10px;
-}
-
-
-
-
-
 
 /******************************/
 /*        Column style        */
