@@ -13,6 +13,12 @@ module ApplicationHelper
 		end
 	end
 	
+	def link_button (text, path)
+		link_to_unless_current(content_tag(:span, text), path, :class => "link-button") do
+       link_to(content_tag(:span, text), path, :class => "link-button selected")
+    end
+	end
+	
 	def breadcrumb
 		if params[:controller] == 'backlogs'
 			link = link_to @backlog.user.name, @backlog.user

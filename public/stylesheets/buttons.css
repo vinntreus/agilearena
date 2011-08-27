@@ -1,0 +1,31 @@
+a.link-button
+{
+	background:transparent url(/images/buttons/buttons-sprite.png) no-repeat right -38px;
+	float: left;
+	padding: 0 9px 0 0;
+	text-decoration:none;
+}
+
+a.link-button:hover,
+.link-button.selected
+{
+	background-position:right -114px;
+}
+a.link-button:hover > span,
+.link-button.selected > span
+{
+	background-position:left -76px;
+	color:#333;
+}
+
+a.link-button > span
+{
+	background: url("/images/buttons/buttons-sprite.png") no-repeat scroll left top transparent;
+	color: #FFFFFF;
+	display: block;
+	height: 32px;
+	line-height: 30px;
+	margin-left: 10px;
+	padding:0 5px 0 11px;
+	text-decoration:none;
+}

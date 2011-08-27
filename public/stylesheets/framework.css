@@ -80,8 +80,7 @@ header
 	color:#ccc;
 }
 
-/* Topmenu style */
-
+/* top menu style */
 #top-menu-container
 {
 	background:transparent url(/images/heading-gray-menu/right-block-left.png) repeat-x top left;
@@ -94,36 +93,6 @@ header
 	margin: 0 0 0 1em;
 	padding-top:2px;
 }
-
-#top-menu > li
-{
-	background:transparent url(/images/buttons/buttons-sprite.png) no-repeat right -38px;
-	float: left;
-	padding: 0 9px 0 0;
-}
-
-/*#top-menu > li:hover
-{
-background-position:right -114px;
-}
-#top-menu > li > a:hover
-{
-	background-position:left -76px;
-}*/
-
-#top-menu > li > a
-{
-	background: url("/images/buttons/buttons-sprite.png") no-repeat scroll left top transparent;
-	color: #FFFFFF;
-	display: block;
-	height: 32px;
-	line-height: 30px;
-	margin-left: 10px;
-	padding:0 5px 0 11px;
-	text-decoration:none;
-}
-
-
 
 /******************************/
 /*        Page style          */
