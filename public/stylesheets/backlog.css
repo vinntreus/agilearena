@@ -33,7 +33,8 @@
 
 .backlog-item .secondary-info
 {
-	width:50%;
+	min-width:10%;
+	max-width:50%;
 }
 
 .backlog-item > p
