@@ -181,8 +181,6 @@ footer section.info
 	margin:0 0 0 1%;	
 }
 
-
-
 /******************************/
 /*     Statistics style       */
 /******************************/
@@ -190,15 +188,24 @@ footer section.info
 div.statistic
 {
 	float:left;
-	margin-right:2em;
+	padding: 0 14px 0 10px;
+	background:transparent url(/images/box/heading-border.png) top right no-repeat;
 }
 
-div.statistic strong
+div.statistic > span
 {
-	font-size:2em;
-	display:block;
-	line-height:1em;
-	text-align:center;
+	font-size: 0.7em;
+	padding: 0 4px;
+	text-transform: uppercase;
+	vertical-align: super;
+}
+
+div.statistic > strong
+{
+	font-size: 2em;
+	line-height: 1.5em;
+	text-align: center;
+	color:#21A8D7;
 }
 
 /******************************/

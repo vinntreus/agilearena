@@ -6,37 +6,42 @@
 
 		<section class="column backlog-header">
 
-			<div class="box fc">
-				<div class="column fc">
-					<dl>
-						<dt>Created by:</dt>
-						<dd><%= link_to @backlog.user.name, @backlog.user, :class => "box-link" %></dd>
-					</dl>
-					<dl>
-						<dt>Private:</dt>
-						<dd><%= @backlog.private? %><dd>
-					</dl>
-				</div>
-				<div class="column fc">
+		<div class="fc">
+			<dl>
+				<dt>Created by:</dt>
+				<dd><%= link_to @backlog.user.name, @backlog.user, :class => "box-link" %></dd>
+			</dl>
+			<dl>
+				<dt>Private:</dt>
+				<dd><%= @backlog.private? %><dd>
+			</dl>
+		</div>
+		
+		<div class="box fc">
+			<div class="box-content fc">
+
 					<div class="statistic">
-						<strong id="backlog-items-count"><%= @backlog.backlog_items.count %></strong>
 						<span>items</span>
+						<strong id="backlog-items-count"><%= @backlog.backlog_items.count %></strong>
 					</div>
+				
 					<div class="statistic">
-						<strong id="backlog-point-count">0</strong>
 						<span>points</span>
+						<strong id="backlog-point-count">0</strong>
 					</div>
+				
 					<div class="statistic">
 								<%= render "sprints/new_sprint_form" %>
 					</div>
+				
 						<% if can? :destroy, @backlog %>
-						<div class="admin" data-id="<%= @backlog.id %>">                               
- 							<%= link_to(@backlog, :method => :delete, :confirm => "Are you sure you want to delete this entire backlog? All items will be removed when doing so.", :title => "Delete backlog", :class => "button negative") do %><span class="icon trash"></span>Delete<% end %></div>
+							<div class="admin fc" data-id="<%= @backlog.id %>">                               
+							<%= link_to(@backlog, :method => :delete, :confirm => "Are you sure you want to delete this entire backlog? All items will be removed when doing so.", :title => "Delete backlog", :class => "button negative") do %><span class="icon trash"></span>Delete<% end %></div>
 						<% end %>
-				</div>
-			
-			</div>
-		</section>
+
+			</div>			
+		</div>
+	</section>
 		
 	</div>
 	<div class="fc">
@@ -71,22 +76,27 @@
 	</div>
 	<script type="text/x-jqote-template" id="backlog_item_template">
     <![CDATA[
-			<li class="backlog-item selected" data-id="<%%= this.id %>">
+			<li class="backlog-item fc selected" data-id="<%%= this.id %>">
 				<div class="buttons">
 					<a href="#" class="button left pill negative delete" data-event="onDeleteBacklogItem" >Delete</a>	
 					<a href="#" class="button right pill edit" data-event="onEditBacklogItem" >Edit</a>	
 				</div>
-		    <p class="points" title="Points: <%%= this.points || "?" %>"><%%= this.points || "?" %></p>		
+		    <p class="points" title="Points: <%%= this.points || "?" %>">Points: <%%= this.points || "?" %></p>		
 		    <%% for(var i = 0; i < this.categories.length; i++) %>
 							<%%= "<p class='tag'>" + this.categories[i].tag.name + "</p>" %>
 				<%% ; %>
-				<p>
+		    
+				<div class="primary-info">
 					<span class="handle">...</span>
-					#<%%= this.display_id %>
-		    	<span class="title"><%%= this.title %></span>  
-		    	<span class="description"><%%= this.description %></span>
-		    </p>
-			  <p class="timestamp">Created <%%= this.created %> ago.</p>
+
+					<h3>#<%%= this.display_id %></h3>
+					<p class="title"><%%= this.title %></p>
+				</div>
+
+				<div class="secondary-info">
+					<h3>Description</h3>
+					<p class="description"><%%= this.description %></p> 		
+				</div>
 			</li>
     ]]>
 	</script>
