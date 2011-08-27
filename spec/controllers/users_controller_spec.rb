@@ -88,7 +88,7 @@ describe UsersController do
 
       get :show, :id => @user
       response.should have_selector(".statistic > strong", :content => "2")
-      response.should have_selector(".statistic", :content => "public backlogs")    	
+      response.should have_selector(".statistic > span", :content => "Public backlogs")    	
     end
     
     it "should have private backlog count for current_user" do
@@ -99,7 +99,7 @@ describe UsersController do
 
       get :show, :id => @user
       response.should have_selector(".statistic > strong", :content => "1")
-      response.should have_selector(".statistic", :content => "private backlogs")
+      response.should have_selector(".statistic > span", :content => "Private backlogs")
     end
 
 
