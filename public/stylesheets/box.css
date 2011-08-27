@@ -40,12 +40,13 @@ a.box-link:hover
 
 div.box-content ul > li
 {
-	background-color:#b7ccd5;
+	background-color:#C5D9E0;
 	color:#11242d;
 	padding:5px 10px;
 	margin:0 0 5px;
 	
-	border-radius:5px;
+	border: 1px solid #B5C7CE;
+  border-radius: 3px 3px 3px 3px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 

@@ -106,6 +106,54 @@ header
   	color:#efefef;
 }
 
+.sub-page h1
+{
+	float:left;
+	line-height: 1.4em;
+	margin-bottom:0;
+}
+
+
+.sub-page h1.without-image
+{
+	padding-left:1em;
+}
+
+#page .display-info
+{
+	padding-top:12px;
+	font-size:.9em;
+}
+#page .display-info label
+{
+	padding:0 10px 0 10px;
+}
+
+#page .key-header
+{
+	float:right;
+	padding:0;
+}
+
+.page-info
+{
+	float:right;
+	margin-right:2em;
+	font-size:.9em;
+}
+
+.page-info > label
+{
+	color:#000;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);	
+}
+
+.page-info > p
+{
+	margin-bottom:2px;
+}
+
+
 /******************************/
 /*        Footer style        */
 /******************************/
@@ -162,7 +210,7 @@ footer section.info
 {
 	width:49%;
 	float:left;
-	padding:1% 0;
+	padding:0;
 	margin:0 1% 0 0;	
 }
 
@@ -208,6 +256,16 @@ div.statistic > strong
 	color:#21A8D7;
 }
 
+div.statistic > form
+{
+	margin:0;
+}
+
+div.actions > input
+{
+	margin-top:6px;
+}
+
 /******************************/
 /*     Admin style       */
 /******************************/
@@ -215,6 +273,7 @@ div.statistic > strong
 div.admin a
 {
 	float:right;
+	margin-top:6px;
 }
 
 div.admin a.button span.icon

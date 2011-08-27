@@ -1,15 +1,3 @@
-.backlog-page h1
-{
-	float:left;
-	line-height: 1.9em;
-}
-
-.backlog-page .backlog-header
-{
-	float:right;
-	padding:0;
-}
-
 .timestamp
 {
 	font-size:.8em;	
@@ -40,6 +28,7 @@
 .backlog-item .primary-info
 {
 	width:25%;
+	padding-right:20px;
 }
 
 .backlog-item .secondary-info

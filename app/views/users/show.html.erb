@@ -1,36 +1,32 @@
-<h1>
-	<%= gravatar_for @user %>
-	<%= @user.name %>
-</h1>
-<div class="fc">
-<section class="column fc">
-	<div class="box fc">
-		<div class="column fc">
-			<dl>
-				<dt>Name:</dt>
-				<dd><%= @user.name %></dd>
-			</dl>
-			<dl>
-				<dt>Email:</dt>
-				<dd><%= @user.email %><dd>
-			</dl>
-		</div>
-		<div class="column fc">
-			<div class="statistic">
-				<strong><%= @user.public_backlogs_count %></strong>
-				public backlogs
-			</div>
-		
-			<% if @user == current_user %>
-				<div class="statistic">
-					<strong><%= @user.private_backlogs_count %></strong>
-					private backlogs
+<div class="fc sub-page">
+	<h1>
+		<%= gravatar_for @user %>
+		<%= @user.name %>
+	</h1>
+	<div class="fc">
+	<section class="column key-header fc">
+		<div class="box fc">
+			<div class="box-content fc">
+				<div class="display-info column fc">
+					<label>Email:</label><%= @user.email %>
 				</div>
-			<% end %>
+			
+				<div class="column fc">
+					<div class="statistic">
+						<span>Public backlogs</span>
+						<strong><%= @user.public_backlogs_count %></strong>
+					</div>
 		
+					<% if @user == current_user %>
+						<div class="statistic">
+							<span>Private backlogs</span>
+							<strong><%= @user.private_backlogs_count %></strong>
+						</div>
+					<% end %>
+				</div>		
+			</div>
 		</div>
+	</section>
 	</div>
-</section>
+	<%= render "shared/backlogs_box_list" %>
 </div>
-<%= render "shared/backlogs_box_list" %>
-

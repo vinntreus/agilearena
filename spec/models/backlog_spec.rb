@@ -131,7 +131,25 @@ describe Backlog do
 
 
   	end
-
+  end
+  
+  describe "total points" do
+  	it "should sum items points" do
+  		@backlog = @user.backlogs.create!(@validParams)
+      @b1 = Factory(:backlog_item, :backlog => @backlog, :points => 2)
+      @b2 = Factory(:backlog_item, :backlog => @backlog, :points => 3)
+      
+      @backlog.total_points.should == 5
+  	end
+  	
+  	it "should handle when points is empty" do
+  		@backlog = @user.backlogs.create!(@validParams)
+      @b1 = Factory(:backlog_item, :backlog => @backlog, :points => 2)
+      @b2 = Factory(:backlog_item, :backlog => @backlog)
+      
+      @backlog.total_points.should == 2
+  	end
+  	
   end
  
 end

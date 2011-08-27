@@ -31,6 +31,16 @@ class Backlog < ActiveRecord::Base
 	
 	default_scope :order => "backlogs.created_at DESC"
 	
+	def total_points
+		points = 0
+		self.backlog_items.each do |i|
+			unless i.points.nil?
+				points += i.points
+			end
+		end
+		return points
+	end
+	
 	def init_display_id
 		self.backlog_item_next_display_id = 1
 	end
