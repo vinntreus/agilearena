@@ -82,7 +82,10 @@ display:block;
 .create-item-button
 {
 	float:right;
+	margin-top: 7px;
 }
+
+
 
 .backlog-item .buttons
 {
