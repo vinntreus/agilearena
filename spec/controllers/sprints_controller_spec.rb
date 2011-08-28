@@ -12,15 +12,13 @@ describe SprintsController do
 		
 		it "should display correct title" do
 			get :index, :id => @sprint.backlog.id
-			
 			response.should have_selector("h1", :content => "Sprints in " + @sprint.backlog.title)
 		end
 		
 		it "should list sprints in backlog" do
 			get :index, :id => @sprint.backlog.id
-			
-			response.should have_link_to @sprint
-			response.should have_selector("li", :content => @sprint.title)
+			response.should have_selector("a", :href => "/sprints/" + @sprint.id.to_s,
+		                                     :content => @sprint.title)
 		end
 		
 	end
