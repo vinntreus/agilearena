@@ -100,7 +100,7 @@ header
 
 #page
 {
-  	background:#326378;	
+  	background:#326378 url(/images/heading/glow.png) top left no-repeat;	
     min-height: 520px;
     padding: 1% 2%;
   	color:#efefef;
@@ -116,7 +116,7 @@ header
 
 .sub-page h1.without-image
 {
-	padding-left:1em;
+	padding-left:10px;
 }
 
 #page .display-info
