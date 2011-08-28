@@ -1,8 +1,12 @@
 class SprintsController < ApplicationController
 
+	def index
+		@backlog = Backlog.find(params[:id])
+		@sprints = @backlog.sprints
+	end
+
 	def show
-		@sprint = Sprint.find(params[:id])
-		
+		@sprint = Sprint.find(params[:id])		
 	end
 
   def create

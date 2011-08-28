@@ -3,6 +3,28 @@ require 'spec_helper'
 describe SprintsController do
 	render_views
 	
+	describe "GET 'index'" do
+		before(:each) do
+			@sprint = Factory(:sprint)
+			@user = @sprint.backlog.user
+      test_sign_in(@user)
+		end
+		
+		it "should display correct title" do
+			get :index, :id => @sprint.backlog.id
+			
+			response.should have_selector("h1", :content => "Sprints in " + @sprint.backlog.title)
+		end
+		
+		it "should list sprints in backlog" do
+			get :index, :id => @sprint.backlog.id
+			
+			response.should have_link_to @sprint
+			response.should have_selector("li", :content => @sprint.title)
+		end
+		
+	end
+	
 	describe "GET 'show'" do
 		
 		before(:each) do
