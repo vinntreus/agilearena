@@ -205,15 +205,7 @@ var AGILE = (function(){
 		},
 		getFormData : function(form){
 			form = form || this.form;
-			return form.serialize();
-			var data = {};
-			$("input, select", form).each(function(){
-				var field = $(this);
-				if(field.attr("name")){
-					data[field.attr("name")] = field.val();
-				}
-			});
-			return data;
+			return form.serialize();			
 		},
 		setupSubmitNewItemForm : function(){
 			var that = this;
