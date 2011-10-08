@@ -38,12 +38,22 @@
 	</div>
 		
 </div>
+
+
 	
 <div class="fc">
+
 	<section class="large-column">	
 		<div class="box">
 			<div class="box-content">
-				<h2 class="box-heading">Backlog items</h2>
+				<section class="box-heading">
+					<% if can? :create_items_in, @backlog %>
+						<section id="new_backlog_item_form" >
+									<h2>Create new item</h2>
+									<%= render "shared/backlog_item_form" %>
+						</section>
+					<% end %>
+				</section>
 				<%= will_paginate @backlog_items %>
 				<ul id="backlog-items-list" class="backlog-items fc">
 					<%= render @backlog_items %>
@@ -52,17 +62,17 @@
 			</div>
 		</div>
 	</section>	
-
-	<% if can? :create_items_in, @backlog %>
-		<section id="new_backlog_item_form"  class="small-column">
-			<div class="box" style="position:fixed;width: 30.3%;">
-				<div class="box-content">
-					<h2 class="box-heading">Create backlog item</h2>
-					<%= render "shared/backlog_item_form" %>
-				</div>
+	
+	<section class="small-column">
+		<div class="box">
+			<div class="box-content">
+				<h2 class="box-heading">Sprints</h2>		
+				<ul>
+					<%= render @sprint_items %>
+				</ul>
 			</div>
-		</section>
-	<% end %>
+		</div>		
+	</section>
 	
 	<% if can? :edit_items_in, @backlog %>
 		<div id="edit_backlog_item_form" class="hidden" ></div>

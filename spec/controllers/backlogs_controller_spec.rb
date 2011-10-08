@@ -81,6 +81,12 @@ describe BacklogsController do
     	get :show, :id => @backlog
 	   	response.should have_selector("form", :action => sprints_path)
     end
+    
+    it "should have list of sprints" do
+	    sprint = Factory(:sprint, :backlog => @backlog, :title => "Sprint 1")
+			get :show, :id => @backlog
+			response.should have_selector("a", :content => sprint.title)
+    end
   	
   end
   
