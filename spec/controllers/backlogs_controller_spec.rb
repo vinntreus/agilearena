@@ -83,9 +83,9 @@ describe BacklogsController do
     end
     
     it "should have list of sprints" do
-	    sprint = Factory(:sprint, :backlog => @backlog, :title => "Sprint 1")
+	    sprint = Factory(:sprint, :backlog => @backlog, :title => "1")
 			get :show, :id => @backlog
-			response.should have_selector("a", :content => sprint.title)
+			response.should have_selector("a", :content => sprint.display_title)
     end
   	
   end
