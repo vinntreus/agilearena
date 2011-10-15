@@ -11,16 +11,16 @@ class Sprint < ActiveRecord::Base
 	end
 	
 	def display_title
+		if self.title.nil?
+			logger.info("SPRINT:display_title is null for sprint-id = #{self.id}")
+			return self.title
+		end
+		
 		if self.title.is_number?
 			return "Sprint ##{self.title}"
 		end
+		
 		return self.title
-	end
-end
-
-#where to put this without include?
-class String
-  def is_number?
-    true if Float(self) rescue false
-  end
+	end	
+	
 end
