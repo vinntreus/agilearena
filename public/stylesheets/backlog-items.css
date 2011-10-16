@@ -1,11 +1,11 @@
 
-#scrollbar1 { clear: both; margin: 20px 0 10px; }
+#scrollbar1 { clear: both;}
 #scrollbar1 .viewport { height: 400px; overflow: hidden; position: relative; }
-#scrollbar1 .overview { width:99%; list-style: none; position: absolute; left: 0; top: 0; }
+#scrollbar1 .overview { width:100%; list-style: none; position: absolute; left: 0; top: 0; }
 #scrollbar1 .thumb .end,
 #scrollbar1 .thumb { background-color: #003D5D; }
 #scrollbar1 .scrollbar { position: relative; float: right; width: 15px; }
-#scrollbar1 .track { background-color: #efefef; height: 100%; width:13px; position: relative; padding: 0 1px; }
+#scrollbar1 .track { margin-left: 5px; background-color: #efefef; height: 100%; width:13px; position: relative; padding: 0 1px; }
 #scrollbar1 .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0; }
 #scrollbar1 .thumb .end { overflow: hidden; height: 5px; width: 13px; }
 #scrollbar1 .disable{ display: none; }
@@ -22,7 +22,7 @@ input.add-backlog-item
 .backlog-items > li
 {
 	background-color:#B9CBD5;
-	border-radius:4px;
+	border-radius:6px;
 	padding:5px;
 	margin-bottom: 0.5em;
 }
