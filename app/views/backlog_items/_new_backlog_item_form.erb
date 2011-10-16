@@ -1,0 +1,8 @@
+<%= form_for @backlog_item do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+	<input type="hidden" id="backlog_id" name="backlog_id" value="<%= @backlog.id %>" />
+  <%= f.text_field :title, :placeholder => "Add new story", :class => "add-backlog-item" %>
+  <%= f.submit "OK" %>
+  <div class="loader"></div>
+<% end %>
+

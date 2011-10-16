@@ -1,0 +1,53 @@
+
+
+input.add-backlog-item
+{
+	border:1px solid #7FB6CB;
+	border-radius: 4px;
+	font-size:2em;
+	padding:2px 5px;
+}
+
+
+.backlog-items > li
+{
+	background-color:#B9CBD5;
+	border-radius:4px;
+	padding:5px;
+}
+
+.backlog-items > li.selected,
+.backlog-items > li:hover
+{
+	background-color:#93b2c0;
+}
+
+.backlog-items > li > h3,
+.backlog-items > li > p.description
+{
+	float:left;
+}
+
+.backlog-items > li h3
+{
+	color:#333;
+	font-weight:bold;
+	font-size:1.7em;
+	margin-left: 20px;
+  padding-top: 5px;
+}
+
+.backlog-items > li > p.description
+{
+	color:#3b3b3b;
+}
+
+.backlog-items > li .points
+{
+		margin:0;
+		color:#638F9F;
+		font-size:2.5em;
+    float: right;
+    margin-right:30px;
+}
+

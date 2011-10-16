@@ -41,29 +41,27 @@
 
 
 	
-<div class="fc">
+<div class="fc" id="backlog-page">
 
 	<section class="large-column">	
+	
 		<div class="box">
-			<div class="box-content">
-				<section class="box-heading">
-					<% if can? :create_items_in, @backlog %>
-						<section id="new_backlog_item_form" >
-									<h2>Create new item</h2>
-									<%= render "shared/backlog_item_form" %>
-						</section>
-					<% end %>
-				</section>
-				<%= will_paginate @backlog_items %>
-				<ul id="backlog-items-list" class="backlog-items fc">
+			<div class="box-content">				
+				<h2 class="box-heading">Stories</h2>
+				
+				<ul id="backlog-items-list" class="backlog-items fc" data-backlog-id="<%= @backlog.id %>">
 					<%= render @backlog_items %>
 				</ul>
-				<%= will_paginate @backlog_items %>
+				<% if can? :create_items_in, @backlog %>
+						<%= render "backlog_items/new_backlog_item_form" %>
+				<% end %>				
 			</div>
 		</div>
+		
 	</section>	
 	
 	<section class="small-column">
+	
 		<div class="box">
 			<div class="box-content">
 				<h2 class="box-heading">Sprints</h2>		
@@ -72,35 +70,20 @@
 				</ul>
 			</div>
 		</div>		
+		
 	</section>
-	
-	<% if can? :edit_items_in, @backlog %>
-		<div id="edit_backlog_item_form" class="hidden" ></div>
-	<% end %>
 
 </div>
 <script type="text/x-jqote-template" id="backlog_item_template">
   <![CDATA[
-		<li class="backlog-item fc selected" data-id="<%%= this.id %>">
-			<div class="buttons">
-				<a href="#" class="button left pill negative delete" data-event="onDeleteBacklogItem" >Delete</a>	
-				<a href="#" class="button right pill edit" data-event="onEditBacklogItem" >Edit</a>	
-			</div>
-	    <p class="points" title="Points: <%%= this.points || "?" %>">Points: <%%= this.points || "?" %></p>		
-	    <%% for(var i = 0; i < this.categories.length; i++) %>
-						<%%= "<p class='tag'>" + this.categories[i].tag.name + "</p>" %>
-			<%% ; %>
-	    
+		<li class="fc" data-id="<%%= this.id %>">
+	    <p class="points" ><%%= this.points || "?" %></p>			    
 			<div class="primary-info">
 				<span class="handle">...</span>
-
-				<h3>#<%%= this.display_id %></h3>
-				<p class="title"><%%= this.title %></p>
+				<h3><%%= this.title %></h3>
 			</div>
-
 			<div class="secondary-info">
-				<h3>Description</h3>
-				<p class="description"><%%= this.description %></p> 		
+				<p class="description"><%%= this.description || "" %></p> 		
 			</div>
 		</li>
   ]]>

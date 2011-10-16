@@ -38,6 +38,7 @@ a.box-link:hover
 	color:#ddd;
 }
 
+/*
 div.box-content ul > li
 {
 	background-color:#C5D9E0;
@@ -49,7 +50,7 @@ div.box-content ul > li
   border-radius: 3px 3px 3px 3px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
-
+*/
 div.box dl
 {
 	margin-bottom:5px;

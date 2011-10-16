@@ -333,6 +333,33 @@ div.field label
   vertical-align: middle;
 }
 
+/******************************/
+/*     from backlog           */
+/******************************/
+.timestamp
+{
+	font-size:.8em;	
+	color: #3B3B3B;
+	display:none;
+}
+/* img by title */
+.backlog .title > img
+{
+	vertical-align: bottom;
+	margin-right: 5px;
+}
+
+/******************************/
+/*     ajax loaders           */
+/******************************/
+.loader
+{
+	display:none;
+	background:transparent url(/images/ajax-loader.gif) top left no-repeat;
+	width:16px;
+	height:16px;
+}
+
 
 /******************************/
 /*     Generic style          */

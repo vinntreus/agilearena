@@ -73,8 +73,8 @@ describe BacklogsController do
       b1 = Factory(:backlog_item, :backlog => @backlog, :title => "Foo bar")
       b2 = Factory(:backlog_item, :backlog => @backlog, :title => "Baz quux")
       get :show, :id => @backlog
-      response.should have_selector(".title", :content => b1.title)
-      response.should have_selector(".title", :content => b2.title)
+      response.should have_selector("h3", :content => b1.title)
+      response.should have_selector("h3", :content => b2.title)
     end     
     
     it "should have link to add sprint" do

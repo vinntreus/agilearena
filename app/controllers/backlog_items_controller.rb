@@ -11,7 +11,7 @@ class BacklogItemsController < ApplicationController
 	def create
 		@backlog = Backlog.find(params[:backlog_id])		
 		@backlog_item = @backlog.backlog_items.build(params[:backlog_item])
-		
+		logger.info(@backlog_item)
 		authorize! :create, @backlog_item, :message => "Not allowed to create backlogitem"
 		
 		if @backlog_item.save

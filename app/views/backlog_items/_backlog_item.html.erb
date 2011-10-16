@@ -1,24 +1,5 @@
-<li class="backlog-item fc" data-id="<%= backlog_item.id %>">
-<div class="buttons">
-<%# need to be no space or style is messed up %>
-<% if can? :destroy, backlog_item  %><a href="#" class="button left pill negative delete" data-event="onDeleteBacklogItem" >Delete</a><% end %><% if can? :update, backlog_item  %><a href="#" class="button right pill edit" data-event="onEditBacklogItem" >Edit</a><% end %>
-</div>
-    <p class="points" title="Points: <%= backlog_item.points || "?" %>">Points: <%= backlog_item.points || "?" %></p>
-
-		<% backlog_item.categories.each do |c| %>
-			<p class="tag"><%= c.name %></p>
-		<% end %>		
-
-		<div class="primary-info">
-			<span class="handle">...</span>
-			
-			<h3>#<%= backlog_item.display_id %></h3>
-	    <p class="title"><%= backlog_item.title %></p>
-	    
-    </div>
-    
- 		<div class="secondary-info">
-	    <h3>Description</h3>
-	    <p class="description"><%= backlog_item.description %></p> 		
- 		</div>
+<li class="fc" data-id="<%= backlog_item.id %>">
+    <p class="points"><%= backlog_item.points || "?" %></p>
+    <h3><%= backlog_item.title %></h3>
+    <p class="description"><%= backlog_item.description %></p>
 </li>

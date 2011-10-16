@@ -26,6 +26,7 @@ Agilearena::Application.routes.draw do
 		end
 	end
 
+	match 'backlogs/items/:id', :to => 'backlogs#items'
 	match 'backlogs/:id/sprints', :to => 'sprints#index'
 
   match '/contact', :to => 'pages#contact'

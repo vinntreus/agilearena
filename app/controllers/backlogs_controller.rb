@@ -23,6 +23,15 @@ class BacklogsController < ApplicationController
   	@backlog_items = @backlog.backlog_items.paginate :page => params[:page]	, :per_page => 50
   	@title = @backlog.title
   end
+  
+  # no tests for this, spike
+  def items
+  	@backlog = Backlog.find(params[:id])
+  	if cannot? :read, @backlog
+  		deny_access
+  	end
+		render :json => @backlog.backlog_items
+  end
 	
 	def destroy
 	  @backlog = Backlog.find(params[:id])
