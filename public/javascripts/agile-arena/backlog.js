@@ -15,6 +15,7 @@ var BacklogPageView = Backbone.View.extend({
 	addOne: function(backlogItem) {
     var view = new BacklogItemView({model: backlogItem});    
     this.$("#backlog-items-list").append(view.render().el);
+    window.backlogScroll.tinyscrollbar_update('bottom')
   },
   addAll: function() {
     BacklogItems.each(this.addOne);
@@ -30,5 +31,5 @@ var BacklogPageView = Backbone.View.extend({
 
 $(function(){
 	window.app = new BacklogPageView;
-	//$(".scrollable").tinyscrollbar();
+	window.backlogScroll = $("#scrollbar1").tinyscrollbar();
 });

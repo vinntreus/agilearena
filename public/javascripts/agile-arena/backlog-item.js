@@ -37,7 +37,11 @@ var BacklogItemView = Backbone.View.extend({
 	tagName : "li",	
 	template: $('#backlog_item_template'),	
 	render : function(){
-		$(this.el).html(this.template.jqote(this.model.toJSON()));		
+		var item = this.model.toJSON();
+		$(this.el).html(this.template.jqote(item));	
+		$(this.el).addClass("fc");
+		console.log(item);
+		$(this.el).attr("data-id", item.id);	
 		return this;
 	}		
 });

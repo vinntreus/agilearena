@@ -45,16 +45,22 @@
 
 	<section class="large-column">	
 	
-		<div class="box">
-			<div class="box-content scrollable">				
+		<div class="box">			
+			<div class="box-content">				
 				<h2 class="box-heading">Stories</h2>
-				
-				<ul id="backlog-items-list" class="backlog-items fc" data-backlog-id="<%= @backlog.id %>">
-					<%= render @backlog_items %>
-				</ul>
+				<div id="scrollbar1">
+					<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+					<div class="viewport">
+						<div class="overview">
+							<ul id="backlog-items-list" class="backlog-items fc" data-backlog-id="<%= @backlog.id %>">
+								<%= render @backlog_items %>
+							</ul>
+						</div>
+					</div>
+				</div>
 				<% if can? :create_items_in, @backlog %>
-						<%= render "backlog_items/new_backlog_item_form" %>
-				<% end %>				
+					<%= render "backlog_items/new_backlog_item_form" %>
+				<% end %>		
 			</div>
 		</div>
 		
@@ -76,11 +82,9 @@
 </div>
 <script type="text/x-jqote-template" id="backlog_item_template">
   <![CDATA[
-		<li class="fc" data-id="<%%= this.id %>">
-	    <p class="points" ><%%= this.points || "?" %></p>
-			<h3><%%= this.title %></h3>
-			<p class="description"><%%= this.description || "" %></p>
-		</li>
+    <p class="points" ><%%= this.points || "?" %></p>
+		<h3><%%= this.title %></h3>
+		<p class="description"><%%= this.description || "" %></p>
   ]]>
 </script>
 
