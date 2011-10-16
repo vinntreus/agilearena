@@ -30,5 +30,5 @@ var BacklogPageView = Backbone.View.extend({
 
 $(function(){
 	window.app = new BacklogPageView;
-	$(".box-content").tinyscrollbar();
+	//$(".scrollable").tinyscrollbar();
 });
