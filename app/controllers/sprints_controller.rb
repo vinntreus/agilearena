@@ -13,7 +13,11 @@ class SprintsController < ApplicationController
   	@backlog = Backlog.find(params[:backlog_id])
 		@sprint =	@backlog.sprints.create!
   	
-  	redirect_to @sprint
+  	render :json => { 
+  										:id => @sprint.id, 
+  										:title => @sprint.display_title 
+  									}
+  	#redirect_to @sprint
   end
 
 end

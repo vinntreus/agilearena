@@ -1,0 +1,36 @@
+
+#scrollbar2 { clear: both;}
+#scrollbar2 .viewport { height: 400px; overflow: hidden; position: relative; }
+#scrollbar2 .overview { width:100%; list-style: none; position: absolute; left: 0; top: 0; }
+#scrollbar2 .thumb .end,
+#scrollbar2 .thumb { background-color: #003D5D; }
+#scrollbar2 .scrollbar { position: relative; float: right; width: 15px; }
+#scrollbar2 .track { margin-left: 5px; background-color: #efefef; height: 100%; width:13px; position: relative; padding: 0 1px; }
+#scrollbar2 .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0; }
+#scrollbar2 .thumb .end { overflow: hidden; height: 5px; width: 13px; }
+#scrollbar2 .disable{ display: none; }
+
+.sprint-items > li
+{
+	background-color:#D1DADF;
+	border-radius:6px;
+	padding:0px;
+	margin-bottom: 0.5em;
+}
+
+.sprint-items > li > a
+{
+	display:block;
+	padding:10px;
+}
+
+.sprint-items > li:nth-child(even)
+{
+	background-color:#C3D6DF;
+}
+
+.sprint-items > li.selected,
+.sprint-items > li:hover
+{
+	background-color:#93b2c0;
+}

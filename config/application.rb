@@ -33,7 +33,7 @@ module Agilearena
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w(jquery-1.6.2 jquery-ui-1.8.16.custom jquery.jqote2 underscore backbone  jquery_ujs jquery.tinyscrollbar)
     
-    config.action_view.javascript_expansions[:agilearena] = %w(agile-arena/common agile-arena/backlog agile-arena/backlog-item)
+    config.action_view.javascript_expansions[:agilearena] = %w(agile-arena/common agile-arena/backlog agile-arena/backlog-item agile-arena/sprint agile-arena/sprint-item)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
