@@ -22,10 +22,6 @@ class SprintsController < ApplicationController
   
   def addItemTo
   	@sprint = Sprint.find(params[:id])
-  	@backlog_item = BacklogItem.find(params[:id])
-  	
-  	@sprint.add(@backlog_item);
-  	
   	
   end
 

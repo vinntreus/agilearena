@@ -88,6 +88,7 @@
   <![CDATA[
     <p class="points" ><%%= this.points || "?" %></p>
 		<h3><%%= this.title %></h3>
+		<p class="description"><%%= this.description || "" %></p>
   ]]>
 </script>
 <script type="text/x-jqote-template" id="sprint_item_template">

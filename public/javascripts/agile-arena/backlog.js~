@@ -21,6 +21,9 @@ var BacklogPageView = Backbone.View.extend({
 				$("body").append(el);
 				return el[0];
 			},
+			drag : function(event, ui){
+				return true;
+			},
 			stop : function(event, ui){
  			 $(this).removeClass("ui-selected");
 			}

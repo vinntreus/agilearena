@@ -41,14 +41,11 @@ input.add-backlog-item
 
 .backlog-items > li > h3,
 .backlog-items > li > p.description
-.backlog-list-item h3,
-.backlog-list-item .description
 {
 	float:left;
 }
 
-.backlog-items > li h3,
-.backlog-list-item h3
+.backlog-items > li h3
 {
 	color:#333;
 	font-size:1.2em;

@@ -20,7 +20,7 @@ a .over
 	padding:0 5px;
 	color: #3c3c3c;
 	background-color:yellow;
-
+	margin-left:10px;
 }
 
 .sprint-items > li

@@ -1,3 +1,3 @@
-<li data-id="<%= sprint.id %>">
+<li>
 	<%= link_to sprint.display_title, sprint %>
 </li>

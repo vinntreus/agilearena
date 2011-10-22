@@ -27,7 +27,7 @@ var BacklogItemCollection = Backbone.Collection.extend({
 			complete : function(){
 				loader.hide();
 			}
-		});
+		})
 	}
 });
 

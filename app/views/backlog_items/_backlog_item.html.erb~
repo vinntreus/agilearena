@@ -1,4 +1,5 @@
 <li class="fc" data-id="<%= backlog_item.id %>">
     <p class="points"><%= backlog_item.points || "?" %></p>
     <h3><%= backlog_item.title %></h3>
+    <p class="description"><%= backlog_item.description %></p>
 </li>
