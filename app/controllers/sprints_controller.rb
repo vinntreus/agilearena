@@ -25,7 +25,7 @@ class SprintsController < ApplicationController
   	@backlog_item = BacklogItem.find(params[:itemId])
   	
   	@sprint.backlog_items.push(@backlog_item);
-  	@sprint.save
+  	@sprint.save!
   	
   	render :json => {}  	
   end

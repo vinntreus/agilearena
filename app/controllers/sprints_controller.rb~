@@ -18,9 +18,8 @@ class SprintsController < ApplicationController
   										:id => @sprint.id, 
   										:title => @sprint.display_title 
   									}
-  end
-  
-  #spike
+  end  
+
   def addItemTo
   	@sprint = Sprint.find(params[:id])
   	@backlog_item = BacklogItem.find(params[:itemId])
