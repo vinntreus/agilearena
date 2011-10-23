@@ -16,7 +16,7 @@ Agilearena::Application.routes.draw do
 	#	resources :backlog_items, :only => [:create, :destroy, :show, :update], :as => "backlog_items"
 	#end
 	
-	resources :sprints, :only => [:show, :create, :index]
+	resources :sprints, :only => [:show, :create, :index, :addItemTo]
 	
 	resources :users
 	resources :backlogs, :only => [:create, :destroy, :show]
@@ -28,7 +28,6 @@ Agilearena::Application.routes.draw do
 
 	match 'backlogs/items/:id', :to => 'backlogs#items'
 	match 'backlogs/:id/sprints', :to => 'sprints#index'
-	match '/sprints/addItemTo', :to => 'sprints#addItemTo'
 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'

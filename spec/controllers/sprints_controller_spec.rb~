@@ -84,7 +84,7 @@ describe SprintsController do
 		it "should add backlogitem to sprint" do
 				lambda do
 					post :addItemTo, :id => @sprint.id, :itemId => @item.id
-				end.should change(@sprint.backlog_items, :count).by(1)  
+				end.should change(BacklogItem, :count).by(1)  
 		end
 		
 	end

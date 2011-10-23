@@ -31,7 +31,7 @@ var SprintPageView = Backbone.View.extend({
 			drop : function(event, ui){
 				console.log("sprintid: " + $(this).data("id"));
 				console.log("itemid: " + ui.draggable.data("id"));
-				that.addItemToSprint($(this).data("id"), ui.draggable.data("id"));
+				//that.addItemToSprint($(this).data("id"), ui.draggable.data("id"));
 				$("span.over", this).remove();
 			}
 		});

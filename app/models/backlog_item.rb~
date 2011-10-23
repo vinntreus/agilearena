@@ -19,8 +19,7 @@ class BacklogItem < ActiveRecord::Base
 	before_create :set_position, :set_display_id, :capture_tags
 
 	acts_as_taggable_on :categories
-	belongs_to :backlog
-	belongs_to :sprint
+	belongs_to :backlog, :sprint
 	
 	
 	validates :backlog_id, :presence => true

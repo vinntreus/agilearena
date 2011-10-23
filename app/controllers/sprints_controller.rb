@@ -7,6 +7,7 @@ class SprintsController < ApplicationController
 
 	def show
 		@sprint = Sprint.find(params[:id])		
+		@backlog_items = @sprint.backlog_items
 	end
 
   def create
@@ -17,16 +18,16 @@ class SprintsController < ApplicationController
   										:id => @sprint.id, 
   										:title => @sprint.display_title 
   									}
-  	#redirect_to @sprint
-  end
-  
+  end  
+
   def addItemTo
   	@sprint = Sprint.find(params[:id])
-  	@backlog_item = BacklogItem.find(params[:id])
+  	@backlog_item = BacklogItem.find(params[:itemId])
   	
-  	@sprint.add(@backlog_item);
+  	@sprint.backlog_items.push(@backlog_item);
+  	@sprint.save
   	
-  	
+  	render :json => {}  	
   end
 
 end
