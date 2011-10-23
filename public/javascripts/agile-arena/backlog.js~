@@ -20,11 +20,7 @@ var BacklogPageView = Backbone.View.extend({
 			return new BacklogItem(data);
 		});
 		
-		BacklogItems = new BacklogItemCollection(items);
-
-		this.initDraggable();
-		this.initSelectable();	
-		
+		BacklogItems = new BacklogItemCollection(items);		
 		
     BacklogItems.bind('add',   this.addOne, this);
     BacklogItems.bind('reset', this.addAll, this);
@@ -32,12 +28,16 @@ var BacklogPageView = Backbone.View.extend({
     
     this.list.children().remove();
     this.setupAll();
+    
+ 		this.initDraggable();
+		this.initSelectable();	
 	},	
 	
 	addOne: function(backlogItem) {
     var view = new BacklogItemView({model: backlogItem});    
     this.$("#backlog-items-list").append(view.render().el);
     window.backlogScroll.tinyscrollbar_update('bottom');
+    this.updateDraggable();
   },
   itemChanged: function(item){
   	console.log("itemChanged");
@@ -58,7 +58,9 @@ var BacklogPageView = Backbone.View.extend({
   	
   	return false;
   },
-  
+  updateDraggable: function(){
+  	$("li", this.list).draggable("destroy");
+  },
   initDraggable: function(){
 	  $("li", this.list).draggable({
 			start: function(event, ui){				 

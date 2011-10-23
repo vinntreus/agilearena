@@ -37,6 +37,7 @@ var BacklogPageView = Backbone.View.extend({
     var view = new BacklogItemView({model: backlogItem});    
     this.$("#backlog-items-list").append(view.render().el);
     window.backlogScroll.tinyscrollbar_update('bottom');
+    this.updateDraggable();
   },
   itemChanged: function(item){
   	console.log("itemChanged");
@@ -57,7 +58,10 @@ var BacklogPageView = Backbone.View.extend({
   	
   	return false;
   },
-  
+  updateDraggable: function(){
+  	$("li", this.list).draggable("destroy");
+  	this.initDraggable();
+  },
   initDraggable: function(){
 	  $("li", this.list).draggable({
 			start: function(event, ui){				 
