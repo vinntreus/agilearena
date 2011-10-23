@@ -8,6 +8,16 @@ var SprintPageView = Backbone.View.extend({
 	initialize : function(){
 		this.form    = this.$("#new_sprint");
 		
+		var items = $.map($("#sprint-items-list li"), function(item){
+			var data = {
+				id : $(item).data("id"),
+				title : $("a", item).text()
+			};
+			return new SprintItem(data);
+		});
+		
+		SprintItems = new SprintItemCollection(items);	
+		
 		this.setDroppable();		
 
     SprintItems.bind('add',   this.addOne, this);
@@ -29,9 +39,13 @@ var SprintPageView = Backbone.View.extend({
 				$("span.over", this).remove();
 			},
 			drop : function(event, ui){
-				console.log("sprintid: " + $(this).data("id"));
-				console.log("itemid: " + ui.draggable.data("id"));
-				//that.addItemToSprint($(this).data("id"), ui.draggable.data("id"));
+				//console.log("sprintid: " + $(this).data("id"));
+				//console.log("itemid: " + ui.draggable.data("id"));
+				var sprintId = $(this).data("id");
+				var itemId = ui.draggable.data("id");
+				
+				that.addItemToSprint(sprintId, itemId);
+				
 				$("span.over", this).remove();
 			}
 		});
@@ -45,12 +59,15 @@ var SprintPageView = Backbone.View.extend({
   },
   
   addItemToSprint : function(sprintId, itemId){
+
   	$.ajax({
 			type: "POST",
 			data : {id : sprintId, itemId : itemId},
 			url : "/sprints/addItemTo",
 			success : function(data, textStatus, jqXHR){
-				console.log("kunde lägga till i sprint");				
+				var result = BacklogItems.get(itemId);
+				var sprint = SprintItems.get(sprintId).get("title");
+				result.set({ sprint : sprint });
 			},
 			error : function(jqXHR, textStatus, errorThrown){
 				alert(jqXHR.responseText);
@@ -68,6 +85,6 @@ var SprintPageView = Backbone.View.extend({
 });
 
 $(function(){
-	window.app = new SprintPageView;
+	window.sprintApp = new SprintPageView;
 	window.sprintScroll = $("#scrollbar2").tinyscrollbar();
 });

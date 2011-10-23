@@ -86,7 +86,10 @@
 </div>
 <script type="text/x-jqote-template" id="backlog_item_template">
   <![CDATA[
-    <p class="points" ><%%= this.points || "?" %></p>
+    <p class="points backlog-item-info" ><%%= this.points || "?" %></p>
+   	<%% if (this.sprint) { %>
+	   	<p class="sprint backlog-item-info"><%%= this.sprint %></p>  	
+  	<%% } %>
 		<h3><%%= this.title %></h3>
   ]]>
 </script>

@@ -1,10 +1,21 @@
-var BacklogItem = Backbone.Model.extend({});
+var BacklogItem = Backbone.Model.extend({
+	initialize: function(item){
+		this.bind("change", this.ch, this);
+	},
+	ch: function(){
+		console.log("BacklogItem:changed");
+	}
+});
 
 var BacklogItemCollection = Backbone.Collection.extend({
 	model : BacklogItem,
 	backlogId : $("#backlog-items-list").data("backlog-id"),
 	url : function(){		
 		return "/backlogs/items/" + this.backlogId;
+	},	
+	initialize: function(items){
+		//console.log(items);
+		
 	},
 	createFromForm: function(form){		
 		var that = this,
@@ -31,11 +42,16 @@ var BacklogItemCollection = Backbone.Collection.extend({
 	}
 });
 
-var BacklogItems = new BacklogItemCollection
+var BacklogItems;// = new BacklogItemCollection
 
 var BacklogItemView = Backbone.View.extend({
 	tagName : "li",	
 	template: $('#backlog_item_template'),	
+	initialize: function(){
+		_.bindAll(this, 'render');
+    this.model.bind('change', this.render);
+    //this.render();
+	},	
 	render : function(){
 		var item = this.model.toJSON();
 		$(this.el).html(this.template.jqote(item));	

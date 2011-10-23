@@ -18,6 +18,7 @@ var SprintItemView = Backbone.View.extend({
 		var item = this.model.toJSON();
 		var templatedEl = this.template.jqote(item);
 		$(this.el).html(templatedEl);
+		$(this.el).attr("data-id", item.id);	
 		
 		return this;
 	}		

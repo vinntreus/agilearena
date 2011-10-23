@@ -60,6 +60,25 @@ input.add-backlog-item
 	color:#3b3b3b;
 }
 
+.backlog-items > li .backlog-item-info
+{
+	float:right;
+	color:#638F9F;
+}
+
+.backlog-items > li .sprint,
+.backlog-list-item .sprint
+{
+	background-color:#FF9C00;
+	color:#fff;
+	padding:2px;
+	border-radius: 0 0 5px 5px;
+	margin-top:-5px;
+	position:relative;
+	margin-right:10px;
+}
+
+
 .backlog-items > li .points,
 .backlog-list-item .points
 {
