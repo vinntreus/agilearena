@@ -1,21 +1,10 @@
-
-#scrollbar1 { clear: both;}
-#scrollbar1 .viewport { height: 400px; overflow: hidden; position: relative; }
-#scrollbar1 .overview { width:100%; list-style: none; position: absolute; left: 0; top: 0; }
-#scrollbar1 .thumb .end,
-#scrollbar1 .thumb { background-color: #003D5D; }
-#scrollbar1 .scrollbar { position: relative; float: right; width: 15px; }
-#scrollbar1 .track { margin-left: 5px; background-color: #efefef; height: 100%; width:13px; position: relative; padding: 0 1px; }
-#scrollbar1 .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0; }
-#scrollbar1 .thumb .end { overflow: hidden; height: 5px; width: 13px; }
-#scrollbar1 .disable{ display: none; }
-
 input.add-backlog-item
 {
-	border:1px solid #7FB6CB;
-	border-radius: 4px;
-	font-size:2em;
-	padding:2px 5px;
+	border: 1px solid #7FB6CB;
+  border-radius: 4px 4px 4px 4px;
+  font-size: 2em;
+  height: 35px;
+  padding: 0 5px;
 }
 
 

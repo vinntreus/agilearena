@@ -1,50 +1,9 @@
-
-<div class="fc sub-page">
-	<h1 class="without-image">
-		<%= @backlog.title %>	
-	</h1>	
-
-	<section class="column key-header">		
-		<div class="box fc">
-			<div class="box-content fc">
-
-				<div class="statistic">
-					<span>items</span>
-					<strong id="backlog-items-count"><%= @backlog.backlog_items.count %></strong>
-				</div>
-
-				<div class="statistic">
-					<span>points</span>
-					<strong id="backlog-point-count"><%= @backlog.total_points %></strong>
-				</div>
-
-					<% if can? :destroy, @backlog %>
-						<div class="admin fc" data-id="<%= @backlog.id %>">                               
-						<%= link_to(@backlog, :method => :delete, :confirm => "Are you sure you want to delete this entire backlog? All items will be removed when doing so.", :title => "Delete backlog", :class => "button negative") do %><span class="icon trash"></span>Delete<% end %></div>
-					<% end %>
-			</div>			
-		</div>
-	</section>
-	
-	<div class="page-info">
-		<label>Created by:</label>
-		<p><%= link_to @backlog.user.name, @backlog.user, :class => "box-link" %></p>
-		<label>Private:</label>
-		<p><%= @backlog.private? %></p>
-	</div>
-		
-</div>
-
-
-	
 <div class="fc" id="backlog-page">
-
-	<section class="large-column">	
-	
+	<section class="large-column">
 		<div class="box">			
 			<div class="box-content">				
-				<h2 class="box-heading">Stories</h2>
-				<div id="scrollbar1">
+				<h2 class="box-heading"><%= @backlog.title %></h2>
+				<div id="backlog-large-column-scroll" class="scrollbar-container">
 					<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
 					<div class="viewport">
 						<div class="overview">
@@ -58,8 +17,7 @@
 					<%= render "backlog_items/new_backlog_item_form" %>
 				<% end %>		
 			</div>
-		</div>
-		
+		</div>		
 	</section>	
 	
 	<section class="small-column">
@@ -67,7 +25,7 @@
 		<div class="box">
 			<div class="box-content">
 				<h2 class="box-heading">Sprints</h2>		
-				<div id="scrollbar2">
+				<div id="sprint-right-column-scroll" class="scrollbar-container">
 					<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
 					<div class="viewport">
 						<div class="overview">

@@ -1,6 +1,5 @@
 ﻿html
 {
-	/*background: #12252e;*/
 	background:#326378;
 }
 
@@ -348,6 +347,24 @@ div.field label
 {
 	vertical-align: bottom;
 	margin-right: 5px;
+}
+
+
+#new_backlog_item,
+#new_sprint
+{
+	height:30px;
+	padding:1em 0;
+	margin:0;
+}
+
+#new_backlog_item input[type=submit],
+#new_sprint input[type=submit]
+{
+	line-height:37px;
+	height:37px;
+	vertical-align:top;
+	margin:0;
 }
 
 /******************************/

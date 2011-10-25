@@ -39,8 +39,6 @@ var SprintPageView = Backbone.View.extend({
 				$("span.over", this).remove();
 			},
 			drop : function(event, ui){
-				//console.log("sprintid: " + $(this).data("id"));
-				//console.log("itemid: " + ui.draggable.data("id"));
 				var sprintId = $(this).data("id");
 				var itemId = ui.draggable.data("id");
 				
@@ -74,16 +72,16 @@ var SprintPageView = Backbone.View.extend({
 		});
   },
   
-  newSprintItem : function(e){  	
-
-   	SprintItems.create();
-  	
+  newSprintItem : function(e){
+   	SprintItems.create();  	
   	return false;
   },
 	
 });
 
 $(function(){
-	window.sprintApp = new SprintPageView;
-	window.sprintScroll = $("#scrollbar2").tinyscrollbar();
+	if($("#new_sprint").length > 0){
+		window.sprintApp = new SprintPageView;
+	}
+	window.sprintScroll = $("#sprint-right-column-scroll").tinyscrollbar();
 });

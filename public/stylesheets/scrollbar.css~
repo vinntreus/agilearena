@@ -1,0 +1,66 @@
+.scrollbar-container 
+{ 
+	clear: both;
+}
+
+.scrollbar-container .viewport 
+{ 
+	height: 400px; 
+	overflow: hidden; 
+	position: relative; 
+}
+
+.scrollbar-container .overview 
+{ 
+	width:100%; 
+	list-style: none; 
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+}
+
+.scrollbar-container .thumb .end,
+.scrollbar-container .thumb 
+{ 
+	background-color: #C3D1DA; 
+}
+
+.scrollbar-container .scrollbar-container 
+{ 
+	position: relative; 
+	float: right; 
+	width: 15px; 
+}
+
+.scrollbar-container .track 
+{ 
+	margin-left: 5px; 
+	background-color: #356478; 
+	height: 100%; 
+	width:13px; 
+	position: relative; 
+	border-radius:8px; 
+}
+
+.scrollbar-container .thumb 
+{ 
+	height: 20px; 
+	width: 13px; 
+	cursor: pointer; 
+	overflow: hidden; 
+	position: absolute; 
+	top: 0; 
+	border-radius:8px; 
+}
+
+.scrollbar-container .thumb .end 
+{ 
+	overflow: hidden; 
+	height: 5px; 
+	width: 13px; 
+}
+
+.scrollbar-container .disable
+{ 
+	display: none; 
+}

@@ -1,14 +1,14 @@
 
-#scrollbar2 { clear: both;}
-#scrollbar2 .viewport { height: 400px; overflow: hidden; position: relative; }
-#scrollbar2 .overview { width:100%; list-style: none; position: absolute; left: 0; top: 0; }
-#scrollbar2 .thumb .end,
-#scrollbar2 .thumb { background-color: #003D5D; }
-#scrollbar2 .scrollbar { position: relative; float: right; width: 15px; }
-#scrollbar2 .track { margin-left: 5px; background-color: #efefef; height: 100%; width:13px; position: relative; padding: 0 1px; }
-#scrollbar2 .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0; }
-#scrollbar2 .thumb .end { overflow: hidden; height: 5px; width: 13px; }
-#scrollbar2 .disable{ display: none; }
+.scrollbar-container { clear: both;}
+.scrollbar-container .viewport { height: 400px; overflow: hidden; position: relative; }
+.scrollbar-container .overview { width:100%; list-style: none; position: absolute; left: 0; top: 0; }
+.scrollbar-container .thumb .end,
+.scrollbar-container .thumb { background-color: #C3D1DA; }
+.scrollbar-container .scrollbar-container { position: relative; float: right; width: 15px; }
+.scrollbar-container .track { margin-left: 5px; background-color: #356478; height: 100%; width:13px; position: relative; border-radius:8px; }
+.scrollbar-container .thumb { height: 20px; width: 13px; cursor: pointer; overflow: hidden; position: absolute; top: 0; border-radius:8px; }
+.scrollbar-container .thumb .end { overflow: hidden; height: 5px; width: 13px; }
+.scrollbar-container .disable{ display: none; }
 
 .active-droppable
 {
@@ -20,7 +20,7 @@ a .over
 	padding:0 5px;
 	color: #3c3c3c;
 	background-color:yellow;
-	margin-left:10px;
+
 }
 
 .sprint-items > li

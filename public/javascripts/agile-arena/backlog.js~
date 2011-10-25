@@ -60,6 +60,7 @@ var BacklogPageView = Backbone.View.extend({
   },
   updateDraggable: function(){
   	$("li", this.list).draggable("destroy");
+  	this.initDraggable();
   },
   initDraggable: function(){
 	  $("li", this.list).draggable({
@@ -104,7 +105,9 @@ var BacklogPageView = Backbone.View.extend({
 });
 
 $(function(){
-	window.backlogApp = new BacklogPageView;
+	if($("#new_backlog_item").length > 0){
+		window.backlogApp = new BacklogPageView;
+	}
 	window.backlogScroll = $("#scrollbar1").tinyscrollbar();
 	
 });
