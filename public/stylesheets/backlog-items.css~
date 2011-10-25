@@ -75,6 +75,7 @@ input.add-backlog-item
 	border-radius: 0 0 5px 5px;
 	margin-top:-5px;
 	position:relative;
+	margin-right:10px;
 }
 
 
