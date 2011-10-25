@@ -1,5 +1,6 @@
 ﻿html
 {
+	/*background: #12252e;*/
 	background:#326378;
 }
 
