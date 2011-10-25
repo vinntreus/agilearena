@@ -77,7 +77,9 @@
 						</div>
 					</div>
 				</div>
-				<%= render "sprints/new_sprint_form" %>
+				<% if can? :create_items_in, @backlog %>
+					<%= render "sprints/new_sprint_form" %>
+				<% end %>		
 			</div>
 		</div>		
 		
