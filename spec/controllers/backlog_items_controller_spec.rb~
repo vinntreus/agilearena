@@ -136,8 +136,6 @@ describe BacklogItemsController do
   	before(:each) do
   		@backlog = Factory(:backlog)
   		@backlog_item = Factory(:backlog_item, :id => 1, :title => "hej", :backlog => @backlog)
-  		@member = Factory(:user, :email => "flu@test.com")
-			@collaborator = Factory(:collaborator, :backlog => @backlog, :user => @member)
   		@user = @backlog.user
   		test_sign_in(@user)  		
   	end
@@ -175,14 +173,7 @@ describe BacklogItemsController do
         @backlog_item.reload
 				@backlog_item.title.should == "a"
   		end
-		  it "member can create" do
-	    	test_sign_in(@member)
-	    	
-	    	@attr = {:title => "a"}
-        put :update,:id => 1, :backlog_item => @attr, :attrbacklog_id => @backlog.id
-        @backlog_item.reload
-				@backlog_item.title.should == "a"
-    	end
+  		
   	end
   end
   

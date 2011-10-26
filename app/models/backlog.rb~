@@ -32,7 +32,7 @@ class Backlog < ActiveRecord::Base
 	
 	default_scope :order => "backlogs.created_at DESC"
 	
-	def is_member(user)
+	def is_member?(user)
   	self.collaborators.where(:user_id => user.id).count > 0
   end
 	

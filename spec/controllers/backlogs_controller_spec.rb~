@@ -32,7 +32,8 @@ describe BacklogsController do
   			@backlog_owner = Factory(:user, :email => "test@tester.com")
   			@user = test_sign_in(Factory(:user))
 	  		@backlog = Factory(:backlog, :user => @backlog_owner, :private => true)			
-				@coll = Factory(:collaborator, :user => @user, :backlog => @backlog, :role => "member")
+				@coll = Collaborator.create({:user => @user, :backlog => @backlog, :role => "member"})
+				@coll.save!				
 				
 	  		get :show, :id => @backlog
 	  		

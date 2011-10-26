@@ -44,7 +44,7 @@ describe Backlog do
   describe "collaborators" do
   	before(:each) do
 			@backlog = @user.backlogs.create!(@validParams)
-			some_user = Factory(:user, :email => "flurp@test.com")
+			some_user = Factory(:user)
 			@backlog.collaborators.create!({
 				:user => some_user,
 				:role => "read"
