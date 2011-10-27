@@ -22,10 +22,10 @@ class Ability
 					item.backlog.user.id == user.id
 			end
 			can :create_items_in, Backlog do |item|
-					item.user.id == user.id 
+					item.user.id == user.id || item.is_member(user)
 			end
 			can :edit_items_in, Backlog do |item|
-					item.user.id == user.id 
+					item.user.id == user.id #|| item.is_member(user)
 			end
 
 			####################

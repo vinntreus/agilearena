@@ -100,6 +100,16 @@ describe BacklogsController do
 			get :show, :id => @backlog
 			response.should have_selector("a", :content => sprint.display_title)
     end
+    
+		it "should have form to create backlogitem for members" do
+			@backlog_owner = Factory(:user, :email => "test@tester.com")
+  		@backlog = Factory(:backlog, :user => @backlog_owner, :private => true)			
+			@coll = Factory(:collaborator, :user => @user, :backlog => @backlog, :role => "member")
+			
+  		get :show, :id => @backlog
+  		
+			response.should have_selector("form", :action => backlog_items_path)
+		end
   	
   end
   
