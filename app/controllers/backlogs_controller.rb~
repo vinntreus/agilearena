@@ -31,8 +31,7 @@ class BacklogsController < ApplicationController
   		deny_access
   	end
 		render :json => @backlog.backlog_items
-  end 
-
+  end
 	
 	def destroy
 	  @backlog = Backlog.find(params[:id])

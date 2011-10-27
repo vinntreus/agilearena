@@ -1,0 +1,3 @@
+<li>
+   <%= backlog_member.email %>
+</li>
