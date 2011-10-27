@@ -38,6 +38,19 @@ describe BacklogItemsController do
 			@user = @backlog.user
 			test_sign_in(@user)  		
 		end
+		
+		it "should have form to create backlogitem for members" do
+			@backlog_owner = Factory(:user, :email => "test@tester.com")
+  		@backlog2 = Factory(:backlog, :user => @backlog_owner, :private => true)			
+			@coll = Factory(:collaborator, :user => @user, :backlog => @backlog2, :role => "member")
+			
+			@backlog_item5 = Factory(:backlog_item, :position => 1, :id => 5, :title => "c", :backlog => @backlog2)
+			@backlog_item6 = Factory(:backlog_item, :position => 2, :id => 6, :title => "d", :backlog => @backlog2)
+			
+  		put :sort, :id => 5, :new_parent => 6
+			@backlog_item5.reload
+			@backlog_item5.position.should == 2
+		end
   	
   	it "should increment position when downprioritized" do
 			put :sort, :id => 1, :new_parent => 2
@@ -127,6 +140,19 @@ describe BacklogItemsController do
 	  		lambda do
           post :destroy, :id => 1
         end.should change(BacklogItem, :count).by(-1)
+			end
+			
+				
+			it "members can delete" do
+				@backlog_owner = Factory(:user, :email => "test@tester.com")
+				@backlog2 = Factory(:backlog, :user => @backlog_owner, :private => true)			
+				@backlog_item2 = Factory(:backlog_item, :id => 2, :title => "hej", :backlog => @backlog2)
+				@coll = Factory(:collaborator, :user => @user, :backlog => @backlog2, :role => "member")
+				
+				lambda do
+          post :destroy, :id => 2
+        end.should change(BacklogItem, :count).by(-1)
+        
 			end
   	end
   	

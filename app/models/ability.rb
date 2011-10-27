@@ -13,19 +13,19 @@ class Ability
 					item.backlog.user.id == user.id || item.backlog.is_member(user)
 			end
 			can :destroy, BacklogItem do |item|
-					item.backlog.user.id == user.id 
+					item.backlog.user.id == user.id || item.backlog.is_member(user) 
 			end
 			can :update, BacklogItem do |item|
 					item.backlog.user.id == user.id || item.backlog.is_member(user)
 			end  	
 			can :sort, BacklogItem do |item|
-					item.backlog.user.id == user.id
+					item.backlog.user.id == user.id || item.backlog.is_member(user)
 			end
 			can :create_items_in, Backlog do |item|
 					item.user.id == user.id || item.is_member(user)
 			end
 			can :edit_items_in, Backlog do |item|
-					item.user.id == user.id #|| item.is_member(user)
+					item.user.id == user.id || item.is_member(user)
 			end
 
 			####################
