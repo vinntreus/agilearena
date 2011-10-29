@@ -14,7 +14,7 @@ describe BacklogMembersController do
 				@member = Factory(:user, :email => "member@test.com")
 				@backlog_owner = Factory(:user, :email => "test@tester.com")
 	  		@backlog = Factory(:backlog, :user => @backlog_owner, :private => true)							
-				@coll = Factory(:collaborator, :user => @user, :backlog => @backlog, :role => "member")	
+				@coll = Factory(:collaborator, :user => @member, :backlog => @backlog, :role => "member")	
 
 				test_sign_in(@backlog_owner)  		
 			end

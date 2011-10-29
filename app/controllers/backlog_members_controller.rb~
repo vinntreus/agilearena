@@ -3,6 +3,6 @@ class BacklogMembersController < ApplicationController
 
 	def show	
 		@backlog = Backlog.find(params[:id])		
-		@members = @backlog.collaborators		
+		@backlog_members = @backlog.collaborators		
 	end
 end

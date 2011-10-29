@@ -25,6 +25,18 @@ describe BacklogMembersController do
 				response.should have_selector("li", :content => "member@test.com")
 			end
 			
+			describe "failure" do
+				it "should fail for non member on private backlog" do
+					@not_member = Factory(:user, :email => "not_member@test.com")
+					test_sign_in(@not_member)
+					
+					get :show, :id => 1
+					
+					response.should redirect_to(signin_path)
+					
+				end
+			end
+			
 			
 		end
 end
