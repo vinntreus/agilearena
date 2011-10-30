@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 			render "home_signedin"
 		else 
 			redirect_to '/signin'
+			return
 		end
   end
 
