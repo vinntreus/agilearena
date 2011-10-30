@@ -8,7 +8,9 @@ a .over
 	padding:0 5px;
 	color: #3c3c3c;
 	background-color:yellow;
-
+	display:inline;
+	line-height:1em;
+	font-size:0.9em;
 }
 
 .sprint-items > li

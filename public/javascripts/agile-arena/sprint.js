@@ -38,10 +38,10 @@ var SprintPageView = Backbone.View.extend({
 			activeClass: 'active-droppable',
 			tolerance: 'pointer',
 			over: function(event, ui){
-				$("a", this).append("<span class='over'>Add to sprint</span>");
+				$("a", this).append("<p class='over'>Add to sprint</p>");
 			},
 			out : function(event, ui){
-				$("span.over", this).remove();
+				$(".over", this).remove();
 			},
 			drop : function(event, ui){
 				var sprintId = $(this).data("id");
@@ -49,7 +49,7 @@ var SprintPageView = Backbone.View.extend({
 				
 				that.addItemToSprint(sprintId, itemId);
 				
-				$("span.over", this).remove();
+				$(".over", this).remove();
 			}
 		});
 	},
@@ -69,7 +69,7 @@ var SprintPageView = Backbone.View.extend({
 			success : function(data, textStatus, jqXHR){
 				var result = BacklogItems.get(itemId);
 				var sprint = SprintItems.get(sprintId).get("title");
-				result.set({ sprint : sprint });
+				result.set({ sprint : data.title });
 			},
 			error : function(jqXHR, textStatus, errorThrown){
 				alert(jqXHR.responseText);

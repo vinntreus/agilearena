@@ -29,7 +29,7 @@ class SprintsController < ApplicationController
   	@sprint.backlog_items.push(@backlog_item);
   	@sprint.save!
   	
-  	render :json => {}  	
+  	render :json => { :title => @sprint.display_title}  	
   end
 
 end

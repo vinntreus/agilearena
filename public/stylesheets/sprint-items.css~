@@ -8,7 +8,7 @@ a .over
 	padding:0 5px;
 	color: #3c3c3c;
 	background-color:yellow;
-
+	display:inline;
 }
 
 .sprint-items > li
@@ -29,6 +29,7 @@ a .over
 .sprint-items > li > a > span
 {
 	float:right;
+	font-size:0.9em;
 }
 
 .sprint-items > li:nth-child(even)
