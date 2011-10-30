@@ -1,5 +1,7 @@
 <div class="fc" id="backlog-page">
-	<h1><%= @backlog.title %></h1>
+
+	<h2><%= @backlog.title %></h2>
+
 	<section class="large-column">
 		<div class="box">			
 			<div class="box-content">				
@@ -36,10 +38,10 @@
 						</div>
 					</div>
 				</div>
-				<% if can? :create_items_in, @backlog %>
-					<%= render "sprints/new_sprint_form" %>
-				<% end %>		
 			</div>
+			<% if can? :create_items_in, @backlog %>
+				<%= render "sprints/new_sprint_form" %>
+			<% end %>		
 		</div>		
 		
 		<div class="box-tab">

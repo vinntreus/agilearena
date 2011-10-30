@@ -5,6 +5,7 @@ input.add-backlog-item
   font-size: 2em;
   height: 35px;
   padding: 0 5px;
+  box-shadow: 4px 4px 4px #45889F;
 }
 
 

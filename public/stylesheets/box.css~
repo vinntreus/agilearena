@@ -13,7 +13,8 @@ div.box div.box-content
     /*background:#fff url(/images/box/heading-bg.png) repeat-x top left;*/
     background:#fff;
     border: 1px solid #326378;
-    padding: 0 6px 0;
+    padding: 6px 6px 0;
+ 
     color:#000;
     -moz-box-shadow: 0 0 5px rgba(255, 255, 255, 0.65);
     -moz-border-radius: 0px;
@@ -36,6 +37,12 @@ div.box > ul > li
 div.box > form
 {
 	margin:0.5em 0;
+ 
+}
+
+div.box form
+{
+ background: #7099AB;
 }
 
 div.box-tab
@@ -44,7 +51,7 @@ div.box-tab
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom:none;
   display: inline;
-  padding: 0 2px;
+	padding: 2px 4px;
   margin-left:10px;
 
   border-radius:2px 2px 0 0;
@@ -55,13 +62,6 @@ div.box-tab
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/
 }
 
-.small-column div.box-tab 
-{
-/*
-	margin-left: -49px;
-  margin-top: 38px;*/
-}
-
 div.box-tab > h2.left-aligned-header
 {
 	font-size:0.95em;
@@ -69,7 +69,7 @@ div.box-tab > h2.left-aligned-header
 	color:#fff;
 	letter-spacing: 1px;
 	line-height: 1.2em;
-	padding: 2px;
+	padding: 5px 2px 3px;
 }
 
 div.box div.box-content h2
@@ -79,6 +79,11 @@ div.box div.box-content h2
   line-height: 40px;
   margin-bottom:6px;
   padding-left:20px;
+}
+
+div.box > div
+{
+	background-color: #fff;
 }
 
 

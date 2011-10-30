@@ -5,7 +5,7 @@
 
 .scrollbar-container .viewport 
 { 
-	height: 500px; 
+	height: 490px; 
 	overflow: hidden; 
 	position: relative; 
 }

@@ -1,8 +1,8 @@
 <% if can? :read, backlog %>
 <li class="backlog">
+     	<%= link_to backlog.title, backlog %>
 		  <% if backlog.private %>
 			  <%= image_tag "lock.jpg", :alt => "private", :title => "private" %>
 		  <% end %>
-     	<%= link_to backlog.title, backlog %>
 </li>
 <% end %>

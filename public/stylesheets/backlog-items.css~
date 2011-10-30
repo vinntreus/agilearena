@@ -1,9 +1,10 @@
 input.add-backlog-item
 {
-	border:1px solid #7FB6CB;
-	border-radius: 4px;
-	font-size:2em;
-	padding:2px 5px;
+	border: 1px solid #7FB6CB;
+  border-radius: 4px 4px 4px 4px;
+  font-size: 2em;
+  height: 35px;
+  padding: 0 5px;
 }
 
 

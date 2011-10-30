@@ -208,7 +208,7 @@ footer section.info
 .small-column,
 .large-column
 {
-	width:49%;
+	width:48%;
 	float:left;
 	padding:0;
 	margin:0 3% 0 0;	
@@ -356,9 +356,9 @@ div.field label
 #new_backlog_item,
 #new_sprint
 {
-	height:30px;
-	padding:0.5em 0 1em;
-	margin:0;
+	height: 30px;
+	margin: 0;
+	padding: 0.5em 0;
 }
 
 #new_backlog_item input[type=submit],
