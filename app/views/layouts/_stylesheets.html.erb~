@@ -12,3 +12,5 @@
 	<%= stylesheet_link_tag 'css3buttons', :media => 'screen' %>
 	<%= stylesheet_link_tag 'buttons', :media => 'screen' %>
 	<%= stylesheet_link_tag 'box', :media => 'screen' %>
+	<%= stylesheet_link_tag 'scrollbar', :media => 'screen' %>
+	<%= stylesheet_link_tag 'collaborator-list', :media => 'screen' %>

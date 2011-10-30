@@ -22,7 +22,7 @@ class BacklogMembersController < ApplicationController
 	
 		if @user.nil?
 			flash[:error] = "User does not exist!"
-      redirect_to :action => show, :id => @backlog.id
+	    redirect_to :controller => 'backlog', :action => 'show', :id => @backlog.id
       return 
     end
 
@@ -38,6 +38,6 @@ class BacklogMembersController < ApplicationController
 			end
     end
     
-    redirect_to :action => show, :id => @backlog.id
+    redirect_to :controller => 'backlog', :action => 'show', :id => @backlog.id
 	end
 end

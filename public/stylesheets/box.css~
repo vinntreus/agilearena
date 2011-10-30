@@ -10,7 +10,8 @@ div.box
 }
 div.box div.box-content
 {
-    background:#fff url(/images/box/heading-bg.png) repeat-x top left;
+    /*background:#fff url(/images/box/heading-bg.png) repeat-x top left;*/
+    background:#fff;
     border: 1px solid #326378;
     padding: 0 6px 0;
     color:#000;
@@ -28,8 +29,13 @@ div.box > ul
 
 div.box > ul > li
 {
-	margin:0;
+	margin:0 5px 0 0;
 	float:left;
+}
+
+div.box > form
+{
+	margin:0.5em 0;
 }
 
 div.box-tab
@@ -54,11 +60,6 @@ div.box-tab
 /*
 	margin-left: -49px;
   margin-top: 38px;*/
-}
-
-.small-column div#sprint-heading 
-{
-	margin-left: -42px;
 }
 
 div.box-tab > h2.left-aligned-header

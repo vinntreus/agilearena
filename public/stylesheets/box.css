@@ -10,9 +10,10 @@ div.box
 }
 div.box div.box-content
 {
-    background:#fff url(/images/box/heading-bg.png) repeat-x top left;
+    /*background:#fff url(/images/box/heading-bg.png) repeat-x top left;*/
+    background:#fff;
     border: 1px solid #326378;
-    padding: 0 6px 0;
+    padding: 6px 6px 0;
     color:#000;
     -moz-box-shadow: 0 0 5px rgba(255, 255, 255, 0.65);
     -moz-border-radius: 0px;
@@ -28,8 +29,13 @@ div.box > ul
 
 div.box > ul > li
 {
-	margin:0;
+	margin:0 5px 0 0;
 	float:left;
+}
+
+div.box > form
+{
+	margin:0.5em 0;
 }
 
 div.box-tab
