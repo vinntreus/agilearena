@@ -75,8 +75,8 @@ describe UsersController do
       b2 = Factory(:backlog, :user => @user, :title => "Baz quux", :private => true)
 
       get :show, :id => @user
-      response.should have_selector("a", :content => b1.title)
-      response.should_not have_selector("a", :content => b2.title)
+      response.should have_selector(".title", :content => b1.title)
+      response.should_not have_selector(".title", :content => b2.title)
       response.should_not have_selector(".statistic", :content => "private backlogs")
     end
     

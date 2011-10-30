@@ -27,6 +27,4 @@
 			</div>
 		</div>
 	</section>
-
-	<%= render "backlogs/backlog_list" %>
 </div>

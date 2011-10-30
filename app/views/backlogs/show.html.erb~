@@ -21,12 +21,11 @@
 	</section>	
 	
 	<section class="small-column">
-		<div class="box-tab sprint-heading">
+		<div id="sprint-heading" class="box-tab">
 			<h2 class="left-aligned-header">Sprints</h2>
 		</div>	
 		<div class="box sprints">
 			<div class="box-content">
-				<h2 class="box-heading">Sprints</h2>		
 				<div id="sprint-right-column-scroll" class="scrollbar-container">
 					<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
 					<div class="viewport">
