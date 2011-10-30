@@ -25,7 +25,13 @@ div.box > ul
   border: 1px solid #326378;
 	background-color:#fff;
 	padding:10px;
+}
 
+div.box .collaborator-image-list p
+{
+	color:#666;
+	font-size:0.8em;
+	text-align: center;
 }
 
 div.box > ul > li

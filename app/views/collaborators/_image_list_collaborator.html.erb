@@ -2,6 +2,7 @@
 	<% collaborators.each do |c| %>
 		<li>
 			<%= gravatar_for c.user %>
+			<p><%= c.user.display_name %></p>
 		</li>
 	<% end %>
 </ul>
