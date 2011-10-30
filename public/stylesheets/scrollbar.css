@@ -5,9 +5,14 @@
 
 .scrollbar-container .viewport 
 { 
-	height: 400px; 
+	height: 490px; 
 	overflow: hidden; 
 	position: relative; 
+}
+
+.sprints .scrollbar-container .viewport 
+{
+	height:200px;
 }
 
 .scrollbar-container .overview 

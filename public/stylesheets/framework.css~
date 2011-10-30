@@ -216,12 +216,13 @@ footer section.info
 
 .large-column
 {
-	width:65%;
+	width:64%;
 }
 
 .small-column
 {
-	width:30%
+	width:30%;
+	position:relative;
 }
 
 #page > section.column:last-child
@@ -293,6 +294,7 @@ div.admin a.button span.icon
 .flash
 {
 	padding:0 15px;
+	background-color:#fff;
 }
 
 .flash.success
@@ -303,6 +305,7 @@ div.admin a.button span.icon
 .flash.error
 {
 	color:#6F0907;
+	
 }
 
 /******************************/

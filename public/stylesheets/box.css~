@@ -56,6 +56,11 @@ div.box-tab
   margin-top: 38px;*/
 }
 
+.small-column div#sprint-heading 
+{
+	margin-left: -42px;
+}
+
 div.box-tab > h2.left-aligned-header
 {
 	font-size:0.95em;

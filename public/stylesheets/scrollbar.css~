@@ -5,9 +5,14 @@
 
 .scrollbar-container .viewport 
 { 
-	height: 400px; 
+	height: 500px; 
 	overflow: hidden; 
 	position: relative; 
+}
+
+.sprints .scrollbar-container .viewport 
+{
+	height:200px;
 }
 
 .scrollbar-container .overview 
@@ -25,7 +30,7 @@
 	background-color: #C3D1DA; 
 }
 
-.scrollbar-container .scrollbar-container 
+.scrollbar-container .scrollbar
 { 
 	position: relative; 
 	float: right; 

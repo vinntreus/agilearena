@@ -211,17 +211,18 @@ footer section.info
 	width:49%;
 	float:left;
 	padding:0;
-	margin:0 1% 0 0;	
+	margin:0 3% 0 0;	
 }
 
 .large-column
 {
-	width:65%;
+	width:64%;
 }
 
 .small-column
 {
-	width:30%
+	width:30%;
+	position:relative;
 }
 
 #page > section.column:last-child

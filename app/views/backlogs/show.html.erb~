@@ -17,13 +17,14 @@
 					<%= render "backlog_items/new_backlog_item_form" %>
 				<% end %>		
 			</div>
-		</div>
-		
+		</div>		
 	</section>	
 	
 	<section class="small-column">
-	
-		<div class="box">
+		<div class="box-tab sprint-heading">
+			<h2 class="left-aligned-header">Sprints</h2>
+		</div>	
+		<div class="box sprints">
 			<div class="box-content">
 				<h2 class="box-heading">Sprints</h2>		
 				<div id="sprint-right-column-scroll" class="scrollbar-container">
@@ -41,6 +42,14 @@
 				<% end %>		
 			</div>
 		</div>		
+		
+		<div class="box-tab">
+			<h2 class="left-aligned-header">Members</h2>
+		</div>
+		<div class="box collaborators">
+			<%= render  :partial => "collaborators/image_list_collaborator", 
+									:locals => {:collaborators => @backlog.collaborators} %>
+		</div>
 		
 	</section>
 

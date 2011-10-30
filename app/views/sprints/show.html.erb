@@ -15,4 +15,14 @@
 		
 	</section>	
 	
+	<section class="small-column">
+		<div class="box-tab">
+			<h2 class="left-aligned-header">Members</h2>
+		</div>
+		<div class="box collaborators">
+			<%= render  :partial => "collaborators/image_list_collaborator", 
+									:locals => {:collaborators => @sprint.backlog.collaborators} %>
+		</div>
+	</section>
+	
 </div>
