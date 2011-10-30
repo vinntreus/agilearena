@@ -35,8 +35,24 @@ describe BacklogMembersController do
 					response.should redirect_to(signin_path)
 					
 				end
+			end		
+			
+		end
+		
+		describe "POST 'addmember'" do
+			before(:each) do				
+				@member = Factory(:user, :email => "member@test.com")
+				@backlog_owner = Factory(:user, :email => "test@tester.com")
+	  		@backlog = Factory(:backlog, :user => @backlog_owner, :private => true)
+
+				test_sign_in(@backlog_owner)  		
 			end
 			
+			it "should add member to backlog" do
+				lambda do
+					post :add, :id => 1, :email => "member@test.com"
+        end.should change(Collaborator, :count).by(1)
+			end
 			
 		end
 end

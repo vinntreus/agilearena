@@ -287,12 +287,13 @@ div.admin a.button span.icon
 
 #header-messages
 {
-	float:right;
+	padding:8px 0 0 0;
 }
 
 .flash
 {
 	padding:0 15px;
+	background-color:#fff;
 }
 
 .flash.success
@@ -303,6 +304,7 @@ div.admin a.button span.icon
 .flash.error
 {
 	color:#6F0907;
+	
 }
 
 /******************************/

@@ -1,5 +1,10 @@
 <h1>Members</h1>
 
+<%= form_tag "/backlogs/#{@backlog.id}/addmember" do -%>
+<label>Email</label>
+<%= text_field_tag 'email' %>
+<div><%= submit_tag 'Save' %></div>
+<% end -%>
 <ul>
 	<%= render @backlog_members %>
 </ul>
