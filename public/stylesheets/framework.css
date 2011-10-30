@@ -262,11 +262,6 @@ div.statistic > form
 	margin:0;
 }
 
-div.actions > input
-{
-	margin-top:6px;
-}
-
 /******************************/
 /*     Admin style       */
 /******************************/
@@ -353,16 +348,14 @@ div.field label
 }
 
 
-#new_backlog_item,
-#new_sprint
+#new_backlog_item
 {
 	height: 30px;
 	margin: 0;
 	padding: 0.5em 0;
 }
 
-#new_backlog_item input[type=submit],
-#new_sprint input[type=submit]
+#new_backlog_item input[type=submit]
 {
 	line-height:37px;
 	height:37px;

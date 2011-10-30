@@ -353,17 +353,14 @@ div.field label
 }
 
 
-#new_backlog_item,
-#new_sprint
+#new_backlog_item
 {
-	height:30px;
-	padding:0.5em 0 1em;
-	margin:0;
-	border-top:2px solid #efefef;
+	height: 30px;
+	margin: 0;
+	padding: 0.5em 0;
 }
 
-#new_backlog_item input[type=submit],
-#new_sprint input[type=submit]
+#new_backlog_item input[type=submit]
 {
 	line-height:37px;
 	height:37px;
