@@ -16,6 +16,11 @@ var SprintPageView = Backbone.View.extend({
 			return new SprintItem(data);
 		});
 		
+		$("#add_sprint_toggler").click(function(e){
+			$("#new_sprint").toggle();
+			return false;
+		});
+		
 		SprintItems = new SprintItemCollection(items);	
 		
 		this.setDroppable();		
@@ -73,7 +78,7 @@ var SprintPageView = Backbone.View.extend({
   },
   
   newSprintItem : function(e){
-   	SprintItems.create();  	
+   	SprintItems.createFromForm(this.form);  	
   	return false;
   },
 	

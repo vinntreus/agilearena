@@ -19,6 +19,7 @@ end
 
 Factory.define :sprint do |sprint|
   sprint.title "Fooo"
+  sprint.start Time.now
   sprint.association :backlog
 end
 

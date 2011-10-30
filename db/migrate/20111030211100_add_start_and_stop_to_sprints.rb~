@@ -1,0 +1,11 @@
+class AddStartAndStopToSprints < ActiveRecord::Migration
+  def self.up
+  	add column :sprints, :start, :datetime
+  	add column :sprints, :stop, :datetime
+  end
+
+  def self.down
+   	remove column :sprints, :start, :datetime
+   	remove column :sprints, :stop, :datetime
+  end
+end

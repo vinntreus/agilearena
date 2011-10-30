@@ -28,3 +28,9 @@ Factory.define :backlog_item do |backlog_item|
   backlog_item.description "test"
   backlog_item.position 1
 end
+
+Factory.define :collaborator do |col|
+  col.association :user
+  col.association :backlog
+  col.role "member"
+end

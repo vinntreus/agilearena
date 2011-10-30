@@ -28,6 +28,12 @@
 			<h2 class="left-aligned-header">Sprints</h2>
 		</div>	
 		<div class="box sprints">
+				<% if can? :create_items_in, @backlog %>
+					<section class="add-sprint-block">
+						<button id="add_sprint_toggler" >Add sprint</button>					
+					</section>
+					<%= render "sprints/new_sprint_form" %>
+				<% end %>		
 			<div class="box-content">
 				<div id="sprint-right-column-scroll" class="scrollbar-container">
 					<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
@@ -39,10 +45,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<% if can? :create_items_in, @backlog %>
-				<%= render "sprints/new_sprint_form" %>
-			<% end %>		
+			</div>		
 		</div>		
 		
 		<div class="box-tab">
@@ -70,7 +73,7 @@
 </script>
 <script type="text/x-jqote-template" id="sprint_item_template">
   <![CDATA[
-	  <a href="/sprints/<%%= this.id %>"><%%= this.title %></a>
+	  <a href="/sprints/<%%= this.id %>"><%%= this.title %><span><%%= this.time %></span></a>
   ]]>
 </script>
 

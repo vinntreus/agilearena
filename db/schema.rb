@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111026192224) do
+ActiveRecord::Schema.define(:version => 20111030211100) do
 
   create_table "backlog_items", :force => true do |t|
     t.integer  "backlog_id"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20111026192224) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "start"
+    t.datetime "stop"
   end
 
   add_index "sprints", ["backlog_id"], :name => "index_sprints_on_backlog_id"

@@ -31,6 +31,7 @@ div.box .collaborator-image-list p
 {
 	color:#666;
 	font-size:0.8em;
+	text-align: center;
 }
 
 div.box > ul > li
@@ -43,6 +44,29 @@ div.box > form
 {
 	margin:0.5em 0;
   background: #7099AB; 
+}
+
+div.box #new_sprint
+{
+	display:none;
+	background:#fff url(/images/box/heading-bg.png) repeat-x top left;
+	margin: 0;
+  padding: 5px 10px;
+}
+
+div.box label.boxed-label
+{
+	color:#333;
+}
+div.box input.boxed-input
+{
+	width:5em;
+}
+
+div.box .add-sprint-block
+{
+	background:#fff url(/images/box/heading-bg.png) repeat-x top left;
+	padding: 5px 0 5px 10px;
 }
 
 div.box-tab

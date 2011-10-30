@@ -9,7 +9,7 @@ var SprintItemCollection = Backbone.Collection.extend({
 	}
 });
 
-var SprintItems = new SprintItemCollection
+var SprintItems; // = new SprintItemCollection
 
 var SprintItemView = Backbone.View.extend({
 	tagName : "li",	

@@ -46,6 +46,29 @@ div.box > form
   background: #7099AB; 
 }
 
+div.box #new_sprint
+{
+	display:none;
+	background:#fff url(/images/box/heading-bg.png) repeat-x top left;
+	margin: 0;
+  padding: 5px 10px;
+}
+
+div.box label.boxed-label
+{
+	color:#333;
+}
+div.box input.boxed-input
+{
+	width:7em;
+}
+
+div.box .add-sprint-block
+{
+	background:#fff url(/images/box/heading-bg.png) repeat-x top left;
+	padding: 5px 0 5px 10px;
+}
+
 div.box-tab
 {
 	background: none repeat scroll 0 0 rgba(174, 207, 221, 0.5);

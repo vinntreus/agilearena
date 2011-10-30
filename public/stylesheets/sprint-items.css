@@ -23,6 +23,13 @@ a .over
 {
 	display:block;
 	padding:10px;
+	text-decoration:none;
+}
+
+.sprint-items > li > a > span
+{
+	float:right;
+	font-size:0.9em;
 }
 
 .sprint-items > li:nth-child(even)
