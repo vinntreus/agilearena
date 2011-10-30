@@ -5,6 +5,8 @@ class Sprint < ActiveRecord::Base
 	belongs_to :backlog
 	has_many :backlog_items
 	
+	default_scope :order => "backlogs.start ASC"
+	
 	def set_title
 		if self.title.nil?
 	    self.title = (self.backlog.sprints.count + 1).to_s
@@ -19,7 +21,7 @@ class Sprint < ActiveRecord::Base
 		if self.start.nil?
 			return ""
 		end
-		self.start.strftime("%Y-%m-%d")
+		self.start.strftime("%Y-%m-%d") + " - " + self.stop.strftime("%Y-%m-%d")
 	end
 	
 	def display_title

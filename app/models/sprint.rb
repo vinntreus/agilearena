@@ -5,6 +5,8 @@ class Sprint < ActiveRecord::Base
 	belongs_to :backlog
 	has_many :backlog_items
 	
+	default_scope :order => "sprints.start ASC"
+	
 	def set_title
 		if self.title.nil?
 	    self.title = (self.backlog.sprints.count + 1).to_s
