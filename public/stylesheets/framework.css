@@ -106,7 +106,8 @@ header
   	color:#efefef;
 }
 
-#pages_controller #page
+#pages_controller #page,
+#sessions_controller #page
 {
 	padding:1% 20%;
 }

@@ -1,27 +1,37 @@
 .backlogs > li
 {
-
+	margin: 5px 0 0 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.backlogs > li > img
+.backlogs > li:last-child
 {
-	float:left;
-	margin-left:5px;
-	margin-top:5px;
+	margin-bottom:0;
+}
+.backlogs > li:last-child a
+{
+	border-bottom:none;
+}
+
+.backlogs > li img
+{
+	height: 12px;
+  margin-left: 10px;
+  vertical-align: bottom;
 }
 
 .backlogs > li > a
 {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
   color: #EFEFEF;
   display: block;
   font-size: 1.2em;
-  margin-bottom: 0.5em;
+	margin:5px 0;
   padding: 8px 25px;
   text-decoration: none;
 }
 
 .backlogs > li > a:hover
-{
-	color:#BFBFBF;	
+{	
+	background:rgba(255, 255, 255, 0.1);
 }

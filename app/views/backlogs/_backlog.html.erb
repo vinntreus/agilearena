@@ -1,8 +1,10 @@
 <% if can? :read, backlog %>
 <li class="backlog">
-		  <% if backlog.private %>
-			  <%= image_tag "lock.jpg", :alt => "private", :title => "private" %>
-		  <% end %>
-     	<%= link_to backlog.title, backlog %>
+     	<%= link_to backlog do |p| %>
+     		<%= backlog.title %>
+				<% if backlog.private %>
+					<%= image_tag "lock.jpg", :alt => "private", :title => "private" %>
+				<% end %>     	
+     	<% end %>
 </li>
 <% end %>
