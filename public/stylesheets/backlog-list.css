@@ -7,9 +7,6 @@
 .backlogs > li:last-child
 {
 	margin-bottom:0;
-}
-.backlogs > li:last-child a
-{
 	border-bottom:none;
 }
 

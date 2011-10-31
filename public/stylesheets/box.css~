@@ -27,7 +27,7 @@ div.box-light
 
 div.box-light div.box-content
 {
-	padding: 5px 5px 0 5px;
+	padding: 0 5px;
 }
 
 div.box div.box-content
