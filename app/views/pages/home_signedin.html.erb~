@@ -1,6 +1,6 @@
 <section class="column">
 	<h2 class="left-aligned-header">Backlogs</h2>
-	<div class="box">		
+	<div class="box-light">		
 		<div class="box-content">
 			<% unless @user.backlogs.empty? %>
 				<ul class="backlogs fc">
@@ -9,17 +9,16 @@
 				<%= will_paginate @backlogs %>
 			<% end %>
 		</div>
-	</div>
+	</div>	
 </section>
-
-
-<section class="column" id="new_backlog_form">
+<section class="column">
 	<% unless @backlog.nil? %>
-		<h2 class="box-heading">Create new backlog</h2>
-		<div class="box">
+		<h2 class="left-aligned-header">Create new backlog</h2>
+		<div class="box-light">
 				<div class="box-content">
 					<%= render "backlogs/new_backlog_form" %>
 				</div>
 		</div>
 	<% end %>
+
 </section>

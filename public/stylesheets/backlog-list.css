@@ -12,16 +12,16 @@
 
 .backlogs > li > a
 {
-	background-color: #B9CBD5;
-	border-radius: 4px 4px 4px 4px;
-	color: #3C3C3C;
-	display: block;
-	font-size: 1.2em;
-	margin-bottom: 0.5em;
-	padding: 8px 25px;
-	text-decoration: none;}
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: #EFEFEF;
+  display: block;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+  padding: 8px 25px;
+  text-decoration: none;
+}
 
 .backlogs > li > a:hover
-{
-	background-color:#C3D6DF;	
+{	
+	background:rgba(255, 255, 255, 0.1);
 }

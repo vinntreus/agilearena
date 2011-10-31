@@ -8,6 +8,28 @@ div.box
     -moz-border-radius: 3px;
     -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
+
+div.box-light
+{
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+	color: #efefef;
+	margin-bottom: 1em;
+}
+
+.column-right
+{
+	float: left;
+	margin-top: 120px;
+	padding: 20px;
+}
+
+div.box-light div.box-content
+{
+	padding: 5px;
+}
+
 div.box div.box-content
 {
     /*background:#fff url(/images/box/heading-bg.png) repeat-x top left;*/
