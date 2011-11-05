@@ -1,6 +1,10 @@
 class BacklogsController < ApplicationController
 	before_filter :authenticate, :only => [:create, :destroy]
 	
+	def new
+		@backlog = Backlog.new if signed_in?
+	end
+	
 	def create
 		@backlog  = current_user.backlogs.build(params[:backlog])
     if @backlog.save

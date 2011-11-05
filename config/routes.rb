@@ -19,7 +19,7 @@ Agilearena::Application.routes.draw do
 	resources :sprints, :only => [:show, :create, :index]
 	
 	resources :users
-	resources :backlogs, :only => [:create, :destroy, :show]
+	resources :backlogs, :only => [:create, :destroy, :show, :new]
 	resources :backlog_items do
 		member do
 			put 'sort'

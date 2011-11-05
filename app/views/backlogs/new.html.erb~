@@ -1,0 +1,10 @@
+<section class="create-backlog-page">
+	<% unless @backlog.nil? %>
+		<h2 class="left-aligned-header">Create new backlog</h2>
+		<div class="box-light">
+				<div class="box-content create-new-backlog">
+					<%= render "backlogs/new_backlog_form" %>
+				</div>
+		</div>
+	<% end %>
+</section>

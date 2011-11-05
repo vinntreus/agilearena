@@ -20,7 +20,7 @@ module ApplicationHelper
 	end
 	
 	def breadcrumb
-		if params[:controller] == 'backlogs'
+		if params[:controller] == 'backlogs' && params[:action] != 'new'
 			link = link_to @backlog.user.name, @backlog.user
 			backlog_link = link_to @backlog.title, @backlog
 			return "<div id='breadcrumb-pre'></div><ol id='breadcrumb'><li>#{link}</li><li>#{backlog_link}</li></ol><div id='breadcrumb-post'></div>"		

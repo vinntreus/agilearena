@@ -1,4 +1,5 @@
-<section class="column">
+<section class="workspace-start">
+	<%= link_to "Create new backlog", new_backlog_path, {:class => "create-new-backlog-link"} %>
 	<h2 class="left-aligned-header">Backlogs</h2>
 	<div class="box-light">		
 		<div class="box-content">
@@ -10,15 +11,4 @@
 			<% end %>
 		</div>
 	</div>	
-</section>
-<section class="column-right">
-	<% unless @backlog.nil? %>
-		<h2 class="left-aligned-header">Create new backlog</h2>
-		<div class="box-lights">
-				<div class="box-content">
-					<%= render "backlogs/new_backlog_form" %>
-				</div>
-		</div>
-	<% end %>
-
 </section>

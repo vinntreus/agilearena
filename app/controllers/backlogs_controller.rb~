@@ -1,6 +1,10 @@
 class BacklogsController < ApplicationController
 	before_filter :authenticate, :only => [:create, :destroy]
 	
+	def new
+		
+	end
+	
 	def create
 		@backlog  = current_user.backlogs.build(params[:backlog])
     if @backlog.save
@@ -31,7 +35,8 @@ class BacklogsController < ApplicationController
   		deny_access
   	end
 		render :json => @backlog.backlog_items
-  end
+  end 
+
 	
 	def destroy
 	  @backlog = Backlog.find(params[:id])

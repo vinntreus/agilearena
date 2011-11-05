@@ -4,7 +4,8 @@ input.add-backlog-item
   border-radius: 4px 4px 4px 4px;
   font-size: 2em;
   height: 35px;
-  padding: 0 5px;
+  padding: 0 10px;
+	box-shadow: 0px 1px 3px #666
 }
 
 
@@ -13,13 +14,13 @@ input.add-backlog-item
 {
 	background-color:#B9CBD5;
 	border-radius:6px;
-	padding:5px;
+	padding:10px 5px;
 	margin-bottom: 0.5em;
 }
 
 .backlog-items > li:nth-child(even)
 {
-	background-color:#C3D6DF;
+
 }
 
 .backlog-items > li.ui-selected,

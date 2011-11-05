@@ -4,13 +4,37 @@
 	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+a.create-new-backlog-link
+{
+	float:right;
+	color:#f8f8f8;
+	text-decoration:none;
+	border-bottom:1px dotted;
+}
+a.create-new-backlog-link:hover
+{
+	color:#f8f8f8;
+	border-bottom:1px dotted;
+}
+
+.create-new-backlog form
+{
+	padding:10px;
+}
+
+.create-new-backlog form input
+{
+	font-size:1.4em;
+}
+
+.create-backlog-page
+{
+	padding:0 20%;
+}
+
 .backlogs > li:last-child
 {
 	margin-bottom:0;
-	border-bottom:none;
-}
-.backlogs > li:last-child a
-{
 	border-bottom:none;
 }
 
@@ -26,9 +50,9 @@
 
   color: #EFEFEF;
   display: block;
-  font-size: 1.2em;
+  font-size: 1.4em;
 	margin:5px 0;
-  padding: 8px 15px;
+  padding: 2%;
   text-decoration: none;
 }
 
