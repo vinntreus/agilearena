@@ -15,8 +15,8 @@
 #
 
 class BacklogItem < ActiveRecord::Base
-	attr_accessible :title, :points, :description, :position, :category_list
-	before_create :set_position, :set_display_id, :capture_tags
+	attr_accessible :title, :points, :description, :position, :category_list, :status
+	before_create :set_position, :set_display_id, :capture_tags, :set_status
 
 	acts_as_taggable_on :categories
 	belongs_to :backlog
@@ -29,6 +29,10 @@ class BacklogItem < ActiveRecord::Base
 										:length => { :maximum => 200 }
 										
 	default_scope :order => "backlog_items.position ASC"
+	
+	def set_status
+		self.status = "Todo"
+	end
 	
 	def capture_tags
 		self.title.gsub!(/#([^#\s]*)/) do |m| 

@@ -20,6 +20,7 @@ class Backlog < ActiveRecord::Base
 
 	
 	POINTS = [1, 2, 3, 5, 8, 13, 20, 40, 100]
+	STATUSES = ["Todo", "Ongoing", "Done"]
 
 	belongs_to :user	
 	has_many :backlog_items, :dependent => :destroy

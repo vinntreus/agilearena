@@ -1,0 +1,9 @@
+class AddStatusToBacklogItem < ActiveRecord::Migration
+  def self.up
+		add_column :backlog_item, :status, :string, :default => "Todo"
+  end
+
+  def self.down
+ 		remove_column :backlog_item, :status
+  end
+end

@@ -1,0 +1,30 @@
+<h1><%= @backlog_item.title %></h1>
+<%= link_to "Edit", edit_backlog_item_path %>
+<div class="fc" id="backlog-item-page">
+
+	<section class="large-column">	
+		<p>
+			<label>Description:</label><%= @backlog_item.description %>
+		<p>
+		
+		<p>
+			<label>Points:</label><%= @backlog_item.points %>
+		<p>
+		
+		<p>
+			<label>Status:</label><%= @backlog_item.status %>
+		</p>
+			
+	</section>	
+	
+	<section class="small-column">
+		<div class="box-tab">
+			<h2 class="left-aligned-header">Members</h2>
+		</div>
+		<div class="box collaborators">
+			<%= render  :partial => "collaborators/image_list_collaborator", 
+									:locals => {:collaborators => @backlog_item.backlog.collaborators} %>
+		</div>
+	</section>
+	
+</div>

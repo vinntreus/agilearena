@@ -9,6 +9,13 @@ class Ability
 			####################
 			# Backlogitems
 			####################
+			can :read, BacklogItem do |item|
+				if item.backlog.private?
+					item.backlog.user.id == user.id || item.backlog.is_member(user)
+				else
+					true
+				end
+			end
 			can :create, BacklogItem do |item|
 					item.backlog.user.id == user.id || item.backlog.is_member(user)
 			end

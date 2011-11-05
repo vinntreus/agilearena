@@ -12,9 +12,9 @@ describe BacklogItem do
 		@backlog.backlog_items.create!(@validParams)
 	end
 	
-	it "should default status to Todo" do
+	it "should respond to status" do
 		@backlog_item =	@backlog.backlog_items.create!(@validParams)
-		@backlog_item.status.should == "Todo"
+		
 	end
 	
 	describe "position" do

@@ -13,7 +13,7 @@ class Ability
 					item.backlog.user.id == user.id || item.backlog.is_member(user)
 			end
 			can :destroy, BacklogItem do |item|
-					item.backlog.user.id == user.id 
+					item.backlog.user.id == user.id || item.backlog.is_member(user) 
 			end
 			can :update, BacklogItem do |item|
 					item.backlog.user.id == user.id || item.backlog.is_member(user)

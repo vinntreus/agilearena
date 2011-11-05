@@ -1,0 +1,37 @@
+<%= form_for @backlog_item do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+  	<label>Title</label>
+    <%= f.text_field :title %>
+  </div>
+   <div class="field">
+  	<label>Description</label>
+    <%= f.text_area :description, :rows => 8 %>
+  </div>
+  <div class="field">
+  	<label>Points</label>
+  	<%= select(:backlog_item, :points, Backlog::POINTS, :include_blank => "?") %>
+  </div>
+  <div class="field">
+  	<label>Status</label>
+  	<%= select(:backlog_item, :status, Backlog::STATUSES) %>
+  </div>
+  <div class="field fc">
+  	<label>Tags</label>
+		<input type="text" id="add_new_tag" />
+		<button type="button" id="add_new_tag_button" ><span class="tag icon"></span>Add tag</button>
+		<ul id="edit_backlog_item_tags" class="fc">
+  	 <% @backlog_item.categories.each do |c| %>
+			<li class="tag">
+				<span><%= c.name %></span>
+				<a class="button removeTag" data-tag="<%= c.name %>"><span class="cross icon">&nbsp;</span></a>
+			</li>
+		<% end %>
+		</ul>
+  	<%= select(:backlog_item, :category_list, @backlog_item.categories,{ } , {:multiple => true, :hidden => true }) %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save" %>
+    <a href="#" data-event="onCancelEdit">Cancel</a>
+  </div>
+<% end %>
