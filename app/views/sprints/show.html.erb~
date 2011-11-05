@@ -7,14 +7,14 @@
 		<div class="box">			
 			<div class="box-content">
 				<ul id="sprint-items-list" class="backlog-items fc" data-sprint-id="<%= @sprint.id %>">
-						<% @backlog_items.each do |b| %>
+					<% @backlog_items.each do |b| %>
 						<li class="fc" data-id="<%= b.id %>">
 							<%= link_to(b) do %>
 								<p class="points backlog-item-info"><%= b.points || "?" %></p>								
 								<h3><%= b.title %></h3>
 							<% end %>
 						</li>
-						<% end %>
+					<% end %>
 				</ul>	
 			</div>
 		</div>

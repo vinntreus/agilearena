@@ -1,8 +1,7 @@
 <li class="fc" data-id="<%= backlog_item.id %>">
-    <p class="points backlog-item-info"><%= backlog_item.points || "?" %></p>
+    <p class="points backlog-item-info"><%= backlog_item.points %></p>
     <% unless backlog_item.sprint.nil? %>
     	<p class="sprint backlog-item-info"><%= backlog_item.sprint.display_title %></p>
-    <% end %>
-   
+    <% end %>   
     <h3><%= backlog_item.title %></h3>
 </li>

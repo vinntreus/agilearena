@@ -108,6 +108,6 @@ $(function(){
 	if($("#new_backlog_item").length > 0){
 		window.backlogApp = new BacklogPageView;
 	}
-	window.backlogScroll = $("#scrollbar1").tinyscrollbar();
+	window.backlogScroll = $("#backlog-large-column-scroll").tinyscrollbar();
 	
 });

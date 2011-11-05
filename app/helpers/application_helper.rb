@@ -37,7 +37,15 @@ module ApplicationHelper
 			user_link = link_to @sprint.backlog.user.name, @sprint.backlog.user
 			backlog_link = link_to @sprint.backlog.title, @sprint.backlog
 			sprint_link = link_to @sprint.display_title, @sprint
-				return "<div id='breadcrumb-pre'></div><ol id='breadcrumb'><li>#{user_link}</li><li>#{backlog_link}</li><li>#{sprint_link}</li></ol><div id='breadcrumb-post'></div>"		
+				return "<div id='breadcrumb-pre'></div><ol id='breadcrumb'><li>#{user_link}</li><li>#{backlog_link}</li><li>#{sprint_link}</li></ol><div id='breadcrumb-post'></div>"	
+		elsif params[:controller] == 'backlog_items' && (params[:action] == 'show' || params[:action] == 'edit')
+			user_link = link_to @backlog_item.backlog.user.name, @backlog_item.backlog.user
+			backlog_link = link_to @backlog_item.backlog.title, @backlog_item.backlog
+			unless @backlog_item.sprint.nil?
+				sprint_link = link_to @backlog_item.sprint.display_title, @backlog_item.sprint
+				return "<div id='breadcrumb-pre'></div><ol id='breadcrumb'><li>#{user_link}</li><li>#{backlog_link}</li><li>#{sprint_link}</li></ol><div id='breadcrumb-post'></div>"	
+			end
+				return "<div id='breadcrumb-pre'></div><ol id='breadcrumb'><li>#{user_link}</li><li>#{backlog_link}</li></ol><div id='breadcrumb-post'></div>"				
 		end	
 		
 	end
