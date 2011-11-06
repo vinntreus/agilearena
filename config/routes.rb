@@ -16,7 +16,9 @@ Agilearena::Application.routes.draw do
 	#	resources :backlog_items, :only => [:create, :destroy, :show, :update], :as => "backlog_items"
 	#end
 	
+	resources :workspaces
 	resources :sprints, :only => [:show, :create, :index]
+	
 	
 	resources :users
 	resources :backlogs, :only => [:create, :destroy, :show, :new]
@@ -33,7 +35,7 @@ Agilearena::Application.routes.draw do
 	match 'backlogs/:id/members', :to => 'backlog_members#show'
 	match 'backlogs/:id/addmember', :to => 'backlog_members#add'
 	
-  match '/workspace/:id', :to => 'workspace#show', :as => :workspace
+  #match '/workspaces/:id', :to => 'workspace#show', :as => :workspace
 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
@@ -43,7 +45,7 @@ Agilearena::Application.routes.draw do
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   
-  root :to => 'pages#home'
+  root :to => 'workspaces#show'
 
 
   # The priority is based upon order of creation:

@@ -6,7 +6,7 @@ describe PagesController do
   describe "GET 'home'" do
     it "should be successful" do
       get 'home'
-      response.should be_success
+      response.should be_redirect
       #response.should render_template "pages/home"
     end	
 		

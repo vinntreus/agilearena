@@ -3,58 +3,41 @@ require 'spec_helper'
 describe PagesController do
   render_views
   
-  describe "GET 'home'" do
-    it "should be successful" do
-      get 'home'
-      response.should be_redirect
-      #response.should render_template "pages/home"
-    end	
-		
-  end
   
-  describe "GET 'home' when signed in" do		
-				it "should render view 'home_signedin'" do
-					test_sign_in(Factory(:user))
-					get 'home'
-  		    response.should be_success
-		      response.should render_template "pages/home_signedin"
-				end					
-		end
-
   describe "GET 'contact'" do
     it "should be successful" do
       get 'contact'
       response.should be_success
     end
 	
-	it "should have right title" do
-		get 'contact'
-		response.should have_selector("title", :content => "| Contact")
-	end
+		it "should have right title" do
+			get 'contact'
+			response.should have_selector("title", :content => "| Contact")
+		end
   end
   
   describe "GET 'about'" do
-	it "should be successfull" do
-		get 'about'
-		response.should be_success
-	end
+		it "should be successfull" do
+			get 'about'
+			response.should be_success
+		end
 	
-	it "should have right title" do
-		get 'about'
-		response.should have_selector("title", :content => "| About")
-	end
+		it "should have right title" do
+			get 'about'
+			response.should have_selector("title", :content => "| About")
+		end
   end
   
   describe "GET 'help'" do
-	it "should be successful" do
-		get 'help'
-		response.should be_success
-	end
+		it "should be successful" do
+			get 'help'
+			response.should be_success
+		end
 	
-	it "should have right title" do
-		get 'help'
-		response.should have_selector("title", :content => "| Help")
-	end
+		it "should have right title" do
+			get 'help'
+			response.should have_selector("title", :content => "| Help")
+		end
   end
 
 end
