@@ -1,0 +1,28 @@
+.edit-backlog-item-link,
+.backlog-item-title
+{
+	float:left;
+}
+
+#page .edit-backlog-item-link
+{
+	margin-top:0.5em;
+	margin-left:2em;
+	padding:0 8px 0 0;
+}
+
+#page .edit-backlog-item-link span
+{
+	line-height:32px;	
+}
+
+#page .edit-backlog-item-link:hover span
+{
+	color:#000;
+}
+
+
+#backlog-item-page p
+{
+	clear:both;
+}

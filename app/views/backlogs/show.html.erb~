@@ -73,7 +73,7 @@
 </script>
 <script type="text/x-jqote-template" id="sprint_item_template">
   <![CDATA[
-	  <a href="/sprints/<%%= this.id %>"><%%= this.title %><span><%%= this.time %%></span></a>
+	  <a href="/sprints/<%%= this.id %>"><%%= this.title %><span><%%= this.time %></span></a>
   ]]>
 </script>
 

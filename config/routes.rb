@@ -32,6 +32,8 @@ Agilearena::Application.routes.draw do
 	
 	match 'backlogs/:id/members', :to => 'backlog_members#show'
 	match 'backlogs/:id/addmember', :to => 'backlog_members#add'
+	
+  match '/workspace/:id', :to => 'workspace#show', :as => :workspace
 
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'

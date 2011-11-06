@@ -1,18 +1,21 @@
-<h1><%= @backlog_item.title %></h1>
-<%= link_to "Edit", edit_backlog_item_path %>
+<div class="fc">
+		<h1 class="backlog-item-title"><%= @backlog_item.title %></h1>
+		<%= link_to edit_backlog_item_path, {:class => "edit-backlog-item-link link-button selected"} do %>
+			<span>Edit</span>
+		<% end %>
+</div>
 <div class="fc" id="backlog-item-page">
-
-	<section class="large-column">	
+	<section class="large-column">			
 		<p>
 			<label>Description:</label><%= @backlog_item.description %>
-		<p>
+		</p>
 		
 		<p>
 			<label>Points:</label><%= @backlog_item.points %>
-		<p>
+		</p>
 		
 		<p>
-			<label>Status:</label>
+			<label>Status:</label><%= @backlog_item.status %>
 		</p>
 			
 	</section>	
