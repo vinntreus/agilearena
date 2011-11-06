@@ -13,7 +13,7 @@ var BacklogPageView = Backbone.View.extend({
 			var data = {
 				id : $(item).data("id"),
 				points : $(".points", item).text(),
-				title : $("h3", item).text()
+				title : $("h3", item).html()
 			};
 			var sprint = $(".sprint", item);
 			if(sprint.length > 0)

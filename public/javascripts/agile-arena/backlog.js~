@@ -12,6 +12,7 @@ var BacklogPageView = Backbone.View.extend({
 		var items = $.map(this.list.children("li"), function(item){
 			var data = {
 				id : $(item).data("id"),
+				points : $(".points", item).text(),
 				title : $("h3", item).text()
 			};
 			var sprint = $(".sprint", item);

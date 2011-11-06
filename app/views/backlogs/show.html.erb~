@@ -1,6 +1,6 @@
 <div class="fc" id="backlog-page">
 
-	<h2><%= @backlog.title %></h2>
+	<h1><%= @backlog.title %></h1>
 
 	<section class="large-column">
 		<div class="box">			
@@ -68,7 +68,7 @@
    	<%% if (this.sprint) { %>
 	   	<p class="sprint backlog-item-info"><%%= this.sprint %></p>  	
   	<%% } %>
-		<h3><%%= this.title %></h3>
+		<h3><%%= this.title %><span class="status"><%%= this.status %></span></h3>
   ]]>
 </script>
 <script type="text/x-jqote-template" id="sprint_item_template">

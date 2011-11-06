@@ -1,5 +1,5 @@
 <div class="fc">
-		<h1 class="backlog-item-title"><%= @backlog_item.title %></h1>
+		<h1 class="backlog-item-title"><%= @backlog_item.title %><span class="status <%= @backlog_item.status.downcase %>"><%= @backlog_item.status %></span></h1>
 		<%= link_to edit_backlog_item_path, {:class => "edit-backlog-item-link link-button selected"} do %>
 			<span>Edit</span>
 		<% end %>
@@ -8,15 +8,10 @@
 	<section class="large-column">			
 		<p>
 			<label>Description:</label><%= @backlog_item.description %>
-		</p>
-		
+		</p>		
 		<p>
 			<label>Points:</label><%= @backlog_item.points %>
-		</p>
-		
-		<p>
-			<label>Status:</label><%= @backlog_item.status %>
-		</p>			
+		</p>	
 	</section>	
 	
 	<section class="small-column">

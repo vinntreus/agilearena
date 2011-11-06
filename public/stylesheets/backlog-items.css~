@@ -18,11 +18,6 @@ input.add-backlog-item
 	margin-bottom: 0.5em;
 }
 
-.backlog-items > li:nth-child(even)
-{
-
-}
-
 .backlog-items > li.ui-selected,
 .backlog-items > li:hover
 {
@@ -43,6 +38,29 @@ input.add-backlog-item
 	color:#333;
 	font-size:1.2em;
 	margin-left: 10px;
+}
+
+.backlog-items > li h3 > .status,
+.backlog-list-item h3 > .status
+{
+	text-transform:lowercase;
+color:#fff;
+	font-size:.9em;
+	margin-left:10px;
+	padding:4px;
+}
+
+.status.todo
+{
+	background-color:#888;	
+}
+.status.ongoing
+{
+	background-color:#CF9700;
+}
+.status.done
+{
+	background-color:#0ABF00;
 }
 
 .backlog-items > li > p.description

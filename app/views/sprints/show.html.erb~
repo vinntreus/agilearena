@@ -1,6 +1,6 @@
 <h1><%= @sprint.display_title %></h1>
 
-<div class="fc" id="backlog-page">
+<div class="fc" id="sprint-page">
 
 	<section class="large-column">	
 	
@@ -11,7 +11,7 @@
 						<li class="fc" data-id="<%= b.id %>">
 							<%= link_to(b) do %>
 								<p class="points backlog-item-info"><%= b.points || "?" %></p>								
-								<h3><%= b.title %></h3>
+								<h3><%= b.title %><span class="status <%= bstatus.downcase %>"><%= b.status %><span></h3>
 							<% end %>
 						</li>
 					<% end %>

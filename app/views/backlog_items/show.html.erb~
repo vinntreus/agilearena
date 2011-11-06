@@ -8,16 +8,13 @@
 	<section class="large-column">			
 		<p>
 			<label>Description:</label><%= @backlog_item.description %>
-		</p>
-		
+		</p>		
 		<p>
 			<label>Points:</label><%= @backlog_item.points %>
-		</p>
-		
+		</p>	
 		<p>
-			<label>Status:</label><%= @backlog_item.status %>
-		</p>
-			
+			<label>Status:</label><span class="status <%= @backlog_item.status.downcase %>"><%= @backlog_item.status %></span>
+		</p>			
 	</section>	
 	
 	<section class="small-column">

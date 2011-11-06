@@ -11,7 +11,7 @@
 						<li class="fc" data-id="<%= b.id %>">
 							<%= link_to(b) do %>
 								<p class="points backlog-item-info"><%= b.points || "?" %></p>								
-								<h3><%= b.title %></h3>
+								<h3><%= b.title %><span class="status <%= b.status.downcase %>"><%= b.status %><span></h3>
 							<% end %>
 						</li>
 					<% end %>
