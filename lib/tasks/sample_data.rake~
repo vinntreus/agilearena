@@ -17,19 +17,6 @@ namespace :db do
   end
 end
 
-namespace :db do
-  desc "Set status on backlogitems"
-  task :backlog_item_status => :environment do
-    
-    Backlog.all().each do |backlog|
-    	backlog.backlog_items.all().each do |backlog_item|    		
-    		backlog_item.status = "Todo"
- 				backlog_item.save
-    	end
-    end
-  end
-end
-
 
 namespace :db do
   desc "Add sortorder to backlogitems"
@@ -41,6 +28,19 @@ namespace :db do
     		backlog_item.position = @count
  				backlog_item.save
     		@count += 1
+    	end
+    end
+  end
+end
+
+namespace :db do
+  desc "set todo on empty statuses"
+  task :clearstatus => :environment do
+    
+    Backlog.all().each do |backlog|
+    	backlog.backlog_items.all().each do |backlog_item|
+    		backlog_item.status ||= "Todo"
+ 				backlog_item.save
     	end
     end
   end

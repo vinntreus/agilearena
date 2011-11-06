@@ -8,20 +8,36 @@ input.add-backlog-item
 	box-shadow: 0px 1px 3px #666
 }
 
+ul.backlog-items
+{
+	margin-bottom:5px;
+}
 
 .backlog-items > li,
 .backlog-list-item
 {
-	background-color:#B9CBD5;
-	border-radius:6px;
-	padding:10px 5px;
-	margin-bottom: 0.5em;
+	/*background-color:#B9CBD5;
+		border-radius:6px;
+		margin-bottom: 0.5em;
+		padding:10px 5px;*/
+		
+	border-bottom:1px dotted #B9CBD5;
+	padding:1em 0.5em;
+		margin:0;
+}
+
+.backlog-items > li:last
+{
+	border:none;
 }
 
 .backlog-items > li.ui-selected,
 .backlog-items > li:hover
 {
-	background-color:#93b2c0;
+	/*background-color:#93b2c0;*/
+		background-color:#E3ECEF;
+
+	cursor:pointer;
 }
 
 .backlog-items > li > h3,
@@ -40,11 +56,10 @@ input.add-backlog-item
 	margin-left: 10px;
 }
 
-.backlog-items > li h3 > .status,
-.backlog-list-item h3 > .status
+.status
 {
 	text-transform:lowercase;
-color:#fff;
+	color:#fff;
 	font-size:.9em;
 	margin-left:10px;
 	padding:4px;
@@ -77,13 +92,19 @@ color:#fff;
 .backlog-items > li .sprint,
 .backlog-list-item .sprint
 {
-	background-color:#FF9C00;
+	/*background-color:#FF9C00;
 	color:#fff;
 	padding:2px;
 	border-radius: 0 0 5px 5px;
 	margin-top:-5px;
 	position:relative;
-	margin-right:20px;
+	margin-right:20px;*/
+
+	color: #FF9C00;
+	height: 1.2em;
+	line-height: 1.7em;
+	margin: 0 10em 0 0;
+	position: relative;
 }
 
 

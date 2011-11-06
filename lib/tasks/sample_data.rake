@@ -34,6 +34,19 @@ namespace :db do
 end
 
 namespace :db do
+  desc "set todo on empty statuses"
+  task :clearstatus => :environment do
+
+    Backlog.all().each do |backlog|
+    	backlog.backlog_items.all().each do |backlog_item|
+    		backlog_item.status ||= "Todo"
+ 				backlog_item.save
+    	end
+    end
+  end
+end
+
+namespace :db do
   desc "Add display_id to backlogitems"
   task :display_id => :environment do
     
