@@ -1,8 +1,0 @@
-<ul class="collaborator-image-list fc">
-	<% collaborators.each do |c| %>
-		<li>
-			<%= gravatar_for c.user %>
-			<p><%= c.user.name %></p>
-		</li>
-	<% end %>
-</ul>

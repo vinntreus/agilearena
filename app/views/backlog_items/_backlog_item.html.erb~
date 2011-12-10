@@ -1,7 +1,0 @@
-<li class="fc" data-id="<%= backlog_item.id %>">
-    <p class="points backlog-item-info"><%= backlog_item.points || "?" %></p>
-    <% unless backlog_item.sprint.nil? %>
-    	<p class="sprint backlog-item-info"><%= backlog_item.sprint.display_title %></p>
-    <% end %>   
-    <h3><%= backlog_item.title %><span class="status <%= backlog_item.status.downcase %>">(<%= backlog_item.status %>)<span></h3>
-</li>

@@ -1,5 +1,0 @@
-<%= form_tag "/backlogs/#{@backlog.id}/addmember" do -%>
-	<label>Email</label>
-	<%= text_field_tag 'email' %>
-	<%= submit_tag 'Save' %>
-<% end -%>

@@ -1,5 +1,0 @@
-<li data-id="<%= sprint.id %>">
-	<%= link_to(sprint) do %>
-		<%= sprint.display_title %><span><%= unless sprint.start.nil? sprint.start.strftime("%Y-%m-%d") end %></span>
-	<% end %>
-</li>
