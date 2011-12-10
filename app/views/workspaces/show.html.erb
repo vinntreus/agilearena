@@ -1,14 +1,30 @@
-<section class="workspace-start">
-	<%= link_to "Create new backlog", new_backlog_path, {:class => "create-new-backlog-link"} %>
-	<h1 class="left-aligned-header">Backlogs</h1>
-	<div class="box-light">		
-		<div class="box-content">
-			<% unless @user.backlogs.empty? %>
-				<ul class="backlogs fc">
-					<%= render @backlogs %>
-				</ul>
-				<%= will_paginate @backlogs %>
-			<% end %>
-		</div>
-	</div>	
+<section class="workspace-start main-column">
+  <%= link_to "Create new backlog", new_backlog_path, {:class => "create-new-backlog-link"} %>
+  <h1>Backlogs</h1>
 </section>
+
+<div class="fifty-fifty">
+  <h2 class="left-aligned-header">Created (<%= @backlogs_created.count %>)</h2>
+  <% if @backlogs_created.count > 0 %>
+    <div class="box-light">			
+      <div class="box-content">      
+	<ul class="backlogs fc">
+	  <%= render @backlogs_created %>
+	</ul>	            
+      </div>
+    </div>	
+  <% end %>
+</div>
+
+<div class="fifty-fifty">
+  <h2 class="left-aligned-header">Collaborating on (<%= @backlogs_collaborating_on.count %>)</h2>
+  <% if @backlogs_collaborating_on.count > 0 %>
+    <div class="box-light">		
+      <div class="box-content">            
+	<ul class="backlogs fc">
+	  <%= render @backlogs_collaborating_on %>
+	</ul>	            
+      </div>
+    </div>
+  <% end %>
+</div>

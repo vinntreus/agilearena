@@ -2,65 +2,65 @@ class Ability
   include CanCan::Ability
   
   
-
+  
   def initialize(user)
-		
-		if !user.nil? #only for signed in users
-			####################
-			# Backlogitems
-			####################
-			can :read, BacklogItem do |item|
-				if item.backlog.private?
-					item.backlog.user.id == user.id || item.backlog.is_member(user)
-				else
-					true
-				end
-			end
-			can :create, BacklogItem do |item|
-					item.backlog.user.id == user.id || item.backlog.is_member(user)
-			end
-			can :destroy, BacklogItem do |item|
-					item.backlog.user.id == user.id || item.backlog.is_member(user) 
-			end
-			can :update, BacklogItem do |item|
-					item.backlog.user.id == user.id || item.backlog.is_member(user)
-			end  	
-			can :sort, BacklogItem do |item|
-					item.backlog.user.id == user.id || item.backlog.is_member(user)
-			end
-			can :create_items_in, Backlog do |item|
-					item.user.id == user.id || item.is_member(user)
-			end
-			can :edit_items_in, Backlog do |item|
-					item.user.id == user.id || item.is_member(user)
-			end
-
-			####################
-			# Users
-			####################  	
-			can :create_backlogs, User do |item|
-				 item.id == user.id
-			end
-
-			####################
-			# Backlogs
-			####################
-			can :read, Backlog do |item|
-				if item.private?
-					item.user.id == user.id || item.is_member(user)
-				else
-					true
-				end
-			end
-				can :destroy, Backlog do |item|
-      	  item.user.id == user.id
-      	end
-		end  	
-	
-	
-
-  	#can :update, BacklogItem, :backlog => { :user => user }
-  	#can :destroy, BacklogItem, :backlog => { :user => user }
+    
+    if !user.nil? #only for signed in users
+      ####################
+      # Backlogitems
+      ####################
+      can :read, BacklogItem do |item|
+	if item.backlog.private?
+	  item.backlog.user.id == user.id || item.backlog.is_member(user)
+	else
+	  true
+	end
+      end
+      can :create, BacklogItem do |item|
+	item.backlog.user.id == user.id || item.backlog.is_member(user)
+      end
+      can :destroy, BacklogItem do |item|
+	item.backlog.user.id == user.id || item.backlog.is_member(user) 
+      end
+      can :update, BacklogItem do |item|
+	item.backlog.user.id == user.id || item.backlog.is_member(user)
+      end  	
+      can :sort, BacklogItem do |item|
+	item.backlog.user.id == user.id || item.backlog.is_member(user)
+      end
+      can :create_items_in, Backlog do |item|
+	item.user.id == user.id || item.is_member(user)
+      end
+      can :edit_items_in, Backlog do |item|
+	item.user.id == user.id || item.is_member(user)
+      end
+      
+      ####################
+      # Users
+      ####################  	
+      can :create_backlogs, User do |item|
+	item.id == user.id
+      end
+      
+      ####################
+      # Backlogs
+      ####################
+      can :read, Backlog do |item|
+	if item.private?
+	  item.user.id == user.id || item.is_member(user)
+	else
+	  true
+	end
+      end
+      can :destroy, Backlog do |item|
+	item.user.id == user.id
+      end
+    end  	
+    
+    
+    
+    #can :update, BacklogItem, :backlog => { :user => user }
+    #can :destroy, BacklogItem, :backlog => { :user => user }
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

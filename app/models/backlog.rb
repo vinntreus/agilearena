@@ -13,81 +13,80 @@
 #
 
 class Backlog < ActiveRecord::Base	
-	attr_accessible :title, :private
-	before_create :init_display_id
-	
+  attr_accessible :title, :private
+  before_create :init_display_id
+  
   acts_as_tagger
-
-	
-	POINTS = [1, 2, 3, 5, 8, 13, 20, 40, 100]
-	STATUSES = ["Todo", "Ongoing", "Done"]
-
-	belongs_to :user	
-	has_many :backlog_items, :dependent => :destroy
-	has_many :sprints, :dependent => :destroy
-	has_many :collaborators, :dependent => :destroy
-	
-	validates :user_id, :presence => true
-	validates :title, :presence => true,
-										:length => { :maximum => 100 }
-	
-	default_scope :order => "backlogs.created_at DESC"
-	
-	def is_member(user)
-  	self.collaborators.where(:user_id => user.id).count > 0
+  
+  
+  POINTS = [1, 2, 3, 5, 8, 13, 20, 40, 100]
+  STATUSES = ["Todo", "Ongoing", "Done"]
+  
+  belongs_to :user	
+  has_many :backlog_items, :dependent => :destroy
+  has_many :sprints, :dependent => :destroy
+  has_many :collaborators, :dependent => :destroy
+  
+  validates :user_id, :presence => true
+  validates :title, :presence => true, :length => { :maximum => 100 }
+  
+  default_scope :order => "backlogs.created_at DESC"
+  
+  def is_member(user)
+    self.collaborators.where(:user_id => user.id).count > 0
   end
-	
-	def total_points
-		points = 0
-		self.backlog_items.each do |i|
-			unless i.points.nil?
-				points += i.points
-			end
-		end
-		return points
-	end
-	
-	def init_display_id
-		self.backlog_item_next_display_id = 1
-	end
-	
-	def self.sort_items(current_item, new_parent_id)
-		@current_item = current_item #BacklogItem.find(id)		
-		@current_position = @current_item.position
-
-		if new_parent_id < 1						
-			put_item_on_top @current_item
-		else		
-			@new_parent = BacklogItem.find(new_parent_id)				
-			@parent_position = @new_parent.position		
-
-			if(@parent_position < @current_position)
-				sort_downwards @current_item, @parent_position	
-			else
-				sort_upwards @current_item, @parent_position
-			end
-
-		end
-		
-		@current_item.save
-	end
-	
-	private 
-		def self.put_item_on_top(current_item)
-			BacklogItem.update_all("position = position + 1", ["position < ?", current_item.position] , :backlog_id => current_item.backlog_id)
-			current_item.position = 1
-		end
-		def self.sort_downwards(current_item, parent_position)
-			BacklogItem.update_all("position = position + 1", 
-																:position => (parent_position + 1)..current_item.position, 
-																:backlog_id => current_item.backlog_id)
-			current_item.position = parent_position + 1
-		end
-		def self.sort_upwards(current_item, parent_position)
-			BacklogItem.update_all("position = position - 1", 
-																:position => current_item.position..(parent_position),
-																:backlog_id => current_item.backlog_id)
-			current_item.position = parent_position
-		end
-
+  
+  def total_points
+    points = 0
+    self.backlog_items.each do |i|
+      unless i.points.nil?
+	points += i.points
+      end
+    end
+    return points
+  end
+  
+  def init_display_id
+    self.backlog_item_next_display_id = 1
+  end
+  
+  def self.sort_items(current_item, new_parent_id)
+    @current_item = current_item #BacklogItem.find(id)		
+    @current_position = @current_item.position
+    
+    if new_parent_id < 1
+      put_item_on_top @current_item
+    else
+      @new_parent = BacklogItem.find(new_parent_id)
+      @parent_position = @new_parent.position		
+      
+      if(@parent_position < @current_position)
+	sort_downwards @current_item, @parent_position	
+      else
+	sort_upwards @current_item, @parent_position
+      end
+      
+    end
+    
+    @current_item.save
+  end
+  
+  private 
+  def self.put_item_on_top(current_item)
+    BacklogItem.update_all("position = position + 1", ["position < ?", current_item.position] , :backlog_id => current_item.backlog_id)
+    current_item.position = 1
+  end
+  def self.sort_downwards(current_item, parent_position)
+    BacklogItem.update_all("position = position + 1", 
+                           :position => (parent_position + 1)..current_item.position, 
+                           :backlog_id => current_item.backlog_id)
+    current_item.position = parent_position + 1
+  end
+  def self.sort_upwards(current_item, parent_position)
+    BacklogItem.update_all("position = position - 1", 
+                           :position => current_item.position..(parent_position),
+                           :backlog_id => current_item.backlog_id)
+    current_item.position = parent_position
+  end
+  
 end

@@ -15,39 +15,36 @@
 #
 
 class BacklogItem < ActiveRecord::Base
-	attr_accessible :title, :points, :description, :position, :category_list, :status
-	before_create :set_position, :set_display_id, :capture_tags, :set_status
-
-	acts_as_taggable_on :categories
-	belongs_to :backlog
-	belongs_to :sprint
-	
-	
-	validates :backlog_id, :presence => true
-	
-	validates :title, :presence => true,
-										:length => { :maximum => 200 }
-										
-	default_scope :order => "backlog_items.position ASC"
-	
-	def set_status
-		self.status = "Todo"
-	end
-	
-	def capture_tags
-		self.title.gsub!(/#([^#\s]*)/) do |m| 
-			self.category_list << $1; ''
-		end
-		self.title.squeeze!(" ")
-		self.title.strip!
-	end	
-	
-	def set_position()
-		self.position = (self.backlog.backlog_items.maximum("position") || 0) + 1
-	end
-	
-	def set_display_id
-		self.display_id = self.backlog.backlog_item_next_display_id
-		self.backlog.increment!(:backlog_item_next_display_id)
-	end	
+  attr_accessible :title, :points, :description, :position, :category_list, :status
+  before_create :set_position, :set_display_id, :capture_tags, :set_status
+  
+  acts_as_taggable_on :categories
+  belongs_to :backlog
+  belongs_to :sprint  
+  
+  validates :backlog_id, :presence => true  
+  validates :title, :presence => true, :length => { :maximum => 200 }
+  
+  default_scope :order => "backlog_items.position ASC"
+  
+  def set_status
+    self.status = "Todo"
+  end
+  
+  def capture_tags
+    self.title.gsub!(/#([^#\s]*)/) do |m| 
+      self.category_list << $1; ''
+    end
+    self.title.squeeze!(" ")
+    self.title.strip!
+  end	
+  
+  def set_position()
+    self.position = (self.backlog.backlog_items.maximum("position") || 0) + 1
+  end
+  
+  def set_display_id
+    self.display_id = self.backlog.backlog_item_next_display_id
+    self.backlog.increment!(:backlog_item_next_display_id)
+  end	
 end

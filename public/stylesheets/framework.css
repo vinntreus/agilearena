@@ -228,6 +228,18 @@ footer section.info
 	margin:0 3% 0 0;	
 }
 
+.fifty-fifty
+{
+   float:left;
+   width:49%;
+   padding:0 0.5%;
+}
+
+.main-column
+{
+  padding:0 0.5%;
+}
+
 .large-column
 {
 	width:64%;
