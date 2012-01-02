@@ -28,6 +28,7 @@ div.box-light
 div.box-light div.box-content
 {
 	padding: 0 5px;
+	background:transparent;
 }
 
 div.box-content
