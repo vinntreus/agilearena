@@ -8,6 +8,12 @@ input.add-backlog-item
 	box-shadow: 0px 1px 3px #666
 }
 
+.box .backlog-box
+{
+	background-color:#ecf1f3;
+	padding: 6px 0;
+}
+
 ul.backlog-items
 {
 	margin-bottom:5px;
@@ -15,67 +21,79 @@ ul.backlog-items
 
 .backlog-items > li,
 .backlog-list-item
-{
-	/*background-color:#B9CBD5;
-		border-radius:6px;
-		margin-bottom: 0.5em;
-		padding:10px 5px;*/
-		
-	border-bottom:1px dotted #B9CBD5;
-	padding:1em 0.5em;
-		margin:0;
+{		
+	border-top:1px dotted #B9CBD5;
+	padding:0 0.5em 0;
+	margin:0;
 }
 
-.backlog-items > li:last-child
-{
-	border:none;
-}
 
-.backlog-items > li.ui-selected,
-.backlog-items > li:hover
+.backlog-items > li.selected
 {
-	/*background-color:#93b2c0;*/
-		background-color:#E3ECEF;
-
+	background-color:#c8d7dd;
 	cursor:pointer;
 }
 
-.backlog-items > li > h3,
-.backlog-items > li > p.description
-.backlog-list-item h3,
-.backlog-list-item .description
-{
-	float:left;
-}
 
 .backlog-items > li h3,
 .backlog-list-item h3
 {
 	color:#333;
-	font-size:1.2em;
-	margin-left: 10px;
+	font-size:1.2em;	
+	margin-bottom:0.5em;
 }
 
-.status
+/************ headings ****************/
+
+.backlog-list-heading
 {
-	text-transform:lowercase;
-	color:#fff;
+	border-bottom: 1px dotted #B9CBD5;
+    margin-bottom: 12px;
+    padding-bottom: 4px;
+}
+
+.backlog-list-heading h3
+{
+	float:left;
+	color:#000;	
 	font-size:.9em;
-	margin-left:10px;
-	padding:4px;
+}
+
+.backlog-list-heading h3.todo
+{
+	margin-left:10%;
+}
+.backlog-list-heading h3.doing
+{
+	margin-left:32%;
+}
+
+.backlog-list-heading h3.done
+{
+	margin-left:34%;
+}
+
+
+.status
+{	
+	margin-left:8.5%;    
+	padding:4px;	
+	width:50px;	
 }
 
 .status.todo
 {
-	background-color:#888;	
+	background-color:#91bfd2;	
 }
 .status.ongoing
 {
-	background-color:#CF9700;
+	background-color:#439fc4;
+	margin-left: 44%;
 }
 .status.done
 {
-	background-color:#0ABF00;
+	background-color:#77b791;
+	margin-left: 81.5%;
 }
 
 .backlog-items > li > p.description
@@ -83,37 +101,67 @@ ul.backlog-items
 	color:#3b3b3b;
 }
 
-.backlog-items > li .backlog-item-info
-{
-	float:right;
-	color:#638F9F;
+.backlog-item-info
+{	
+	color:#888e8a;
+	background-color:#dccfbe;
+	padding: 2px 4px;
+	border-radius:4px;
+	display:inline;	
+	margin: 0 8px 0 0;	
+	font-size: 0.8em;
 }
 
 .backlog-items > li .sprint,
 .backlog-list-item .sprint
 {
-	/*background-color:#FF9C00;
-	color:#fff;
-	padding:2px;
-	border-radius: 0 0 5px 5px;
-	margin-top:-5px;
-	position:relative;
-	margin-right:20px;*/
-
-	color: #FF9C00;
-	height: 1.2em;
-	line-height: 1.7em;
-	margin: 0 10em 0 0;
-	position: relative;
+	color: #7c9eae;
+	background-color:#C9E1EA;
 }
 
-
-.backlog-items > li .points,
-.backlog-list-item .points
+.backlog-selector
 {
-		color:#638F9F;
-    float: right;
-    font-size: 1.5em;
-    margin: 0 20px 0 0;
+	float:left;
+	margin:20px;
+}
+
+.backlog-menu
+{
+	width:12%;
+	float:left;
+	margin-right:20px;
+	background-color:#3b6f85;		
+}
+
+.backlog-menu li
+{
+	border-bottom:1px solid #57a4c4;
+	margin: 2px 8px 4px;
+}
+.backlog-menu li a
+{
+	color: #FFFFFF;
+    display: block;
+    font-size: 0.9em;
+    margin: 6px 0;
+    padding: 5px;
+    text-decoration: none;
+    border-radius:3px;
+}
+.backlog-menu li a.active
+{
+	background-color:#75A2B7;
+	color:#111;
+}
+.backlog-menu li a:hover
+{
+	background-color:#9dcbe3;
+	color:#000;
+}
+
+.workarea
+{
+	float:left;
+	width:85%;
 }
 

@@ -1,6 +1,6 @@
 <% if can? :read, backlog %>
 <li class="backlog">
-  <%= link_to backlog do |p| %>
+  <%= link_to backlog, {:class => current_page?(backlog) ? "active" : nil} do |p| %>
     <%= backlog.title %>
     <% if backlog.private %>
       <%= image_tag "lock.jpg", :alt => "private", :title => "private" %>

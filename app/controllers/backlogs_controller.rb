@@ -22,6 +22,7 @@ class BacklogsController < ApplicationController
       deny_access
     end
     @backlog_item = BacklogItem.new
+    @backlogs = @backlog.user.backlogs
     @sprint_items = @backlog.sprints
     @sprint = Sprint.new
     @backlog_items = @backlog.backlog_items.paginate :page => params[:page]	, :per_page => 50

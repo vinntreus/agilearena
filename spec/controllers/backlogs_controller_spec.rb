@@ -48,12 +48,7 @@ describe BacklogsController do
 	  		response.should redirect_to(signin_path)	  			  	
 		  end
 		  
-      it "should have link to add sprint" do
-	      @user = test_sign_in(Factory(:user))
-	  		@backlog = Factory(:backlog, :user => @user, :private => true)  	
-	    	get :show, :id => @backlog
-		   	response.should have_selector("form", :action => sprints_path)
-	    end	  
+    
 	  end
 	  
   end
@@ -93,13 +88,7 @@ describe BacklogsController do
     it "should not have link to add sprint" do
     	get :show, :id => @backlog
 	   	response.should_not have_selector("form", :action => sprints_path)
-    end
-    
-    it "should have list of sprints" do
-	    sprint = Factory(:sprint, :backlog => @backlog, :title => "1")
-			get :show, :id => @backlog
-			response.should have_selector("a", :content => sprint.display_title)
-    end
+    end    
     
 		it "should have form to create backlogitem for members" do
 			@backlog_owner = Factory(:user, :email => "test@tester.com")

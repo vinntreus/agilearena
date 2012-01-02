@@ -88,5 +88,5 @@ $(function(){
 	if($("#new_sprint").length > 0){
 		window.sprintApp = new SprintPageView;
 	}
-	window.sprintScroll = $("#sprint-right-column-scroll").tinyscrollbar();
+	
 });

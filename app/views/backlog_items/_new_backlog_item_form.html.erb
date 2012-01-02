@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', :object => f.object %>
 	<input type="hidden" id="backlog_id" name="backlog_id" value="<%= @backlog.id %>" />
   <%= f.text_field :title, :placeholder => "Add new story", :class => "add-backlog-item" %>
-  <%= f.submit "OK" %>
+  <%= f.submit "Add new", :class => "action-button" %>
   <div class="loader"></div>
 <% end %>
 

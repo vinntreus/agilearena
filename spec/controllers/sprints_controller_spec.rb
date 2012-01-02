@@ -45,14 +45,7 @@ describe SprintsController do
       response.should have_selector("h3", :content => @sprint.backlog_items[0].title)
 		end
 		
-		it "should have breadcrumb" do
-			get :show, :id => @sprint
-			
-			response.should have_selector("#breadcrumb li", :content => @backlog_owner.name)
-			response.should have_selector("#breadcrumb li", :content => @backlog.title)
-			response.should have_selector("#breadcrumb li", :content => @sprint.title)
-		end
-		
+				
 	end
 
   describe "POST 'create'" do

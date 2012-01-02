@@ -1,11 +1,11 @@
 ﻿html
 {
-	background:#326378;
+	background:#2e5464;
 }
 
 body 
 {	
-	font: 13px/1em Trebuchet MS;
+	font: 14px/1em Trebuchet MS;
 	color:#13252C;	
 }
 
@@ -14,7 +14,7 @@ body
 /******************************/
 header
 {
-	height:128px;
+	
 	background:#326378	url(/images/heading/heading-bg.jpg) no-repeat top left;
 }
 
@@ -26,9 +26,39 @@ header
 
 #sub-header
 {
-  color: #7B7B7B;
-  
- 	background:transparent url(/images/heading-gray-menu/left-block-bg.png) repeat-x top left;
+ 	border-top:1px solid #81a7ba;
+ 	border-bottom:1px solid #81a7ba;
+}
+
+#sub-header h1,
+#sub-header .collaborator-image-list,
+#sub-header .collaborator-image-list li,
+#sub-header .actions
+{
+	float:left;
+}
+
+#sub-header h1
+{
+	font-size: 2em;
+    line-height: 1.2em;
+	margin-left:20px;	
+}
+#sub-header .collaborator-image-list,
+#sub-header .actions
+{	
+	margin-left:200px;	
+}
+
+#sub-header .actions button
+{
+	display:none;
+}
+
+#sub-header .collaborator-image-list,
+#sub-header .collaborator-image-list li
+{
+	margin-bottom:0;
 }
 
 #bottom-header
@@ -39,9 +69,6 @@ header
 
 #breadcrumb-container
 {
-/*background:transparent url(/images/heading-gray-menu/left-block-bg.png) repeat-x top left;
-
-	width:70%;*/
 	float:left;
 	height: 34px;
 }
@@ -61,7 +88,7 @@ header
 	top:10px;	
 	display:block;
 	float:left;
-	left:40px;
+	left:25px;
 }
 
 /* Top right links */
@@ -110,7 +137,7 @@ header
 {
   	background:#326378 url(/images/heading/glow.png) top left no-repeat;	
     min-height: 520px;
-    padding: 1% 2%;
+    padding: 1%;
   	color:#efefef;
 }
 
@@ -381,12 +408,37 @@ div.field label
 	padding: 0.5em 0;
 }
 
-#new_backlog_item input[type=submit]
+/***********************************/
+/*          buttons                */
+/***********************************/
+
+.action-button,
+button
 {
+	border:0;
+	border-radius:2px;
+	background-color:#FEB41C;
 	line-height:37px;
+	padding:0 10px;
 	height:37px;
 	vertical-align:top;
 	margin:0;
+}
+
+button
+{	
+	background-color:#6ea2ba;	
+}
+
+button:hover
+{
+	background-color:#89bdd5;		
+}
+
+#sub-header .actions button
+{
+	height:34px;
+	line-height:34px;
 }
 
 /******************************/
