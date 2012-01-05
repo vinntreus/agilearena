@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
-gem 'sqlite3-ruby', '1.3.2', :group => :development
+gem 'rails', '3.0.11'
+gem 'sqlite3-ruby', '1.3.3', :group => :development
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'cancan'
-gem 'rake', '0.8.7'
+gem 'rake', '0.9.2.2'
 gem 'acts-as-taggable-on'
 
 
