@@ -284,7 +284,7 @@ describe BacklogItemsController do
       it "should return backlog item status todo" do
 				post :create, :backlog_item => @attr, :backlog_id => @b_id
         parsed_body = JSON.parse(response.body)
-        parsed_body["status"].should == "todo"
+        parsed_body["status"].should == "Todo"
       end
 
 			it "should return backlog item points" do

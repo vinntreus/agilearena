@@ -9,27 +9,15 @@ var BacklogPageView = Backbone.View.extend({
 	initialize : function(){
 		this.form    = this.$("#new_backlog_item");
 		this.list = this.$("#backlog-items-list");
-		this.selectedCount = 0;
-		
-		var items = $.map(this.list.children("li"), function(item){
-			var data = {
-				id : $(item).data("id"),
-				points : $(".points", item).text(),
-				title : $("h3", item).html(),
-				status : $(".status", item).text()
-			};			
-			return new BacklogItem(data);
-		});
-		
-		BacklogItems = new BacklogItemCollection(items);		
+
+		BacklogItems = new BacklogItemCollection();		
 		
     BacklogItems.bind('add',   this.addOne, this);
     BacklogItems.bind('reset', this.addAll, this);
 		BacklogItems.bind('change', this.itemChanged, this);
 		BacklogItems.bind('destroy', this.itemDeleted, this);
-	    
-    this.list.children().remove();
-    this.setupAll();    
+	  
+		BacklogItems.reset(backlogData);  //defined in backlog/show.html.erb
 
   	$("button.always-available").show();
 	},	

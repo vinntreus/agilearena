@@ -23,7 +23,7 @@ class BacklogItemsController < ApplicationController
       render :json => { :id => @backlog_item.id, 
                         :title => @backlog_item.title,
                         :points => @backlog_item.points,
-												:status => @backlog_item.status.downcase }	
+												:status => @backlog_item.status }	
     else
       render :text => "Could not create backlogitem", :status => 500
     end 

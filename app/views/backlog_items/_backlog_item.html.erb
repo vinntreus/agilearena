@@ -1,9 +1,6 @@
 <li class="fc" data-id="<%= backlog_item.id %>">
-    <span class="status <%= backlog_item.status.downcase %>"><%= backlog_item.status.downcase %></span>  
     <input type="checkbox" class="backlog-selector" />
-    <h3><%= backlog_item.title %></h3>    
-    <% unless backlog_item.sprint.nil? %>
-    	<p class="sprint backlog-item-info"><%= backlog_item.sprint.display_title %></p>
-    <% end %>
-    <p class="points backlog-item-info"><%= backlog_item.points || "?" %></p>
+    <div class="status <%= backlog_item.status.downcase %>"><%= backlog_item.status.downcase %></div>
+    <h3 class="backlog-item-title"><%= backlog_item.title %></h3>    
+    <p class="points"><%= backlog_item.points || "?" %></p>
 </li>

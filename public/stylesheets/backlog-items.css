@@ -79,15 +79,15 @@ ul.backlog-items
 	width: 56px;
 }
 
-.backlog-items .todo
+.backlog-items .Todo
 {
 	background-color:#f6d286;	
 }
-.backlog-items .ongoing
+.backlog-items .Ongoing
 {
 	background-color:#439fc4;
 }
-.backlog-items .done
+.backlog-items .Done
 {
 	background-color:#77b791;
 }

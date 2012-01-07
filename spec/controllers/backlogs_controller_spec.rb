@@ -74,16 +74,7 @@ describe BacklogsController do
   	it "should have the right title" do
       get :show, :id => @backlog
       response.should have_selector("title", :content => @backlog.title)
-    end
-  
-    
-		it "should show the backlog items" do
-      b1 = Factory(:backlog_item, :backlog => @backlog, :title => "Foo bar")
-      b2 = Factory(:backlog_item, :backlog => @backlog, :title => "Baz quux")
-      get :show, :id => @backlog
-      response.should have_selector("h3", :content => b1.title)
-      response.should have_selector("h3", :content => b2.title)
-    end     
+    end	
     
     it "should not have link to add sprint" do
     	get :show, :id => @backlog

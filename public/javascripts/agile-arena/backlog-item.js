@@ -14,9 +14,7 @@ var BacklogItemCollection = Backbone.Collection.extend({
 	backlogId : $("#backlog-items-list").data("backlog-id"),
 	url : function(){		
 		return "/backlog_items/";
-	},	
-	initialize: function(items){		
-	},	
+	},		
 	selected : function() {  
     return this.filter(function(item) {  
       return item.get('selected') == true;  

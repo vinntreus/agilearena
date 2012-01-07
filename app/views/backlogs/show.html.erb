@@ -27,7 +27,6 @@
 				<h3 class="points">Points:<span class="points"><%= @backlog.total_points %></span></h3>
 			</div>
 			<ul id="backlog-items-list" class="backlog-items fc" data-backlog-id="<%= @backlog.id %>">
-				<%= render @backlog_items %>
 			</ul>
 		</div>
 		<% if can? :create_items_in, @backlog %>
@@ -38,6 +37,11 @@
 
 	</section>
 </div>
+
+<script type="text/javascript">
+	var backlogData = <%= raw(@backlog_items.to_json(:only => [ :id, :points, :title, :status ])) %>;
+</script>
+
 <script type="text/x-jqote-template" id="backlog_item_template">
   <![CDATA[
   	<input type="checkbox" class="backlog-selector" <%%= this.selected ? "checked='checked'" : "" %> />  
