@@ -1,4 +1,5 @@
-﻿.fc:after
+ 
+.fc:after
 {
 	content: ".";
 	display: block;
@@ -7,11 +8,11 @@
 	line-height: 0;
 	height: 0;
 }
- 
+
 .fc
 {
 	display: block;
-}
+}﻿
  
 html[xmlns] .fc
 {
