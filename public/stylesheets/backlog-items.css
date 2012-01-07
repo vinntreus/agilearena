@@ -82,7 +82,8 @@ ul.backlog-items
 
 .backlog-items .Todo
 {
-	background-color:#f6d286;	
+	/*background-color:#f6d286;	*/
+	background-color:#666;
 }
 .backlog-items .Ongoing
 {
