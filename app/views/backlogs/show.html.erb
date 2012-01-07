@@ -24,9 +24,7 @@
 	<div class="box">			
 		<div class="box-content backlog-box">
 			<div class="backlog-list-heading fc">
-				<h3 class="todo">Todo</h3>
-				<h3 class="doing">Doing</h3>
-				<h3 class="done">Done</h3>
+				<h3 class="points">Points:<span class="points"><%= @backlog.total_points %></span></h3>
 			</div>
 			<ul id="backlog-items-list" class="backlog-items fc" data-backlog-id="<%= @backlog.id %>">
 				<%= render @backlog_items %>
@@ -42,12 +40,9 @@
 </div>
 <script type="text/x-jqote-template" id="backlog_item_template">
   <![CDATA[
-  	<div class="status <%%= this.status %>"></div>
   	<input type="checkbox" class="backlog-selector" />  
-	<h3><%%= this.title %></h3>    
-   	<%% if (this.sprint) { %>
-	   	<p class="sprint backlog-item-info"><%%= this.sprint %></p>  	
-  	<%% } %>	
-  	<p class="points backlog-item-info" ><%%= this.points || "?" %></p>
+  	<div class="status <%%= this.status %>"><%%= this.status %></div>
+		<h3 class="backlog-item-title"><%%= this.title %></h3>   	
+  	<p class="points" ><%%= this.points || "?" %></p>
   ]]>
 </script>

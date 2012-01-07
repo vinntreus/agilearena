@@ -35,94 +35,72 @@ ul.backlog-items
 }
 
 
-.backlog-items > li h3,
-.backlog-list-item h3
+.backlog-items .backlog-item-title
 {
-	color:#333;
-	font-size:1.2em;	
-	margin-bottom:0.5em;
+	color: #333333;
+  float: left;
+  font-size: 1.2em;
+  line-height: 2em;
+	margin-left: 10px;
+  width: 754px;
 }
 
 /************ headings ****************/
 
 .backlog-list-heading
 {
-	border-bottom: 1px dotted #B9CBD5;
-    margin-bottom: 12px;
-    padding-bottom: 4px;
+	padding-bottom: 4px;
 }
 
-.backlog-list-heading h3
+
+.points
+{
+	color:#8fa1a3;	
+}
+.backlog-list-heading h3.points
 {
 	float:left;
-	color:#000;	
 	font-size:.9em;
+	margin-left:70%;
 }
 
-.backlog-list-heading h3.todo
+.backlog-list-heading span.points
 {
-	margin-left:10%;
-}
-.backlog-list-heading h3.doing
-{
-	margin-left:32%;
+	font-size:1.8em;
+	padding:0 5px;
 }
 
-.backlog-list-heading h3.done
-{
-	margin-left:34%;
-}
-
-
-.status
+.backlog-items .status
 {	
-	margin-left:8.5%;    
 	padding:4px;	
-	width:50px;	
+	float:left;
+	margin-top: 6px;
+	text-align: center;
+	width: 56px;
 }
 
-.status.todo
+.backlog-items .todo
 {
-	background-color:#91bfd2;	
+	background-color:#f6d286;	
 }
-.status.ongoing
+.backlog-items .ongoing
 {
 	background-color:#439fc4;
-	margin-left: 44%;
 }
-.status.done
+.backlog-items .done
 {
 	background-color:#77b791;
-	margin-left: 81.5%;
 }
 
-.backlog-items > li > p.description
-{
-	color:#3b3b3b;
-}
-
-.backlog-item-info
+.backlog-items p.points
 {	
-	color:#888e8a;
-	background-color:#dccfbe;
-	padding: 2px 4px;
-	border-radius:4px;
-	display:inline;	
-	margin: 0 8px 0 0;	
-	font-size: 0.8em;
-}
-
-.backlog-items > li .sprint,
-.backlog-list-item .sprint
-{
-	color: #7c9eae;
-	background-color:#C9E1EA;
+	float:left;
 }
 
 .backlog-selector
 {
 	float:left;
-	margin:20px;
+	margin:10px;
 }
 
 .backlog-menu

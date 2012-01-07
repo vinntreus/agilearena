@@ -40,7 +40,7 @@ class Backlog < ActiveRecord::Base
     points = 0
     self.backlog_items.each do |i|
       unless i.points.nil?
-	points += i.points
+				points += i.points
       end
     end
     return points
