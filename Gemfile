@@ -15,6 +15,7 @@ group :development do
   gem 'rspec-rails', "~> 2.4"
   gem 'faker', '0.3.1'
   gem 'jasmine'
+	gem "jammit", :git => "git://github.com/documentcloud/jammit.git"
 end
 
 group :test do

@@ -1,0 +1,17 @@
+javascripts:
+  workspace:
+    - public/javascripts/lib/jquery-1.6.2.js
+    - public/javascripts/lib/jquery_ujs.js
+    - public/javascripts/lib/underscore.js
+    - public/javascripts/lib/backbone.js
+    - public/javascripts/lib/*.js
+    - public/javascripts/agile-arena/*.js
+
+
+stylesheets:
+  workspace:
+    - public/stylesheets/reset.css
+    - public/stylesheets/elements.css
+    - public/stylesheets/floatcontainer.css
+    - public/stylesheets/framework.css
+    - public/stylesheets/*.css

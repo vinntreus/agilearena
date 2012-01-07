@@ -42,6 +42,8 @@ module Agilearena
     config.filter_parameters += [:password]
     
     config.autoload_paths << File.join(Rails.root, "app", "classes")
+
+		config.gem "jammit"
     
   end
 end
