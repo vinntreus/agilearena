@@ -16,30 +16,25 @@ var BacklogPageView = Backbone.View.extend({
 				points : $(".points", item).text(),
 				title : $("h3", item).html(),
 				status : $(".status", item).text()
-			};
-			var sprint = $(".sprint", item);
-			if(sprint.length > 0)
-				data.sprint = sprint.text();
+			};			
 			return new BacklogItem(data);
 		});
 		
 		BacklogItems = new BacklogItemCollection(items);		
 		
-	    BacklogItems.bind('add',   this.addOne, this);
-	    BacklogItems.bind('reset', this.addAll, this);
-	    BacklogItems.bind('change', this.itemChanged, this);
+    BacklogItems.bind('add',   this.addOne, this);
+    BacklogItems.bind('reset', this.addAll, this);
+    BacklogItems.bind('change', this.itemChanged, this);
 	    
-	    this.list.children().remove();
-	    this.setupAll();
-    
- 		//this.initDraggable();
+    this.list.children().remove();
+    this.setupAll();    
+
 		this.initSelectable();	
 	},	
 	
 	  addOne: function(backlogItem) {
 	    var view = new BacklogItemView({model: backlogItem});    
-	    this.$("#backlog-items-list").append(view.render().el);    
-	    this.updateDraggable();
+	    this.$("#backlog-items-list").append(view.render().el);
 	  },
 	  itemChanged: function(item){
 	  	console.log("itemChanged");
@@ -59,32 +54,7 @@ var BacklogPageView = Backbone.View.extend({
 	  	BacklogItems.createFromForm(this.form);
 	  	
 	  	return false;
-	  },
-	  updateDraggable: function(){
-	  	$("li", this.list).draggable("destroy");
-	  	this.initDraggable();
-	  },
-	  initDraggable: function(){
-		  $("li", this.list).draggable({
-				start: function(event, ui){				 
-					 $(event.target).addClass("ui-selected");
-				},
-				revert: 'invalid',
-				cursor: 'move',
-				helper : function(event){
-					var el = $(this).clone();
-					
-					el.css({opacity : 0.7, width: $(this).width() * 0.9 + "px"})
-						.addClass("backlog-list-item");
-						
-					$("body").append(el);
-					return el[0];
-				},
-				stop : function(event, ui){
-	 			 $(this).removeClass("ui-selected");
-				}
-			});
-	  },
+	  },	  
 	  initSelectable : function(){
 	  	$("button.always-available").show();
 	  	var that = this;

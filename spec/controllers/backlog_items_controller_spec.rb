@@ -281,12 +281,17 @@ describe BacklogItemsController do
         parsed_body["id"].should == 1
       end
       
-      it "should return backlog item created" do
-        post :create, :backlog_item => @attr, :backlog_id => @b_id
+      it "should return backlog item status todo" do
+				post :create, :backlog_item => @attr, :backlog_id => @b_id
         parsed_body = JSON.parse(response.body)
-        parsed_body["created"].should =~ /less than a minute/i
+        parsed_body["status"].should == "todo"
       end
 
+			it "should return backlog item points" do
+				post :create, :backlog_item => @attr, :backlog_id => @b_id
+        parsed_body = JSON.parse(response.body)
+        parsed_body["points"].should == nil
+      end
       
     end
 
