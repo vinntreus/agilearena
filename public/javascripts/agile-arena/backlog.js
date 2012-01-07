@@ -1,7 +1,8 @@
 var BacklogPageView = Backbone.View.extend({
-	el : $('#backlog-page'),
+	el : $('#backlogs_controller'),
 	
 	events : {
+		"click #remove-item" : "removeBacklogItem",
 		"submit #new_backlog_item" : "newBacklogItem"
 	},
 	
@@ -24,77 +25,50 @@ var BacklogPageView = Backbone.View.extend({
 		
     BacklogItems.bind('add',   this.addOne, this);
     BacklogItems.bind('reset', this.addAll, this);
-    BacklogItems.bind('change', this.itemChanged, this);
+		BacklogItems.bind('change', this.itemChanged, this);
+		BacklogItems.bind('destroy', this.itemDeleted, this);
 	    
     this.list.children().remove();
     this.setupAll();    
 
-		this.initSelectable();	
+  	$("button.always-available").show();
 	},	
 	
-	  addOne: function(backlogItem) {
-	    var view = new BacklogItemView({model: backlogItem});    
-	    this.$("#backlog-items-list").append(view.render().el);
-	  },
-	  itemChanged: function(item){
-	  	console.log("itemChanged");
-	  	console.log(item);
-	  },
-	  addAll: function() {
-	    BacklogItems.each(this.addOne);
-	  },
-	  setupAll: function(){
-	  	BacklogItems.each(function(item){
-	  		var view = new BacklogItemView({model: item});
-	  		this.$("#backlog-items-list").append(view.render().el);
-	  	});
-	  },
-	  
-	  newBacklogItem : function(e){  	
-	  	BacklogItems.createFromForm(this.form);
-	  	
-	  	return false;
-	  },	  
-	  initSelectable : function(){
-	  	$("button.always-available").show();
-	  	var that = this;
-	  	
-	  	$("input:checkbox", this.list).bind("change", function(e){
-
-	  		that.handleSelection($(this));
-	  		that.displayActionBySelection();
-	  	});
-	  
-	  },
-	  handleSelection : function(element){
-	  	var selecting = element.attr("checked");
-	  	if(selecting)
-	  	{
-	  		this.selectedCount++;
-	  		element.parent("li").addClass("selected");
-	  	}
-	  	else
-	  	{
-	  		this.selectedCount--;
-	  		element.parent("li").removeClass("selected");
-	  	}
-	  },
-	  displayActionBySelection : function(){
-	  	if(this.selectedCount <= 0)
-	  	{
-	  		$("button.item-selected").hide();
-	  	}
-	  	else
-	  	{
-	  		$("button.item-selected").show();	
-	  	}
-	  }
-
+  addOne: function(backlogItem) {
+    var view = new BacklogItemView({model: backlogItem});    
+    this.$("#backlog-items-list").append(view.render().el);
+  },
+  addAll: function() {
+    BacklogItems.each(this.addOne);
+  },
+  setupAll: function(){
+  	BacklogItems.each(function(item){
+  		var view = new BacklogItemView({model: item});
+  		this.$("#backlog-items-list").append(view.render().el);
+  	});
+  },
+	itemDeleted : function(e){
+  	this.displayActionBySelection();	
+	},
+	itemChanged : function(e){
+  	this.displayActionBySelection();	
+	},	  
+  newBacklogItem : function(e){  	
+  	BacklogItems.createFromForm(this.form);	  	
+  	return false;
+  },	 
+	removeBacklogItem : function(e){
+		_.each(BacklogItems.selected(), function(item){ item.destroy(); });
+		return false;
+	},
+  displayActionBySelection : function(){
+		var buttons = "button.item-selected";
+		$("li.selected", this.list).length > 0 ? $(buttons).show() : $(buttons).hide();
+  }
 });
 
 $(function(){
 	if($("#new_backlog_item").length > 0){
 		window.backlogApp = new BacklogPageView;
-	}
-	
+	}	
 });

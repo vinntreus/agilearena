@@ -1,9 +1,11 @@
 var BacklogItem = Backbone.Model.extend({
-	initialize: function(item){
-		this.bind("change", this.ch, this);
-	},
-	ch: function(){
-		console.log("BacklogItem:changed");
+	defaults: function() {
+    return {
+      selected: false
+    };
+  },
+	toggleSelect : function(){
+		this.set({selected : !this.get("selected")});
 	}
 });
 
@@ -11,12 +13,15 @@ var BacklogItemCollection = Backbone.Collection.extend({
 	model : BacklogItem,
 	backlogId : $("#backlog-items-list").data("backlog-id"),
 	url : function(){		
-		return "/backlogs/items/" + this.backlogId;
+		return "/backlog_items/";
 	},	
-	initialize: function(items){
-		//console.log(items);
-		
-	},
+	initialize: function(items){		
+	},	
+	selected : function() {  
+    return this.filter(function(item) {  
+      return item.get('selected') == true;  
+    });  
+  },  
 	createFromForm: function(form){		
 		var that = this,
 				loader = $(".loader", form);
@@ -42,21 +47,30 @@ var BacklogItemCollection = Backbone.Collection.extend({
 	}
 });
 
-var BacklogItems;// = new BacklogItemCollection
-
 var BacklogItemView = Backbone.View.extend({
 	tagName : "li",	
 	template: $('#backlog_item_template'),	
 	initialize: function(){
 		_.bindAll(this, 'render');
-    this.model.bind('change', this.render);
-    //this.render();
+		this.model.bind('destroy', this.remove, this);
+		this.model.bind('change', this.render, this);
 	},	
+	events : {
+		"click .backlog-selector" : "toggleSelect"
+	},
+	toggleSelect : function(){
+		this.model.toggleSelect();
+	},
+  remove: function() {
+    $(this.el).remove();
+  },
 	render : function(){
 		var item = this.model.toJSON();
-		$(this.el).html(this.template.jqote(item));	
-		$(this.el).addClass("fc");
-		$(this.el).attr("data-id", item.id);	
+		var element = $(this.el);
+		element.html(this.template.jqote(item));	
+		element.addClass("fc");
+		item.selected ? element.addClass("selected") : element.removeClass("selected");
+		element.attr("data-id", item.id);	
 		return this;
 	}		
 });

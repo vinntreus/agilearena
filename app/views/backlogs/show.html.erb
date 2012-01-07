@@ -8,8 +8,8 @@
 	<% end %>
 	<% content_for :actions do %>
 		<div class="actions">
-			<button class="always-available" data-type="add-sprint">Add sprint</button>
-			<button class="item-selected" data-type="remove">Remove</button>
+			<button class="item-selected" id="add-sprint" data-type="add-sprint">Add sprint</button>
+			<button class="item-selected" id="remove-item" data-type="remove">Remove</button>
 		</div>
 	<% end %>
 
@@ -40,7 +40,7 @@
 </div>
 <script type="text/x-jqote-template" id="backlog_item_template">
   <![CDATA[
-  	<input type="checkbox" class="backlog-selector" />  
+  	<input type="checkbox" class="backlog-selector" <%%= this.selected ? "checked='checked'" : "" %> />  
   	<div class="status <%%= this.status %>"><%%= this.status %></div>
 		<h3 class="backlog-item-title"><%%= this.title %></h3>   	
   	<p class="points" ><%%= this.points || "?" %></p>
