@@ -24,8 +24,8 @@ class SprintsController < ApplicationController
     
     render :json => { 
       :id => @sprint.id, 
-	    :title => @sprint.display_title,
-      :time => @sprint.display_time
+	    :display_title => @sprint.display_title,
+      :display_time => @sprint.display_time
     }
   end  
   

@@ -36,7 +36,7 @@ var BacklogPageView = Backbone.View.extend({
 				sprintView = null,
 				view = null;
 
-		console.log(SprintItems.get("2"));
+		this.$("#backlog-items-list").children().remove();
 
   	BacklogItems.each(function(item){
 			itemsprintId = item.get("sprint_id");
@@ -72,10 +72,15 @@ var BacklogPageView = Backbone.View.extend({
 	},
 	newSprintItem : function(e){
 		console.log("new sprint");
+		var that = this;
 		var itemsId = _.map(BacklogItems.selected(), function(item){ return item.get("id"); });
    	SprintItems.createFromForm(this.sprintform, itemsId, function(data){
 				$("#sprint-dialog").dialog("close");
-				SprintItems.add(data);				
+				SprintItems.add(data);			
+				_.each(BacklogItems.selected(), function(item){
+					item.set({sprint_id : data.id, selected : false });
+				});
+				that.render();
 		});
   	return false;
   },
