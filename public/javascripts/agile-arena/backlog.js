@@ -3,35 +3,52 @@ var BacklogPageView = Backbone.View.extend({
 	
 	events : {
 		"click #remove-item" : "removeBacklogItem",
-		"submit #new_backlog_item" : "newBacklogItem"
+		"click #add-sprint" : "addBacklogItemToSprint",
+		"submit #new_backlog_item" : "newBacklogItem",
+		"submit #new_sprint" : "newSprintItem"
 	},
 	
 	initialize : function(){
 		this.form    = this.$("#new_backlog_item");
+		this.sprintform = this.$("#new_sprint");
 		this.list = this.$("#backlog-items-list");
 
-		BacklogItems = new BacklogItemCollection();		
-		
+		SprintItems = new SprintItemCollection();
+		//SprintItems.bind('add', this.addOneSprint, this);
+    SprintItems.reset(sprintData);//defined in backlog/show.html.erb
+
+		BacklogItems = new BacklogItemCollection();				
     BacklogItems.bind('add',   this.addOne, this);
-    BacklogItems.bind('reset', this.addAll, this);
+    BacklogItems.bind('reset', this.render, this);
 		BacklogItems.bind('change', this.itemChanged, this);
-		BacklogItems.bind('destroy', this.itemDeleted, this);
-	  
+		BacklogItems.bind('destroy', this.itemDeleted, this);	  
 		BacklogItems.reset(backlogData);  //defined in backlog/show.html.erb
 
   	$("button.always-available").show();
-	},	
-	
+	},		
   addOne: function(backlogItem) {
     var view = new BacklogItemView({model: backlogItem});    
     this.$("#backlog-items-list").append(view.render().el);
   },
-  addAll: function() {
-    BacklogItems.each(this.addOne);
-  },
-  setupAll: function(){
+  render: function(){
+		var currentSprintId = 0,
+				currentSprint = null,
+				sprintView = null,
+				view = null;
+
+		console.log(SprintItems.get("2"));
+
   	BacklogItems.each(function(item){
-  		var view = new BacklogItemView({model: item});
+			itemsprintId = item.get("sprint_id");
+
+			if(itemsprintId != null && itemsprintId != currentSprintId){
+				currentSprintId = itemsprintId;
+				currentSprint = SprintItems.get(itemsprintId);
+				sprintView = new SprintItemView({model : currentSprint});
+	  		this.$("#backlog-items-list").append(sprintView.render().el);
+			}
+
+  		view = new BacklogItemView({model: item});
   		this.$("#backlog-items-list").append(view.render().el);
   	});
   },
@@ -49,6 +66,19 @@ var BacklogPageView = Backbone.View.extend({
 		_.each(BacklogItems.selected(), function(item){ item.destroy(); });
 		return false;
 	},
+	addBacklogItemToSprint : function(e){
+		$("#sprint-dialog").dialog("open");
+		return false;
+	},
+	newSprintItem : function(e){
+		console.log("new sprint");
+		var itemsId = _.map(BacklogItems.selected(), function(item){ return item.get("id"); });
+   	SprintItems.createFromForm(this.sprintform, itemsId, function(data){
+				$("#sprint-dialog").dialog("close");
+				SprintItems.add(data);				
+		});
+  	return false;
+  },
   displayActionBySelection : function(){
 		var buttons = "button.item-selected";
 		$("li.selected", this.list).length > 0 ? $(buttons).show() : $(buttons).hide();
@@ -57,6 +87,7 @@ var BacklogPageView = Backbone.View.extend({
 
 $(function(){
 	if($("#new_backlog_item").length > 0){
+		$("#sprint-dialog").dialog({ autoOpen: false });
 		window.backlogApp = new BacklogPageView;
 	}	
 });

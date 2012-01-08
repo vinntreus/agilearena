@@ -13,11 +13,18 @@ class SprintsController < ApplicationController
   def create
     @backlog = Backlog.find(params[:backlog_id])
     @sprint =	@backlog.sprints.new(params[:sprint])		
-    @sprint.save
+		@backlogitemsIds = params[:backlogItems].split(",")
+		
+		@backlogitemsIds.each do |item_id|
+			@backlog_item = BacklogItem.find(item_id)    
+    	@sprint.backlog_items.push(@backlog_item);
+		end
+
+    @sprint.save		
     
     render :json => { 
       :id => @sprint.id, 
-    :title => @sprint.display_title,
+	    :title => @sprint.display_title,
       :time => @sprint.display_time
     }
   end  

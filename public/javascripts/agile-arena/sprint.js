@@ -85,8 +85,8 @@ var SprintPageView = Backbone.View.extend({
 });
 
 $(function(){
-	if($("#new_sprint").length > 0){
+	/*if($("#new_sprint").length > 0){
 		window.sprintApp = new SprintPageView;
-	}
+	}*/
 	
 });

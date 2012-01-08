@@ -45,6 +45,38 @@ ul.backlog-items
   width: 754px;
 }
 
+.backlog-items .has-sprint
+{
+	background-color:#e4e9ed;
+}
+
+.backlog-items .sprint-item
+{
+	padding:15px 0;
+}
+
+.backlog-items .sprint-item,
+.backlog-items .sprint-item-title
+{
+	color:#96a8aa;
+}
+
+.backlog-items .sprint-item-title
+{
+  float: left;
+  font-size: 1em;
+  line-height: 2.1em;
+	margin-left: 10px;
+}
+.backlog-items .sprint-item-time
+{
+  display: block;
+  float: left;
+  font-size: 0.9em;
+  margin-left: 50px;
+  margin-top: 8px;
+}
+
 /************ headings ****************/
 
 .backlog-list-heading

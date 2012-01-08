@@ -31,6 +31,9 @@
 		</div>
 		<% if can? :create_items_in, @backlog %>
 			<%= render "backlog_items/new_backlog_item_form" %>
+			<div id="sprint-dialog" title="Add new sprint">
+				<%= render "sprints/new_sprint_form" %>
+			</div>
 		<% end %>		
 
 	</div>
@@ -38,8 +41,10 @@
 	</section>
 </div>
 
+
 <script type="text/javascript">
-	var backlogData = <%= raw(@backlog_items.to_json(:only => [ :id, :points, :title, :status ])) %>;
+	var backlogData = <%= raw(@backlog_items.to_json(:only => [ :id, :points, :title, :status, :sprint_id ])) %>;
+	var sprintData = <%= raw(@sprint_items.to_json(:only => [ :id ], :methods => [:display_title, :display_time])) %>;
 </script>
 
 <script type="text/x-jqote-template" id="backlog_item_template">
@@ -48,5 +53,11 @@
   	<div class="status <%%= this.status %>"><%%= this.status %></div>
 		<h3 class="backlog-item-title"><%%= this.title %></h3>   	
   	<p class="points" ><%%= this.points || "?" %></p>
+  ]]>
+</script>
+<script type="text/x-jqote-template" id="sprint_item_template">
+  <![CDATA[
+		<h3 class="sprint-item-title"><%%= this.display_title %></h3>   	
+		<span class="sprint-item-time"><%%= this.display_time %></span>
   ]]>
 </script>

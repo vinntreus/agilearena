@@ -68,6 +68,7 @@ var BacklogItemView = Backbone.View.extend({
 		element.html(this.template.jqote(item));	
 		element.addClass("fc");
 		item.selected ? element.addClass("selected") : element.removeClass("selected");
+		item.sprint_id ? element.addClass("has-sprint") : element.removeClass("has-sprint");
 		element.attr("data-id", item.id);	
 		return this;
 	}		

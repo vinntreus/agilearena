@@ -1,6 +1,6 @@
 class Sprint < ActiveRecord::Base
   attr_accessible :title, :start, :stop
-  before_create :set_title, :set_stop
+  before_create :set_title
   
   belongs_to :backlog
   has_many :backlog_items

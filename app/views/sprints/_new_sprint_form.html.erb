@@ -3,5 +3,7 @@
 	<input type="hidden" id="backlog_id" name="backlog_id" value="<%= @backlog.id %>" />
 	<label class="boxed-label">Start</label>
 	<%= date_select("sprint", "start") %>
+	<label class="boxed-label">Stop</label>
+	<%= date_select("sprint", "stop") %>
 	<%= f.submit "Add" %>
 <% end %>

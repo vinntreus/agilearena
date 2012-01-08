@@ -7,20 +7,22 @@ var SprintItemCollection = Backbone.Collection.extend({
 	url : function(){		
 		return "/sprints/?backlog_id=" + this.backlogId;
 	},
-	createFromForm: function(form){		
+	createFromForm: function(form, backlogItems, onsuccess){		
 		var that = this,
-				loader = $(".loader", form);
+				loader = $(".loader", form),
+				data = form.serializeArray();
+		data[data.length] = { "name" : "backlogItems", "value" : backlogItems};
+		//console.log(data);
 		/* do this in wait for better solution with create */
 		$.ajax({
 			type: "POST",
 			beforeSend : function(){
 				loader.css("display", "inline-block");
 			},
-			data : form.serialize(),
+			data : data,
 			url : form.attr("action"),
 			success : function(data, textStatus, jqXHR){
-				that.add(data);
-				$("input[type='text']", form).val("");
+				onsuccess(data);
 			},
 			error : function(jqXHR, textStatus, errorThrown){
 				alert(jqXHR.responseText);
@@ -32,8 +34,6 @@ var SprintItemCollection = Backbone.Collection.extend({
 	}
 });
 
-var SprintItems; // = new SprintItemCollection
-
 var SprintItemView = Backbone.View.extend({
 	tagName : "li",	
 	template: $('#sprint_item_template'),	
@@ -42,6 +42,7 @@ var SprintItemView = Backbone.View.extend({
 		var templatedEl = this.template.jqote(item);
 		$(this.el).html(templatedEl);
 		$(this.el).attr("data-id", item.id);	
+		$(this.el).addClass("sprint-item fc");	
 		
 		return this;
 	}		
