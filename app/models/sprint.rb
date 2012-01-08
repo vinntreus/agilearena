@@ -36,5 +36,11 @@ class Sprint < ActiveRecord::Base
     
     return self.title
   end	
+
+	def add_backlog_items(items)
+			items.each do |item|
+		  	self.backlog_items.push(item);
+			end
+	end
   
 end

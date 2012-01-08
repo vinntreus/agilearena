@@ -51,16 +51,18 @@ describe SprintsController do
   describe "POST 'create'" do
   	before(:each) do
 			@backlog = Factory(:backlog)
+			@backlog_item = Factory(:backlog_item, :position => 1, :id => 1, :title => "hej", :backlog => @backlog)
       @user = @backlog.user
       test_sign_in(@user)
       @b_id = @backlog.id
     end
   
     it "should be successful" do
-				lambda do
-					post :create, :backlog_id => @b_id
-				end.should change(Sprint, :count).by(1)  
+			lambda do
+				post :create, :backlog_id => @b_id
+			end.should change(Sprint, :count).by(1)  
 		end
+
 	end
 	
 	describe "POST 'addItemTo'" do

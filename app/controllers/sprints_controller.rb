@@ -12,15 +12,17 @@ class SprintsController < ApplicationController
   
   def create
     @backlog = Backlog.find(params[:backlog_id])
-    @sprint =	@backlog.sprints.new(params[:sprint])		
-		@backlogitemsIds = params[:backlogItems].split(",")
-		
-		@backlogitemsIds.each do |item_id|
-			@backlog_item = BacklogItem.find(item_id)    
-    	@sprint.backlog_items.push(@backlog_item);
+    @sprint =	@backlog.sprints.new(params[:sprint])	
+	
+		unless params[:backlogItems].nil?
+			@backlog_items = []
+			params[:backlogItems].split(",").each do |id|
+				@backlog_items.push(BacklogItem.find(id))
+			end
+			@sprint.add_backlog_items(@backlog_items);
 		end
 
-    @sprint.save		
+    @sprint.save
     
     render :json => { 
       :id => @sprint.id, 
