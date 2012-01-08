@@ -42,7 +42,7 @@ ul.backlog-items
   font-size: 1.2em;
   line-height: 2em;
 	margin-left: 10px;
-  width: 754px;
+  width: 690px;
 }
 
 .backlog-items .has-sprint
@@ -93,7 +93,7 @@ ul.backlog-items
 {
 	float:left;
 	font-size:.9em;
-	margin-left:70%;
+	margin-left:754px;
 }
 
 .backlog-list-heading span.points
